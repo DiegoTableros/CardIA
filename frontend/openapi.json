@@ -1,0 +1,2679 @@
+{
+ "openapi": "3.1.0",
+ "info": {
+  "title": "CardIA API",
+  "description": "Plataforma educativa de perfiles de tarjetas de crédito en México. No es asesoría financiera.",
+  "version": "0.1.0"
+ },
+ "paths": {
+  "/api/v1/meta/health": {
+   "get": {
+    "tags": [
+     "meta"
+    ],
+    "summary": "Health",
+    "operationId": "health_api_v1_meta_health_get",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HealthResponse"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/meta/disclaimer": {
+   "get": {
+    "tags": [
+     "meta"
+    ],
+    "summary": "Disclaimer",
+    "operationId": "disclaimer_api_v1_meta_disclaimer_get",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/DisclaimerResponse"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/auth/login": {
+   "post": {
+    "tags": [
+     "auth"
+    ],
+    "summary": "Login",
+    "operationId": "login_api_v1_auth_login_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/LoginRequest"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/TokenResponse"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/auth/me": {
+   "get": {
+    "tags": [
+     "auth"
+    ],
+    "summary": "Me",
+    "operationId": "me_api_v1_auth_me_get",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/UserOut"
+        }
+       }
+      }
+     }
+    },
+    "security": [
+     {
+      "HTTPBearer": []
+     }
+    ]
+   }
+  },
+  "/api/v1/auth/logout": {
+   "post": {
+    "tags": [
+     "auth"
+    ],
+    "summary": "Logout",
+    "operationId": "logout_api_v1_auth_logout_post",
+    "responses": {
+     "204": {
+      "description": "Successful Response"
+     }
+    },
+    "security": [
+     {
+      "HTTPBearer": []
+     }
+    ]
+   }
+  },
+  "/api/v1/cards": {
+   "get": {
+    "tags": [
+     "cards"
+    ],
+    "summary": "List Cards",
+    "operationId": "list_cards_api_v1_cards_get",
+    "security": [
+     {
+      "HTTPBearer": []
+     }
+    ],
+    "parameters": [
+     {
+      "name": "q",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string",
+         "maxLength": 100
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Q"
+      }
+     },
+     {
+      "name": "institution",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Institution"
+      }
+     },
+     {
+      "name": "card_class",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Card Class"
+      }
+     },
+     {
+      "name": "benefit_type",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Benefit Type"
+      }
+     },
+     {
+      "name": "profile_id",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "integer"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Profile Id"
+      }
+     },
+     {
+      "name": "max_annual_fee",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "number",
+         "minimum": 0
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Max Annual Fee"
+      }
+     },
+     {
+      "name": "no_annual_fee",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "boolean",
+       "default": false,
+       "title": "No Annual Fee"
+      }
+     },
+     {
+      "name": "sort",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "enum": [
+        "name",
+        "annual_fee",
+        "cat",
+        "interest_rate",
+        "credit_line_min",
+        "benefits"
+       ],
+       "type": "string",
+       "default": "name",
+       "title": "Sort"
+      }
+     },
+     {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "integer",
+       "maximum": 100,
+       "minimum": 1,
+       "default": 100,
+       "title": "Limit"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/CardListResponse"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/cards/facets": {
+   "get": {
+    "tags": [
+     "cards"
+    ],
+    "summary": "Card Facets",
+    "operationId": "card_facets_api_v1_cards_facets_get",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/CardFacets"
+        }
+       }
+      }
+     }
+    },
+    "security": [
+     {
+      "HTTPBearer": []
+     }
+    ]
+   }
+  },
+  "/api/v1/cards/{card_id}": {
+   "get": {
+    "tags": [
+     "cards"
+    ],
+    "summary": "Card Detail",
+    "operationId": "card_detail_api_v1_cards__card_id__get",
+    "security": [
+     {
+      "HTTPBearer": []
+     }
+    ],
+    "parameters": [
+     {
+      "name": "card_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "title": "Card Id"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/CardDetail"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/compare": {
+   "post": {
+    "tags": [
+     "compare"
+    ],
+    "summary": "Compare Cards",
+    "operationId": "compare_cards_api_v1_compare_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/CompareRequest"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/CompareResponse"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    },
+    "security": [
+     {
+      "HTTPBearer": []
+     }
+    ]
+   }
+  },
+  "/api/v1/recommend": {
+   "post": {
+    "tags": [
+     "recommend"
+    ],
+    "summary": "Recommend",
+    "operationId": "recommend_api_v1_recommend_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/UserProfileIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/RecommendResponse"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    },
+    "security": [
+     {
+      "HTTPBearer": []
+     }
+    ]
+   }
+  },
+  "/api/v1/chat/plan": {
+   "post": {
+    "tags": [
+     "chat"
+    ],
+    "summary": "Plan",
+    "description": "Paso 1 (D8): devuelve el plan explicito de tool calls antes de ejecutar.",
+    "operationId": "plan_api_v1_chat_plan_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/ChatRequest"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ChatPlanResponse"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    },
+    "security": [
+     {
+      "HTTPBearer": []
+     }
+    ]
+   }
+  },
+  "/api/v1/chat/runs/{run_id}/execute": {
+   "post": {
+    "tags": [
+     "chat"
+    ],
+    "summary": "Execute",
+    "description": "Paso 2: ejecuta el plan por niveles y genera la respuesta.",
+    "operationId": "execute_api_v1_chat_runs__run_id__execute_post",
+    "security": [
+     {
+      "HTTPBearer": []
+     }
+    ],
+    "parameters": [
+     {
+      "name": "run_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "title": "Run Id"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ChatRunResponse"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/chat/runs/{run_id}": {
+   "get": {
+    "tags": [
+     "chat"
+    ],
+    "summary": "Get Run",
+    "operationId": "get_run_api_v1_chat_runs__run_id__get",
+    "security": [
+     {
+      "HTTPBearer": []
+     }
+    ],
+    "parameters": [
+     {
+      "name": "run_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "title": "Run Id"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ChatRunResponse"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/chat/runs": {
+   "get": {
+    "tags": [
+     "chat"
+    ],
+    "summary": "List Runs",
+    "operationId": "list_runs_api_v1_chat_runs_get",
+    "security": [
+     {
+      "HTTPBearer": []
+     }
+    ],
+    "parameters": [
+     {
+      "name": "session_id",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string",
+         "maxLength": 60
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Session Id"
+      }
+     },
+     {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "integer",
+       "maximum": 100,
+       "minimum": 1,
+       "default": 30,
+       "title": "Limit"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "array",
+         "items": {
+          "$ref": "#/components/schemas/ChatRunResponse"
+         },
+         "title": "Response List Runs Api V1 Chat Runs Get"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/bi": {
+   "get": {
+    "tags": [
+     "bi"
+    ],
+    "summary": "Bi",
+    "operationId": "bi_api_v1_bi_get",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/BIResponse"
+        }
+       }
+      }
+     }
+    },
+    "security": [
+     {
+      "HTTPBearer": []
+     }
+    ]
+   }
+  },
+  "/api/v1/admin/overview": {
+   "get": {
+    "tags": [
+     "admin"
+    ],
+    "summary": "Overview",
+    "operationId": "overview_api_v1_admin_overview_get",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/AdminOverview"
+        }
+       }
+      }
+     }
+    },
+    "security": [
+     {
+      "HTTPBearer": []
+     }
+    ]
+   }
+  },
+  "/api/v1/admin/events": {
+   "get": {
+    "tags": [
+     "admin"
+    ],
+    "summary": "Events",
+    "operationId": "events_api_v1_admin_events_get",
+    "security": [
+     {
+      "HTTPBearer": []
+     }
+    ],
+    "parameters": [
+     {
+      "name": "action",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string",
+         "maxLength": 40
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Action"
+      }
+     },
+     {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "integer",
+       "maximum": 200,
+       "minimum": 1,
+       "default": 50,
+       "title": "Limit"
+      }
+     },
+     {
+      "name": "offset",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "integer",
+       "minimum": 0,
+       "default": 0,
+       "title": "Offset"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/AuditEventPage"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/admin/chat-runs": {
+   "get": {
+    "tags": [
+     "admin"
+    ],
+    "summary": "Chat Runs",
+    "operationId": "chat_runs_api_v1_admin_chat_runs_get",
+    "security": [
+     {
+      "HTTPBearer": []
+     }
+    ],
+    "parameters": [
+     {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "integer",
+       "maximum": 200,
+       "minimum": 1,
+       "default": 50,
+       "title": "Limit"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "array",
+         "items": {
+          "$ref": "#/components/schemas/ChatRunSummary"
+         },
+         "title": "Response Chat Runs Api V1 Admin Chat Runs Get"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/admin/users": {
+   "get": {
+    "tags": [
+     "admin"
+    ],
+    "summary": "Users",
+    "operationId": "users_api_v1_admin_users_get",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/AdminUsers"
+        }
+       }
+      }
+     }
+    },
+    "security": [
+     {
+      "HTTPBearer": []
+     }
+    ]
+   }
+  }
+ },
+ "components": {
+  "schemas": {
+   "ActionCount": {
+    "properties": {
+     "action": {
+      "type": "string",
+      "title": "Action"
+     },
+     "count": {
+      "type": "integer",
+      "title": "Count"
+     }
+    },
+    "type": "object",
+    "required": [
+     "action",
+     "count"
+    ],
+    "title": "ActionCount"
+   },
+   "AdminOverview": {
+    "properties": {
+     "users": {
+      "type": "integer",
+      "title": "Users"
+     },
+     "cards": {
+      "type": "integer",
+      "title": "Cards"
+     },
+     "fees": {
+      "type": "integer",
+      "title": "Fees"
+     },
+     "benefits": {
+      "type": "integer",
+      "title": "Benefits"
+     },
+     "events": {
+      "type": "integer",
+      "title": "Events"
+     },
+     "chat_runs": {
+      "type": "integer",
+      "title": "Chat Runs"
+     },
+     "recommendations": {
+      "type": "integer",
+      "title": "Recommendations"
+     },
+     "by_action": {
+      "items": {
+       "$ref": "#/components/schemas/ActionCount"
+      },
+      "type": "array",
+      "title": "By Action"
+     },
+     "llm_enabled": {
+      "type": "boolean",
+      "title": "Llm Enabled"
+     },
+     "database": {
+      "type": "string",
+      "title": "Database"
+     },
+     "data_generated_at": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Data Generated At"
+     }
+    },
+    "type": "object",
+    "required": [
+     "users",
+     "cards",
+     "fees",
+     "benefits",
+     "events",
+     "chat_runs",
+     "recommendations",
+     "by_action",
+     "llm_enabled",
+     "database",
+     "data_generated_at"
+    ],
+    "title": "AdminOverview"
+   },
+   "AdminUsers": {
+    "properties": {
+     "items": {
+      "items": {
+       "$ref": "#/components/schemas/UserOut"
+      },
+      "type": "array",
+      "title": "Items"
+     }
+    },
+    "type": "object",
+    "required": [
+     "items"
+    ],
+    "title": "AdminUsers"
+   },
+   "AuditEventOut": {
+    "properties": {
+     "id": {
+      "type": "integer",
+      "title": "Id"
+     },
+     "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Created At"
+     },
+     "user_email": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "User Email"
+     },
+     "action": {
+      "type": "string",
+      "title": "Action"
+     },
+     "detail": {
+      "type": "string",
+      "title": "Detail"
+     },
+     "duration_ms": {
+      "type": "integer",
+      "title": "Duration Ms"
+     },
+     "payload": {
+      "anyOf": [
+       {
+        "additionalProperties": true,
+        "type": "object"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Payload"
+     }
+    },
+    "type": "object",
+    "required": [
+     "id",
+     "created_at",
+     "user_email",
+     "action",
+     "detail",
+     "duration_ms",
+     "payload"
+    ],
+    "title": "AuditEventOut"
+   },
+   "AuditEventPage": {
+    "properties": {
+     "total": {
+      "type": "integer",
+      "title": "Total"
+     },
+     "items": {
+      "items": {
+       "$ref": "#/components/schemas/AuditEventOut"
+      },
+      "type": "array",
+      "title": "Items"
+     }
+    },
+    "type": "object",
+    "required": [
+     "total",
+     "items"
+    ],
+    "title": "AuditEventPage"
+   },
+   "BIResponse": {
+    "properties": {
+     "kpis": {
+      "$ref": "#/components/schemas/Kpis"
+     },
+     "by_class": {
+      "items": {
+       "$ref": "#/components/schemas/LabelCount"
+      },
+      "type": "array",
+      "title": "By Class"
+     },
+     "by_institution": {
+      "items": {
+       "$ref": "#/components/schemas/LabelCount"
+      },
+      "type": "array",
+      "title": "By Institution"
+     },
+     "benefit_types": {
+      "items": {
+       "$ref": "#/components/schemas/LabelCount"
+      },
+      "type": "array",
+      "title": "Benefit Types"
+     },
+     "fee_types": {
+      "items": {
+       "$ref": "#/components/schemas/LabelCount"
+      },
+      "type": "array",
+      "title": "Fee Types"
+     },
+     "annual_fee_buckets": {
+      "items": {
+       "$ref": "#/components/schemas/LabelCount"
+      },
+      "type": "array",
+      "title": "Annual Fee Buckets"
+     },
+     "profiles": {
+      "items": {
+       "$ref": "#/components/schemas/ProfileStats"
+      },
+      "type": "array",
+      "title": "Profiles"
+     },
+     "scatter": {
+      "items": {
+       "$ref": "#/components/schemas/ScatterPoint"
+      },
+      "type": "array",
+      "title": "Scatter"
+     },
+     "model": {
+      "$ref": "#/components/schemas/ModelInfo"
+     }
+    },
+    "type": "object",
+    "required": [
+     "kpis",
+     "by_class",
+     "by_institution",
+     "benefit_types",
+     "fee_types",
+     "annual_fee_buckets",
+     "profiles",
+     "scatter",
+     "model"
+    ],
+    "title": "BIResponse"
+   },
+   "BenefitOut": {
+    "properties": {
+     "benefit_type": {
+      "type": "string",
+      "title": "Benefit Type"
+     },
+     "text": {
+      "type": "string",
+      "title": "Text"
+     }
+    },
+    "type": "object",
+    "required": [
+     "benefit_type",
+     "text"
+    ],
+    "title": "BenefitOut"
+   },
+   "CardDetail": {
+    "properties": {
+     "id": {
+      "type": "string",
+      "title": "Id"
+     },
+     "name": {
+      "type": "string",
+      "title": "Name"
+     },
+     "institution": {
+      "type": "string",
+      "title": "Institution"
+     },
+     "card_class": {
+      "type": "string",
+      "title": "Card Class"
+     },
+     "cat": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Cat"
+     },
+     "annual_fee": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Annual Fee"
+     },
+     "interest_rate": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Interest Rate"
+     },
+     "credit_line_min": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Credit Line Min"
+     },
+     "monthly_income_min": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Monthly Income Min"
+     },
+     "benefit_types": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Benefit Types"
+     },
+     "fee_counts": {
+      "$ref": "#/components/schemas/FeeCounts"
+     },
+     "profile": {
+      "$ref": "#/components/schemas/ProfileTag"
+     },
+     "requirements": {
+      "$ref": "#/components/schemas/Requirements"
+     },
+     "fees": {
+      "items": {
+       "$ref": "#/components/schemas/FeeOut"
+      },
+      "type": "array",
+      "title": "Fees"
+     },
+     "benefits": {
+      "items": {
+       "$ref": "#/components/schemas/BenefitOut"
+      },
+      "type": "array",
+      "title": "Benefits"
+     },
+     "disclaimer": {
+      "type": "string",
+      "title": "Disclaimer"
+     }
+    },
+    "type": "object",
+    "required": [
+     "id",
+     "name",
+     "institution",
+     "card_class",
+     "cat",
+     "annual_fee",
+     "interest_rate",
+     "credit_line_min",
+     "monthly_income_min",
+     "benefit_types",
+     "fee_counts",
+     "profile",
+     "requirements",
+     "fees",
+     "benefits",
+     "disclaimer"
+    ],
+    "title": "CardDetail"
+   },
+   "CardFacets": {
+    "properties": {
+     "institutions": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Institutions"
+     },
+     "classes": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Classes"
+     },
+     "benefit_types": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Benefit Types"
+     },
+     "profiles": {
+      "items": {
+       "$ref": "#/components/schemas/ProfileTag"
+      },
+      "type": "array",
+      "title": "Profiles"
+     },
+     "annual_fee": {
+      "$ref": "#/components/schemas/RangeOut"
+     },
+     "cat": {
+      "$ref": "#/components/schemas/RangeOut"
+     },
+     "interest_rate": {
+      "$ref": "#/components/schemas/RangeOut"
+     }
+    },
+    "type": "object",
+    "required": [
+     "institutions",
+     "classes",
+     "benefit_types",
+     "profiles",
+     "annual_fee",
+     "cat",
+     "interest_rate"
+    ],
+    "title": "CardFacets"
+   },
+   "CardListResponse": {
+    "properties": {
+     "total": {
+      "type": "integer",
+      "title": "Total"
+     },
+     "items": {
+      "items": {
+       "$ref": "#/components/schemas/CardSummary"
+      },
+      "type": "array",
+      "title": "Items"
+     }
+    },
+    "type": "object",
+    "required": [
+     "total",
+     "items"
+    ],
+    "title": "CardListResponse"
+   },
+   "CardSummary": {
+    "properties": {
+     "id": {
+      "type": "string",
+      "title": "Id"
+     },
+     "name": {
+      "type": "string",
+      "title": "Name"
+     },
+     "institution": {
+      "type": "string",
+      "title": "Institution"
+     },
+     "card_class": {
+      "type": "string",
+      "title": "Card Class"
+     },
+     "cat": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Cat"
+     },
+     "annual_fee": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Annual Fee"
+     },
+     "interest_rate": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Interest Rate"
+     },
+     "credit_line_min": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Credit Line Min"
+     },
+     "monthly_income_min": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Monthly Income Min"
+     },
+     "benefit_types": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Benefit Types"
+     },
+     "fee_counts": {
+      "$ref": "#/components/schemas/FeeCounts"
+     },
+     "profile": {
+      "$ref": "#/components/schemas/ProfileTag"
+     }
+    },
+    "type": "object",
+    "required": [
+     "id",
+     "name",
+     "institution",
+     "card_class",
+     "cat",
+     "annual_fee",
+     "interest_rate",
+     "credit_line_min",
+     "monthly_income_min",
+     "benefit_types",
+     "fee_counts",
+     "profile"
+    ],
+    "title": "CardSummary"
+   },
+   "ChatPlanResponse": {
+    "properties": {
+     "run_id": {
+      "type": "string",
+      "title": "Run Id"
+     },
+     "session_id": {
+      "type": "string",
+      "title": "Session Id"
+     },
+     "plan": {
+      "items": {
+       "$ref": "#/components/schemas/PlanStep"
+      },
+      "type": "array",
+      "title": "Plan"
+     },
+     "mode": {
+      "type": "string",
+      "enum": [
+       "rules",
+       "llm"
+      ],
+      "title": "Mode"
+     }
+    },
+    "type": "object",
+    "required": [
+     "run_id",
+     "session_id",
+     "plan",
+     "mode"
+    ],
+    "title": "ChatPlanResponse"
+   },
+   "ChatRequest": {
+    "properties": {
+     "message": {
+      "type": "string",
+      "maxLength": 1000,
+      "minLength": 1,
+      "title": "Message"
+     },
+     "session_id": {
+      "type": "string",
+      "maxLength": 60,
+      "minLength": 1,
+      "title": "Session Id"
+     }
+    },
+    "type": "object",
+    "required": [
+     "message",
+     "session_id"
+    ],
+    "title": "ChatRequest"
+   },
+   "ChatRunResponse": {
+    "properties": {
+     "run_id": {
+      "type": "string",
+      "title": "Run Id"
+     },
+     "session_id": {
+      "type": "string",
+      "title": "Session Id"
+     },
+     "question": {
+      "type": "string",
+      "title": "Question"
+     },
+     "plan": {
+      "items": {
+       "$ref": "#/components/schemas/PlanStep"
+      },
+      "type": "array",
+      "title": "Plan"
+     },
+     "answer": {
+      "type": "string",
+      "title": "Answer"
+     },
+     "mode": {
+      "type": "string",
+      "enum": [
+       "rules",
+       "llm"
+      ],
+      "title": "Mode"
+     },
+     "status": {
+      "type": "string",
+      "enum": [
+       "planned",
+       "ok",
+       "error"
+      ],
+      "title": "Status"
+     },
+     "cards": {
+      "items": {
+       "$ref": "#/components/schemas/CardSummary"
+      },
+      "type": "array",
+      "title": "Cards"
+     },
+     "suggestions": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Suggestions"
+     },
+     "disclaimer": {
+      "type": "string",
+      "title": "Disclaimer"
+     },
+     "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Created At"
+     },
+     "duration_ms": {
+      "type": "integer",
+      "title": "Duration Ms"
+     }
+    },
+    "type": "object",
+    "required": [
+     "run_id",
+     "session_id",
+     "question",
+     "plan",
+     "answer",
+     "mode",
+     "status",
+     "cards",
+     "suggestions",
+     "disclaimer",
+     "created_at",
+     "duration_ms"
+    ],
+    "title": "ChatRunResponse"
+   },
+   "ChatRunSummary": {
+    "properties": {
+     "id": {
+      "type": "string",
+      "title": "Id"
+     },
+     "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Created At"
+     },
+     "user_email": {
+      "type": "string",
+      "title": "User Email"
+     },
+     "session_id": {
+      "type": "string",
+      "title": "Session Id"
+     },
+     "question": {
+      "type": "string",
+      "title": "Question"
+     },
+     "mode": {
+      "type": "string",
+      "title": "Mode"
+     },
+     "status": {
+      "type": "string",
+      "title": "Status"
+     },
+     "duration_ms": {
+      "type": "integer",
+      "title": "Duration Ms"
+     },
+     "steps": {
+      "type": "integer",
+      "title": "Steps"
+     }
+    },
+    "type": "object",
+    "required": [
+     "id",
+     "created_at",
+     "user_email",
+     "session_id",
+     "question",
+     "mode",
+     "status",
+     "duration_ms",
+     "steps"
+    ],
+    "title": "ChatRunSummary"
+   },
+   "CompareMetric": {
+    "properties": {
+     "key": {
+      "type": "string",
+      "title": "Key"
+     },
+     "label": {
+      "type": "string",
+      "title": "Label"
+     },
+     "unit": {
+      "type": "string",
+      "enum": [
+       "MXN",
+       "%",
+       "count"
+      ],
+      "title": "Unit"
+     },
+     "better": {
+      "type": "string",
+      "enum": [
+       "lower",
+       "higher"
+      ],
+      "title": "Better"
+     },
+     "values": {
+      "additionalProperties": {
+       "anyOf": [
+        {
+         "type": "number"
+        },
+        {
+         "type": "null"
+        }
+       ]
+      },
+      "type": "object",
+      "title": "Values"
+     },
+     "best_id": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Best Id"
+     }
+    },
+    "type": "object",
+    "required": [
+     "key",
+     "label",
+     "unit",
+     "better",
+     "values",
+     "best_id"
+    ],
+    "title": "CompareMetric"
+   },
+   "CompareRequest": {
+    "properties": {
+     "card_ids": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "maxItems": 4,
+      "minItems": 2,
+      "title": "Card Ids"
+     }
+    },
+    "type": "object",
+    "required": [
+     "card_ids"
+    ],
+    "title": "CompareRequest"
+   },
+   "CompareResponse": {
+    "properties": {
+     "cards": {
+      "items": {
+       "$ref": "#/components/schemas/CardDetail"
+      },
+      "type": "array",
+      "title": "Cards"
+     },
+     "metrics": {
+      "items": {
+       "$ref": "#/components/schemas/CompareMetric"
+      },
+      "type": "array",
+      "title": "Metrics"
+     },
+     "disclaimer": {
+      "type": "string",
+      "title": "Disclaimer"
+     }
+    },
+    "type": "object",
+    "required": [
+     "cards",
+     "metrics",
+     "disclaimer"
+    ],
+    "title": "CompareResponse"
+   },
+   "DisclaimerResponse": {
+    "properties": {
+     "disclaimer": {
+      "type": "string",
+      "title": "Disclaimer"
+     }
+    },
+    "type": "object",
+    "required": [
+     "disclaimer"
+    ],
+    "title": "DisclaimerResponse"
+   },
+   "FeeCounts": {
+    "properties": {
+     "obligatoria": {
+      "type": "integer",
+      "title": "Obligatoria",
+      "default": 0
+     },
+     "por_evento": {
+      "type": "integer",
+      "title": "Por Evento",
+      "default": 0
+     },
+     "penalizacion": {
+      "type": "integer",
+      "title": "Penalizacion",
+      "default": 0
+     }
+    },
+    "type": "object",
+    "title": "FeeCounts"
+   },
+   "FeeOut": {
+    "properties": {
+     "concept": {
+      "type": "string",
+      "title": "Concept"
+     },
+     "amount": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Amount"
+     },
+     "denomination": {
+      "type": "string",
+      "enum": [
+       "MXN",
+       "USD",
+       "PCT"
+      ],
+      "title": "Denomination"
+     },
+     "fee_type": {
+      "type": "string",
+      "enum": [
+       "obligatoria",
+       "por_evento",
+       "penalizacion",
+       "otro"
+      ],
+      "title": "Fee Type"
+     }
+    },
+    "type": "object",
+    "required": [
+     "concept",
+     "amount",
+     "denomination",
+     "fee_type"
+    ],
+    "title": "FeeOut"
+   },
+   "HTTPValidationError": {
+    "properties": {
+     "detail": {
+      "items": {
+       "$ref": "#/components/schemas/ValidationError"
+      },
+      "type": "array",
+      "title": "Detail"
+     }
+    },
+    "type": "object",
+    "title": "HTTPValidationError"
+   },
+   "HealthResponse": {
+    "properties": {
+     "status": {
+      "type": "string",
+      "enum": [
+       "ok",
+       "degraded"
+      ],
+      "title": "Status"
+     },
+     "version": {
+      "type": "string",
+      "title": "Version"
+     },
+     "environment": {
+      "type": "string",
+      "title": "Environment"
+     },
+     "llm_enabled": {
+      "type": "boolean",
+      "title": "Llm Enabled"
+     },
+     "cards_loaded": {
+      "type": "integer",
+      "title": "Cards Loaded"
+     }
+    },
+    "type": "object",
+    "required": [
+     "status",
+     "version",
+     "environment",
+     "llm_enabled",
+     "cards_loaded"
+    ],
+    "title": "HealthResponse"
+   },
+   "Kpis": {
+    "properties": {
+     "cards": {
+      "type": "integer",
+      "title": "Cards"
+     },
+     "institutions": {
+      "type": "integer",
+      "title": "Institutions"
+     },
+     "no_annual_fee": {
+      "type": "integer",
+      "title": "No Annual Fee"
+     },
+     "avg_cat": {
+      "type": "number",
+      "title": "Avg Cat"
+     },
+     "avg_interest_rate": {
+      "type": "number",
+      "title": "Avg Interest Rate"
+     },
+     "avg_annual_fee": {
+      "type": "number",
+      "title": "Avg Annual Fee"
+     },
+     "benefits": {
+      "type": "integer",
+      "title": "Benefits"
+     },
+     "fees": {
+      "type": "integer",
+      "title": "Fees"
+     }
+    },
+    "type": "object",
+    "required": [
+     "cards",
+     "institutions",
+     "no_annual_fee",
+     "avg_cat",
+     "avg_interest_rate",
+     "avg_annual_fee",
+     "benefits",
+     "fees"
+    ],
+    "title": "Kpis"
+   },
+   "LabelCount": {
+    "properties": {
+     "label": {
+      "type": "string",
+      "title": "Label"
+     },
+     "count": {
+      "type": "integer",
+      "title": "Count"
+     }
+    },
+    "type": "object",
+    "required": [
+     "label",
+     "count"
+    ],
+    "title": "LabelCount"
+   },
+   "LoginRequest": {
+    "properties": {
+     "email": {
+      "type": "string",
+      "maxLength": 200,
+      "minLength": 3,
+      "title": "Email"
+     },
+     "password": {
+      "type": "string",
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Password"
+     }
+    },
+    "type": "object",
+    "required": [
+     "email",
+     "password"
+    ],
+    "title": "LoginRequest"
+   },
+   "ModelInfo": {
+    "properties": {
+     "version": {
+      "type": "string",
+      "title": "Version"
+     },
+     "is_stub": {
+      "type": "boolean",
+      "title": "Is Stub"
+     },
+     "features": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Features"
+     },
+     "description": {
+      "type": "string",
+      "title": "Description"
+     }
+    },
+    "type": "object",
+    "required": [
+     "version",
+     "is_stub",
+     "features",
+     "description"
+    ],
+    "title": "ModelInfo"
+   },
+   "PlanStep": {
+    "properties": {
+     "id": {
+      "type": "string",
+      "title": "Id"
+     },
+     "agent": {
+      "type": "string",
+      "enum": [
+       "FundamentalsAgent",
+       "ComisionesAgent",
+       "EducativeAgent",
+       "PerfilAgent"
+      ],
+      "title": "Agent"
+     },
+     "tool": {
+      "type": "string",
+      "title": "Tool"
+     },
+     "args": {
+      "additionalProperties": true,
+      "type": "object",
+      "title": "Args"
+     },
+     "depends_on": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Depends On"
+     },
+     "rationale": {
+      "type": "string",
+      "title": "Rationale"
+     },
+     "status": {
+      "type": "string",
+      "enum": [
+       "pending",
+       "running",
+       "ok",
+       "error",
+       "skipped"
+      ],
+      "title": "Status",
+      "default": "pending"
+     },
+     "summary": {
+      "type": "string",
+      "title": "Summary",
+      "default": ""
+     },
+     "duration_ms": {
+      "type": "integer",
+      "title": "Duration Ms",
+      "default": 0
+     }
+    },
+    "type": "object",
+    "required": [
+     "id",
+     "agent",
+     "tool",
+     "args",
+     "rationale"
+    ],
+    "title": "PlanStep"
+   },
+   "ProfileOut": {
+    "properties": {
+     "id": {
+      "type": "integer",
+      "title": "Id"
+     },
+     "key": {
+      "type": "string",
+      "title": "Key"
+     },
+     "label": {
+      "type": "string",
+      "title": "Label"
+     },
+     "tagline": {
+      "type": "string",
+      "title": "Tagline"
+     },
+     "description": {
+      "type": "string",
+      "title": "Description"
+     },
+     "color": {
+      "type": "string",
+      "title": "Color"
+     },
+     "icon": {
+      "type": "string",
+      "title": "Icon"
+     },
+     "traits": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Traits"
+     },
+     "card_count": {
+      "type": "integer",
+      "title": "Card Count",
+      "default": 0
+     }
+    },
+    "type": "object",
+    "required": [
+     "id",
+     "key",
+     "label",
+     "tagline",
+     "description",
+     "color",
+     "icon",
+     "traits"
+    ],
+    "title": "ProfileOut"
+   },
+   "ProfileStats": {
+    "properties": {
+     "profile": {
+      "$ref": "#/components/schemas/ProfileOut"
+     },
+     "avg_annual_fee": {
+      "type": "number",
+      "title": "Avg Annual Fee"
+     },
+     "avg_interest_rate": {
+      "type": "number",
+      "title": "Avg Interest Rate"
+     },
+     "avg_cat": {
+      "type": "number",
+      "title": "Avg Cat"
+     },
+     "avg_credit_line": {
+      "type": "number",
+      "title": "Avg Credit Line"
+     },
+     "top_benefits": {
+      "items": {
+       "$ref": "#/components/schemas/LabelCount"
+      },
+      "type": "array",
+      "title": "Top Benefits"
+     }
+    },
+    "type": "object",
+    "required": [
+     "profile",
+     "avg_annual_fee",
+     "avg_interest_rate",
+     "avg_cat",
+     "avg_credit_line",
+     "top_benefits"
+    ],
+    "title": "ProfileStats"
+   },
+   "ProfileTag": {
+    "properties": {
+     "id": {
+      "type": "integer",
+      "title": "Id"
+     },
+     "key": {
+      "type": "string",
+      "title": "Key"
+     },
+     "label": {
+      "type": "string",
+      "title": "Label"
+     },
+     "color": {
+      "type": "string",
+      "title": "Color"
+     }
+    },
+    "type": "object",
+    "required": [
+     "id",
+     "key",
+     "label",
+     "color"
+    ],
+    "title": "ProfileTag",
+    "description": "Perfil (cluster) al que pertenece una tarjeta."
+   },
+   "RangeOut": {
+    "properties": {
+     "min": {
+      "type": "number",
+      "title": "Min"
+     },
+     "max": {
+      "type": "number",
+      "title": "Max"
+     }
+    },
+    "type": "object",
+    "required": [
+     "min",
+     "max"
+    ],
+    "title": "RangeOut"
+   },
+   "RecommendResponse": {
+    "properties": {
+     "profile": {
+      "$ref": "#/components/schemas/ProfileOut"
+     },
+     "profile_reason": {
+      "type": "string",
+      "title": "Profile Reason"
+     },
+     "recommendations": {
+      "items": {
+       "$ref": "#/components/schemas/Recommendation"
+      },
+      "type": "array",
+      "title": "Recommendations"
+     },
+     "excluded_count": {
+      "type": "integer",
+      "title": "Excluded Count"
+     },
+     "assumptions": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Assumptions"
+     },
+     "model": {
+      "$ref": "#/components/schemas/ModelInfo"
+     },
+     "disclaimer": {
+      "type": "string",
+      "title": "Disclaimer"
+     }
+    },
+    "type": "object",
+    "required": [
+     "profile",
+     "profile_reason",
+     "recommendations",
+     "excluded_count",
+     "assumptions",
+     "model",
+     "disclaimer"
+    ],
+    "title": "RecommendResponse"
+   },
+   "Recommendation": {
+    "properties": {
+     "card": {
+      "$ref": "#/components/schemas/CardSummary"
+     },
+     "score": {
+      "type": "number",
+      "maximum": 100.0,
+      "minimum": 0.0,
+      "title": "Score"
+     },
+     "eligibility": {
+      "type": "string",
+      "enum": [
+       "cumple",
+       "por_confirmar",
+       "no_cumple"
+      ],
+      "title": "Eligibility"
+     },
+     "reasons": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Reasons"
+     },
+     "warnings": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Warnings"
+     }
+    },
+    "type": "object",
+    "required": [
+     "card",
+     "score",
+     "eligibility",
+     "reasons",
+     "warnings"
+    ],
+    "title": "Recommendation"
+   },
+   "Requirements": {
+    "properties": {
+     "age_min": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Age Min"
+     },
+     "age_max": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Age Max"
+     },
+     "score_min": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Score Min"
+     },
+     "work_seniority_min": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Work Seniority Min"
+     },
+     "residence_seniority_min": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Residence Seniority Min"
+     },
+     "monthly_income_min": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Monthly Income Min"
+     }
+    },
+    "type": "object",
+    "title": "Requirements"
+   },
+   "ScatterPoint": {
+    "properties": {
+     "id": {
+      "type": "string",
+      "title": "Id"
+     },
+     "name": {
+      "type": "string",
+      "title": "Name"
+     },
+     "institution": {
+      "type": "string",
+      "title": "Institution"
+     },
+     "x": {
+      "type": "number",
+      "title": "X"
+     },
+     "y": {
+      "type": "number",
+      "title": "Y"
+     },
+     "profile_id": {
+      "type": "integer",
+      "title": "Profile Id"
+     }
+    },
+    "type": "object",
+    "required": [
+     "id",
+     "name",
+     "institution",
+     "x",
+     "y",
+     "profile_id"
+    ],
+    "title": "ScatterPoint"
+   },
+   "TokenResponse": {
+    "properties": {
+     "access_token": {
+      "type": "string",
+      "title": "Access Token"
+     },
+     "token_type": {
+      "type": "string",
+      "const": "bearer",
+      "title": "Token Type",
+      "default": "bearer"
+     },
+     "expires_in": {
+      "type": "integer",
+      "title": "Expires In"
+     },
+     "user": {
+      "$ref": "#/components/schemas/UserOut"
+     }
+    },
+    "type": "object",
+    "required": [
+     "access_token",
+     "expires_in",
+     "user"
+    ],
+    "title": "TokenResponse"
+   },
+   "UserOut": {
+    "properties": {
+     "id": {
+      "type": "integer",
+      "title": "Id"
+     },
+     "email": {
+      "type": "string",
+      "title": "Email"
+     },
+     "full_name": {
+      "type": "string",
+      "title": "Full Name"
+     },
+     "role": {
+      "type": "string",
+      "enum": [
+       "admin",
+       "user"
+      ],
+      "title": "Role"
+     },
+     "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Created At"
+     },
+     "last_login_at": {
+      "anyOf": [
+       {
+        "type": "string",
+        "format": "date-time"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Last Login At"
+     }
+    },
+    "type": "object",
+    "required": [
+     "id",
+     "email",
+     "full_name",
+     "role",
+     "created_at"
+    ],
+    "title": "UserOut"
+   },
+   "UserProfileIn": {
+    "properties": {
+     "age": {
+      "type": "integer",
+      "maximum": 99.0,
+      "minimum": 18.0,
+      "title": "Age",
+      "description": "Edad en anios"
+     },
+     "income_range": {
+      "type": "string",
+      "enum": [
+       "lt_7k",
+       "7k_15k",
+       "15k_30k",
+       "30k_60k",
+       "gt_60k"
+      ],
+      "title": "Income Range"
+     },
+     "credit_score": {
+      "type": "string",
+      "enum": [
+       "unknown",
+       "none",
+       "low",
+       "medium",
+       "high"
+      ],
+      "title": "Credit Score",
+      "default": "unknown"
+     },
+     "work_seniority_months": {
+      "anyOf": [
+       {
+        "type": "integer",
+        "maximum": 600.0,
+        "minimum": 0.0
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Work Seniority Months"
+     },
+     "main_use": {
+      "type": "string",
+      "enum": [
+       "diario",
+       "viajes",
+       "compras_meses",
+       "historial",
+       "transferir_saldo",
+       "emergencias"
+      ],
+      "title": "Main Use",
+      "default": "diario"
+     },
+     "avoid_annual_fee": {
+      "type": "boolean",
+      "title": "Avoid Annual Fee",
+      "default": false
+     },
+     "pays_in_full": {
+      "type": "boolean",
+      "title": "Pays In Full",
+      "description": "Totalero: paga el total cada mes",
+      "default": false
+     },
+     "benefits": {
+      "items": {
+       "type": "string",
+       "enum": [
+        "Meses sin intereses",
+        "Puntos",
+        "Descuentos",
+        "Preventas",
+        "Transferencia de Saldo",
+        "Seguros"
+       ]
+      },
+      "type": "array",
+      "maxItems": 6,
+      "title": "Benefits"
+     }
+    },
+    "type": "object",
+    "required": [
+     "age",
+     "income_range"
+    ],
+    "title": "UserProfileIn",
+    "description": "Datos NO sensibles: rangos y preferencias. Nunca RFC, CURP ni cuentas (D11)."
+   },
+   "ValidationError": {
+    "properties": {
+     "loc": {
+      "items": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "integer"
+        }
+       ]
+      },
+      "type": "array",
+      "title": "Location"
+     },
+     "msg": {
+      "type": "string",
+      "title": "Message"
+     },
+     "type": {
+      "type": "string",
+      "title": "Error Type"
+     },
+     "input": {
+      "title": "Input"
+     },
+     "ctx": {
+      "type": "object",
+      "title": "Context"
+     }
+    },
+    "type": "object",
+    "required": [
+     "loc",
+     "msg",
+     "type"
+    ],
+    "title": "ValidationError"
+   }
+  },
+  "securitySchemes": {
+   "HTTPBearer": {
+    "type": "http",
+    "scheme": "bearer"
+   }
+  }
+ }
+}

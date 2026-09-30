@@ -1,0 +1,6701 @@
+{
+ "source": "datos_consolidados/tarjetas.xlsx",
+ "generated_at": "2026-09-30T05:44:54+00:00",
+ "count": 69,
+ "cards": [
+  {
+   "id": "001",
+   "name": "Affinity Card Banamex",
+   "institution": "Banamex",
+   "card_class": "Clásica",
+   "cat": 89.1,
+   "annual_fee": 815.0,
+   "interest_rate": 60.3,
+   "credit_line_min": 3000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 79,
+    "score_min": null,
+    "work_seniority_min": null,
+    "residence_seniority_min": null,
+    "monthly_income_min": 7000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 33.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 67.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Banca por App",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por Internet",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por teléfono",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 130.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Falta de pago",
+     "amount": 399.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 399.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Puntos",
+     "text": "Puntos Premia ofrece 0 puntos por cada peso gastado"
+    },
+    {
+     "benefit_type": "Descuentos",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, restaurantes, entretenimiento, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Preventas",
+     "text": "Compra boletos de forma anticipada para Conciertos y festivales de música, Teatro, Eventos deportivos, Otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, restaurantes, entretenimiento, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Transferencia de Saldo",
+     "text": "Tasa del 17% si liquidas el saldo transferido entre 12 y 24 meses"
+    },
+    {
+     "benefit_type": "Descuentos",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, hoteles"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "002",
+   "name": "Black Unlimited",
+   "institution": "Santander",
+   "card_class": "Platino",
+   "cat": 76.3,
+   "annual_fee": 2000.0,
+   "interest_rate": 56.8,
+   "credit_line_min": 30000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 69,
+    "score_min": 580,
+    "work_seniority_min": 1,
+    "residence_seniority_min": 1,
+    "monthly_income_min": 30000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 1000.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 2000.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Banca por App",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por Internet",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por teléfono",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Domiciliaciones",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por desgaste",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 140.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Aclaración improcedente",
+     "amount": 200.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Falta de pago",
+     "amount": 420.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 420.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Puntos",
+     "text": "Puntos Premia ofrece 2 puntos por cada dólar gastado"
+    },
+    {
+     "benefit_type": "Preventas",
+     "text": "Compra boletos de forma anticipada para Conciertos y festivales de música, Teatro, Eventos deportivos, Otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "departamentales, salud, restaurantes, entretenimiento, educativos, comercios en línea,"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, peaje, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "003",
+   "name": "CIBanco Oro",
+   "institution": "Invex",
+   "card_class": "Oro",
+   "cat": 74.0,
+   "annual_fee": 1381.0,
+   "interest_rate": 41.8,
+   "credit_line_min": 7000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 69,
+    "score_min": null,
+    "work_seniority_min": null,
+    "residence_seniority_min": null,
+    "monthly_income_min": 5000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 690.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 1381.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 650.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Falta de pago",
+     "amount": 895.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, entretenimiento, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "004",
+   "name": "Clásica Banamex",
+   "institution": "Banamex",
+   "card_class": "Clásica",
+   "cat": 90.2,
+   "annual_fee": 815.0,
+   "interest_rate": 60.3,
+   "credit_line_min": 3000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 79,
+    "score_min": null,
+    "work_seniority_min": null,
+    "residence_seniority_min": null,
+    "monthly_income_min": 7000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 33.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 67.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Banca por App",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por Internet",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por teléfono",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 130.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Falta de pago",
+     "amount": 399.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 399.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Puntos",
+     "text": "Puntos Premia ofrece 0 puntos por cada peso gastado"
+    },
+    {
+     "benefit_type": "Descuentos",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, restaurantes, entretenimiento, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Preventas",
+     "text": "Compra boletos de forma anticipada para Conciertos y festivales de música, Teatro, Eventos deportivos, Otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, restaurantes, entretenimiento, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Transferencia de Saldo",
+     "text": "Tasa del 17% si liquidas el saldo transferido entre 12 y 24 meses"
+    },
+    {
+     "benefit_type": "Descuentos",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, hoteles"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "005",
+   "name": "Costco Banamex",
+   "institution": "Banamex",
+   "card_class": "Clásica",
+   "cat": 80.8,
+   "annual_fee": 54.17,
+   "interest_rate": 60.8,
+   "credit_line_min": 3000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 79,
+    "score_min": null,
+    "work_seniority_min": null,
+    "residence_seniority_min": null,
+    "monthly_income_min": 7000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 27.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 54.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Banca por App",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por Internet",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por teléfono",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 130.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Falta de pago",
+     "amount": 360.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 360.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Puntos",
+     "text": "Cash Back ofrece 0 puntos por cada peso gastado"
+    },
+    {
+     "benefit_type": "Descuentos",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, restaurantes, entretenimiento, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Preventas",
+     "text": "Compra boletos de forma anticipada para Conciertos y festivales de música, Teatro, Eventos deportivos, Otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, restaurantes, entretenimiento, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Transferencia de Saldo",
+     "text": "Tasa del 17% si liquidas el saldo transferido entre 12 y 24 meses"
+    },
+    {
+     "benefit_type": "Descuentos",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, hoteles"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, peaje, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "006",
+   "name": "Descubre Banamex",
+   "institution": "Banamex",
+   "card_class": "Oro",
+   "cat": 87.1,
+   "annual_fee": 1230.0,
+   "interest_rate": 58.3,
+   "credit_line_min": 6000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 79,
+    "score_min": null,
+    "work_seniority_min": null,
+    "residence_seniority_min": null,
+    "monthly_income_min": 7500.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 51.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 102.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Banca por App",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por Internet",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por teléfono",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 130.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Falta de pago",
+     "amount": 399.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 399.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Puntos",
+     "text": "ThankYou ofrece 1 puntos por cada dólar gastado"
+    },
+    {
+     "benefit_type": "Descuentos",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, restaurantes, entretenimiento, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Preventas",
+     "text": "Compra boletos de forma anticipada para Conciertos y festivales de música, Teatro, Eventos deportivos, Otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, restaurantes, entretenimiento, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Transferencia de Saldo",
+     "text": "Tasa del 17% si liquidas el saldo transferido entre 12 y 24 meses"
+    },
+    {
+     "benefit_type": "Descuentos",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, hoteles"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "007",
+   "name": "Explora Banamex",
+   "institution": "Banamex",
+   "card_class": "Oro",
+   "cat": 83.0,
+   "annual_fee": 2725.0,
+   "interest_rate": 55.8,
+   "credit_line_min": 50000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 79,
+    "score_min": null,
+    "work_seniority_min": null,
+    "residence_seniority_min": null,
+    "monthly_income_min": 30000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 113.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 227.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Banca por App",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por Internet",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por teléfono",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 130.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Falta de pago",
+     "amount": 555.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 555.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Puntos",
+     "text": "ThankYou ofrece 1 puntos por cada dólar gastado"
+    },
+    {
+     "benefit_type": "Descuentos",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, restaurantes, entretenimiento, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Preventas",
+     "text": "Compra boletos de forma anticipada para Conciertos y festivales de música, Teatro, Eventos deportivos, Otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, restaurantes, entretenimiento, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Transferencia de Saldo",
+     "text": "Tasa del 17% si liquidas el saldo transferido entre 12 y 24 meses"
+    },
+    {
+     "benefit_type": "Descuentos",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, hoteles"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "008",
+   "name": "Fiesta Rewards Clásica",
+   "institution": "Santander",
+   "card_class": "Clásica",
+   "cat": 91.6,
+   "annual_fee": 530.0,
+   "interest_rate": 66.8,
+   "credit_line_min": 7500.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 69,
+    "score_min": 580,
+    "work_seniority_min": 1,
+    "residence_seniority_min": 1,
+    "monthly_income_min": 7500.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 265.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 530.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Banca por App",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por Internet",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por teléfono",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Domiciliaciones",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por desgaste",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 140.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Aclaración improcedente",
+     "amount": 200.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Falta de pago",
+     "amount": 350.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 350.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Puntos",
+     "text": "Puntos Premia ofrece 2 puntos por cada dólar gastado"
+    },
+    {
+     "benefit_type": "Preventas",
+     "text": "Compra boletos de forma anticipada para Conciertos y festivales de música, Teatro, Eventos deportivos, Otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "departamentales, salud, restaurantes, entretenimiento, educativos, comercios en línea,"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, peaje, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "009",
+   "name": "Fiesta Rewards Oro",
+   "institution": "Santander",
+   "card_class": "Oro",
+   "cat": 87.5,
+   "annual_fee": 925.0,
+   "interest_rate": 61.8,
+   "credit_line_min": 20000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 69,
+    "score_min": 580,
+    "work_seniority_min": 1,
+    "residence_seniority_min": 1,
+    "monthly_income_min": 20000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 462.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 925.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Banca por App",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por Internet",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por teléfono",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Domiciliaciones",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por desgaste",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 140.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Aclaración improcedente",
+     "amount": 200.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Falta de pago",
+     "amount": 360.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 360.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Puntos",
+     "text": "Puntos Premia ofrece 3 puntos por cada dólar gastado"
+    },
+    {
+     "benefit_type": "Preventas",
+     "text": "Compra boletos de forma anticipada para Conciertos y festivales de música, Teatro, Eventos deportivos, Otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "departamentales, salud, restaurantes, entretenimiento, educativos, comercios en línea,"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, peaje, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "010",
+   "name": "Fiesta Rewards Platino",
+   "institution": "Santander",
+   "card_class": "Platino",
+   "cat": 77.2,
+   "annual_fee": 1850.0,
+   "interest_rate": 56.8,
+   "credit_line_min": 30000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 69,
+    "score_min": 580,
+    "work_seniority_min": 1,
+    "residence_seniority_min": 1,
+    "monthly_income_min": 30000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 925.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 1850.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Banca por App",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por Internet",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por teléfono",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Domiciliaciones",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por desgaste",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 140.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Aclaración improcedente",
+     "amount": 200.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Falta de pago",
+     "amount": 420.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 420.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Puntos",
+     "text": "Puntos Premia ofrece 2 puntos por cada dólar gastado"
+    },
+    {
+     "benefit_type": "Preventas",
+     "text": "Compra boletos de forma anticipada para Conciertos y festivales de música, Teatro, Eventos deportivos, Otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "departamentales, salud, restaurantes, entretenimiento, educativos, comercios en línea,"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, peaje, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "011",
+   "name": "Flexcard",
+   "institution": "Santander",
+   "card_class": "Clásica",
+   "cat": 104.0,
+   "annual_fee": 500.0,
+   "interest_rate": 66.8,
+   "credit_line_min": 3000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 69,
+    "score_min": 580,
+    "work_seniority_min": 1,
+    "residence_seniority_min": 1,
+    "monthly_income_min": 7500.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 300.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 500.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Banca por App",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por Internet",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por teléfono",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Domiciliaciones",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por desgaste",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 140.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Falta de pago",
+     "amount": 100.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 100.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Aclaración improcedente",
+     "amount": 200.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Puntos",
+     "text": "Puntos Premia ofrece 1 puntos por cada dólar gastado"
+    },
+    {
+     "benefit_type": "Preventas",
+     "text": "Compra boletos de forma anticipada para Conciertos y festivales de música, Teatro, Eventos deportivos, Otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "departamentales, salud, restaurantes, entretenimiento, educativos, comercios en línea,"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, peaje, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "012",
+   "name": "Hilton Honors INVEX",
+   "institution": "Invex",
+   "card_class": "Clásica",
+   "cat": 47.5,
+   "annual_fee": 1200.0,
+   "interest_rate": 27.4,
+   "credit_line_min": 7000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 69,
+    "score_min": null,
+    "work_seniority_min": null,
+    "residence_seniority_min": null,
+    "monthly_income_min": 5000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 600.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 1200.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 650.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Falta de pago",
+     "amount": 895.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, entretenimiento, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "013",
+   "name": "Hilton Honors INVEX Premium",
+   "institution": "Invex",
+   "card_class": "Platino",
+   "cat": 45.5,
+   "annual_fee": 3900.0,
+   "interest_rate": 27.4,
+   "credit_line_min": 7000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 69,
+    "score_min": null,
+    "work_seniority_min": null,
+    "residence_seniority_min": null,
+    "monthly_income_min": 5000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 1950.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 3900.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 650.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Falta de pago",
+     "amount": 895.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, entretenimiento, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "014",
+   "name": "INVEX AAdvantage Platinum",
+   "institution": "Invex",
+   "card_class": "Platino",
+   "cat": 47.8,
+   "annual_fee": 4500.0,
+   "interest_rate": 35.0,
+   "credit_line_min": 7000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 69,
+    "score_min": null,
+    "work_seniority_min": null,
+    "residence_seniority_min": null,
+    "monthly_income_min": 5000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 2250.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 4500.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 650.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Falta de pago",
+     "amount": 895.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, restaurantes, entretenimiento, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "015",
+   "name": "INVEX AAdvantage World Elite",
+   "institution": "Invex",
+   "card_class": "Todas",
+   "cat": 40.1,
+   "annual_fee": 7000.0,
+   "interest_rate": 27.0,
+   "credit_line_min": 100000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 69,
+    "score_min": null,
+    "work_seniority_min": null,
+    "residence_seniority_min": null,
+    "monthly_income_min": 5000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 3500.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 7000.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 650.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Falta de pago",
+     "amount": 895.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, restaurantes, entretenimiento, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "016",
+   "name": "INVEX Voyage",
+   "institution": "Invex",
+   "card_class": "Oro",
+   "cat": 35.0,
+   "annual_fee": 2800.0,
+   "interest_rate": 24.7,
+   "credit_line_min": 7000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 69,
+    "score_min": null,
+    "work_seniority_min": null,
+    "residence_seniority_min": null,
+    "monthly_income_min": 5000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 1400.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 2800.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 650.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Falta de pago",
+     "amount": 895.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, entretenimiento, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "017",
+   "name": "INVEX Voyage Platinum",
+   "institution": "Invex",
+   "card_class": "Platino",
+   "cat": 33.1,
+   "annual_fee": 3900.0,
+   "interest_rate": 24.7,
+   "credit_line_min": 7000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 69,
+    "score_min": null,
+    "work_seniority_min": null,
+    "residence_seniority_min": null,
+    "monthly_income_min": 5000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 1950.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 3900.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 650.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Falta de pago",
+     "amount": 895.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, entretenimiento, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "018",
+   "name": "La Comer Card Banamex",
+   "institution": "Banamex",
+   "card_class": "Oro",
+   "cat": 87.5,
+   "annual_fee": 102.5,
+   "interest_rate": 62.3,
+   "credit_line_min": 5000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 79,
+    "score_min": null,
+    "work_seniority_min": null,
+    "residence_seniority_min": null,
+    "monthly_income_min": 7000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 51.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 102.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Banca por App",
+     "amount": 0.05,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por Internet",
+     "amount": 0.05,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por teléfono",
+     "amount": 0.05,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.05,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.05,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.05,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 130.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Falta de pago",
+     "amount": 399.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 399.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Puntos",
+     "text": "Cash Back ofrece 0 puntos por cada peso gastado"
+    },
+    {
+     "benefit_type": "Preventas",
+     "text": "Compra boletos de forma anticipada para Conciertos y festivales de música, Teatro, Eventos deportivos, Otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, restaurantes, entretenimiento, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Transferencia de Saldo",
+     "text": "Tasa del 17% si liquidas el saldo transferido entre 12 y 24 meses"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "019",
+   "name": "Light",
+   "institution": "Santander",
+   "card_class": "Clásica",
+   "cat": 51.4,
+   "annual_fee": 630.0,
+   "interest_rate": 40.7,
+   "credit_line_min": 3000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 69,
+    "score_min": 580,
+    "work_seniority_min": 1,
+    "residence_seniority_min": 1,
+    "monthly_income_min": 7500.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 315.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 630.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Banca por App",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por Internet",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por teléfono",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.08,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Domiciliaciones",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por desgaste",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 140.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Aclaración improcedente",
+     "amount": 200.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Falta de pago",
+     "amount": 350.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 350.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Puntos",
+     "text": "Puntos Premia ofrece 1 puntos por cada dólar gastado"
+    },
+    {
+     "benefit_type": "Preventas",
+     "text": "Compra boletos de forma anticipada para Conciertos y festivales de música, Teatro, Eventos deportivos, Otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "departamentales, salud, restaurantes, entretenimiento, educativos, comercios en línea,"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, peaje, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "020",
+   "name": "LineUp Banamex",
+   "institution": "Banamex",
+   "card_class": "Oro",
+   "cat": 87.6,
+   "annual_fee": 1230.0,
+   "interest_rate": 60.3,
+   "credit_line_min": 5000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 79,
+    "score_min": null,
+    "work_seniority_min": null,
+    "residence_seniority_min": null,
+    "monthly_income_min": 7000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 620.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 1230.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Banca por App",
+     "amount": 0.05,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por Internet",
+     "amount": 0.05,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por teléfono",
+     "amount": 0.05,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.05,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.05,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.05,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Domiciliaciones",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por desgaste",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 130.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Falta de pago",
+     "amount": 399.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 399.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Puntos",
+     "text": "Mifel Rewards ofrece 0 puntos por cada peso gastado"
+    },
+    {
+     "benefit_type": "Descuentos",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, restaurantes, entretenimiento, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Preventas",
+     "text": "Compra boletos de forma anticipada para Conciertos y festivales de música, Teatro, Eventos deportivos, Otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, restaurantes, entretenimiento, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Transferencia de Saldo",
+     "text": "Tasa del 17% si liquidas el saldo transferido entre 12 y 24 meses"
+    },
+    {
+     "benefit_type": "Descuentos",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, hoteles"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "021",
+   "name": "Manchester United INVEX",
+   "institution": "Invex",
+   "card_class": "Clásica",
+   "cat": 49.6,
+   "annual_fee": 800.0,
+   "interest_rate": 34.5,
+   "credit_line_min": 7000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 69,
+    "score_min": null,
+    "work_seniority_min": null,
+    "residence_seniority_min": null,
+    "monthly_income_min": 5000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 400.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 800.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por desgaste",
+     "amount": 180.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 180.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Aclaración improcedente",
+     "amount": 300.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 650.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Falta de pago",
+     "amount": 895.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, entretenimiento, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "022",
+   "name": "Mercado Libre INVEX",
+   "institution": "Invex",
+   "card_class": "Platino",
+   "cat": 73.6,
+   "annual_fee": 0.0,
+   "interest_rate": 34.0,
+   "credit_line_min": 7000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 69,
+    "score_min": null,
+    "work_seniority_min": null,
+    "residence_seniority_min": null,
+    "monthly_income_min": 5000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por desgaste",
+     "amount": 160.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 160.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Aclaración improcedente",
+     "amount": 220.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 650.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Falta de pago",
+     "amount": 895.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, entretenimiento, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Anualidad",
+     "text": "Sin anualidad"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "023",
+   "name": "MI BANCO",
+   "institution": "Invex",
+   "card_class": "Clásica",
+   "cat": 39.2,
+   "annual_fee": 892.0,
+   "interest_rate": 29.8,
+   "credit_line_min": 7000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 69,
+    "score_min": null,
+    "work_seniority_min": null,
+    "residence_seniority_min": null,
+    "monthly_income_min": 5000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 504.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 892.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 650.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Falta de pago",
+     "amount": 895.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, entretenimiento, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "024",
+   "name": "MULTIVA Oro",
+   "institution": "Invex",
+   "card_class": "Oro",
+   "cat": 74.7,
+   "annual_fee": 1050.0,
+   "interest_rate": 46.6,
+   "credit_line_min": 7000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 69,
+    "score_min": null,
+    "work_seniority_min": null,
+    "residence_seniority_min": null,
+    "monthly_income_min": 5000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 525.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 1050.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por desgaste",
+     "amount": 180.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 180.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Aclaración improcedente",
+     "amount": 300.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 650.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Falta de pago",
+     "amount": 895.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, entretenimiento, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "025",
+   "name": "MULTIVA Platinum",
+   "institution": "Invex",
+   "card_class": "Platino",
+   "cat": 72.0,
+   "annual_fee": 2000.0,
+   "interest_rate": 45.9,
+   "credit_line_min": 7000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 69,
+    "score_min": null,
+    "work_seniority_min": null,
+    "residence_seniority_min": null,
+    "monthly_income_min": 5000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 1000.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 2000.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por desgaste",
+     "amount": 180.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 180.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Aclaración improcedente",
+     "amount": 300.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 650.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Falta de pago",
+     "amount": 895.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, entretenimiento, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "026",
+   "name": "Oro Banamex",
+   "institution": "No disponible",
+   "card_class": "Oro",
+   "cat": 86.9,
+   "annual_fee": 1230.0,
+   "interest_rate": 58.3,
+   "credit_line_min": 10000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 79,
+    "score_min": null,
+    "work_seniority_min": null,
+    "residence_seniority_min": null,
+    "monthly_income_min": 7000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 620.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 1230.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Banca por App",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por Internet",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por teléfono",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 130.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Falta de pago",
+     "amount": 399.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 399.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Puntos",
+     "text": "Puntos Premia ofrece 0 puntos por cada peso gastado"
+    },
+    {
+     "benefit_type": "Descuentos",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, restaurantes, entretenimiento, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Preventas",
+     "text": "Compra boletos de forma anticipada para Conciertos y festivales de música, Teatro, Eventos deportivos, Otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, restaurantes, entretenimiento, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Transferencia de Saldo",
+     "text": "Tasa del 17% si liquidas el saldo transferido entre 12 y 24 meses"
+    },
+    {
+     "benefit_type": "Descuentos",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, hoteles"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "027",
+   "name": "Plata_Credito_Basico_531722",
+   "institution": "Banco Plata",
+   "card_class": "Platino",
+   "cat": 116.7,
+   "annual_fee": 0.0,
+   "interest_rate": 79.9,
+   "credit_line_min": 300.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 75,
+    "score_min": null,
+    "work_seniority_min": null,
+    "residence_seniority_min": null,
+    "monthly_income_min": null
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Banca por App",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por teléfono",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por desgaste",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Aclaración improcedente",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Anualidad",
+     "text": "Sin anualidad"
+    }
+   ]
+  },
+  {
+   "id": "028",
+   "name": "Santander American Express",
+   "institution": "Santander",
+   "card_class": "Oro",
+   "cat": 85.8,
+   "annual_fee": 1100.0,
+   "interest_rate": 61.8,
+   "credit_line_min": 20000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 69,
+    "score_min": 580,
+    "work_seniority_min": 1,
+    "residence_seniority_min": 1,
+    "monthly_income_min": 20000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 550.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 1100.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Banca por App",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por Internet",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por teléfono",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Domiciliaciones",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por desgaste",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 140.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Aclaración improcedente",
+     "amount": 200.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Falta de pago",
+     "amount": 360.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 360.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Puntos",
+     "text": "Puntos Premia ofrece 1 puntos por cada dólar gastado"
+    },
+    {
+     "benefit_type": "Preventas",
+     "text": "Compra boletos de forma anticipada para Conciertos y festivales de música, Teatro, Eventos deportivos, Otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "departamentales, salud, restaurantes, entretenimiento, educativos, comercios en línea,"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, peaje, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "029",
+   "name": "Santander Free",
+   "institution": "Santander",
+   "card_class": "Oro",
+   "cat": 82.6,
+   "annual_fee": 0.0,
+   "interest_rate": 61.8,
+   "credit_line_min": 3000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 69,
+    "score_min": 580,
+    "work_seniority_min": 1,
+    "residence_seniority_min": 1,
+    "monthly_income_min": 7500.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Banca por App",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por Internet",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por teléfono",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Domiciliaciones",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por desgaste",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 140.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Aclaración improcedente",
+     "amount": 200.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Falta de pago",
+     "amount": 360.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 360.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Puntos",
+     "text": "Puntos Premia ofrece 1 puntos por cada dólar gastado"
+    },
+    {
+     "benefit_type": "Preventas",
+     "text": "Compra boletos de forma anticipada para Conciertos y festivales de música, Teatro, Eventos deportivos, Otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, restaurantes, entretenimiento, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Anualidad",
+     "text": "Sin anualidad"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, peaje, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "030",
+   "name": "Santander World Elite",
+   "institution": "Santander",
+   "card_class": "Platino",
+   "cat": 28.8,
+   "annual_fee": 5000.0,
+   "interest_rate": 22.8,
+   "credit_line_min": 100000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 69,
+    "score_min": 580,
+    "work_seniority_min": 1,
+    "residence_seniority_min": 1,
+    "monthly_income_min": 100000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 1000.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 5000.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Banca por App",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por Internet",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por teléfono",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Domiciliaciones",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por desgaste",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 140.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Aclaración improcedente",
+     "amount": 200.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Falta de pago",
+     "amount": 420.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 420.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Puntos",
+     "text": "Puntos Premia ofrece 2 puntos por cada dólar gastado"
+    },
+    {
+     "benefit_type": "Preventas",
+     "text": "Compra boletos de forma anticipada para Conciertos y festivales de música, Teatro, Eventos deportivos, Otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "departamentales, salud, restaurantes, entretenimiento, educativos, comercios en línea,"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, peaje, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "031",
+   "name": "SÍCard Platinum Invex",
+   "institution": "Invex",
+   "card_class": "Platino",
+   "cat": 61.8,
+   "annual_fee": 1900.0,
+   "interest_rate": 43.0,
+   "credit_line_min": 7000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 69,
+    "score_min": null,
+    "work_seniority_min": null,
+    "residence_seniority_min": null,
+    "monthly_income_min": 5000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 950.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 1900.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por desgaste",
+     "amount": 180.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 180.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Aclaración improcedente",
+     "amount": 300.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 650.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Falta de pago",
+     "amount": 895.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, entretenimiento, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "032",
+   "name": "Tarjeta Afinidad UNAM BBVA",
+   "institution": "BBVA México",
+   "card_class": "Oro",
+   "cat": 61.5,
+   "annual_fee": 1151.0,
+   "interest_rate": 51.8,
+   "credit_line_min": 30000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": null,
+    "score_min": 700,
+    "work_seniority_min": 12,
+    "residence_seniority_min": 12,
+    "monthly_income_min": 12000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 1151.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Banca por App",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por Internet",
+     "amount": 0.065,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por teléfono",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.065,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.065,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.065,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por desgaste",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 192.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 490.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Puntos",
+     "text": "Puntos BBVA ofrece 0 puntos por cada peso gastado"
+    },
+    {
+     "benefit_type": "Descuentos",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, restaurantes, entretenimiento, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "departamentales, salud, restaurantes, entretenimiento, educativos, comercios en línea,"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "otros"
+    },
+    {
+     "benefit_type": "Seguros",
+     "text": "Seguro de accidentes en viaje, por emergencia médica, por pérdida de equipaje"
+    },
+    {
+     "benefit_type": "Descuentos",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "033",
+   "name": "Tarjeta Azul BBVA",
+   "institution": "BBVA México",
+   "card_class": "Clásica",
+   "cat": 90.9,
+   "annual_fee": 748.0,
+   "interest_rate": 58.8,
+   "credit_line_min": 3000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 75,
+    "score_min": 700,
+    "work_seniority_min": 12,
+    "residence_seniority_min": 12,
+    "monthly_income_min": 6000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 748.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Banca por App",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por Internet",
+     "amount": 0.07,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por teléfono",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.07,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.07,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.07,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por desgaste",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 192.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 490.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Puntos",
+     "text": "Puntos BBVA ofrece 0 puntos por cada peso gastado"
+    },
+    {
+     "benefit_type": "Descuentos",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, restaurantes, entretenimiento, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "departamentales, salud, restaurantes, entretenimiento, educativos, comercios en línea,"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "otros"
+    },
+    {
+     "benefit_type": "Seguros",
+     "text": "Seguro por pérdida de equipaje"
+    },
+    {
+     "benefit_type": "Descuentos",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "034",
+   "name": "Tarjeta de Crédito Afirme Clásica",
+   "institution": "Afirme",
+   "card_class": "Clásica",
+   "cat": 87.1,
+   "annual_fee": 600.0,
+   "interest_rate": 68.8,
+   "credit_line_min": 5000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 69,
+    "score_min": null,
+    "work_seniority_min": 6,
+    "residence_seniority_min": null,
+    "monthly_income_min": 8500.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 300.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 600.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.0008,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.0008,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 200.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Aclaración improcedente",
+     "amount": 300.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Falta de pago",
+     "amount": 320.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 500.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, restaurantes, entretenimiento, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Transferencia de Saldo",
+     "text": "Tasa del 21% si liquidas el saldo transferido entre 12 y 24 meses"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, peaje, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "035",
+   "name": "Tarjeta de Crédito Afirme Construrama",
+   "institution": "Afirme",
+   "card_class": "Oro",
+   "cat": 101.0,
+   "annual_fee": 600.0,
+   "interest_rate": 76.8,
+   "credit_line_min": 5000.0,
+   "requirements": {
+    "age_min": 19,
+    "age_max": 69,
+    "score_min": null,
+    "work_seniority_min": 6,
+    "residence_seniority_min": 12,
+    "monthly_income_min": 8500.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 300.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 600.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.0008,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.0008,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 130.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Aclaración improcedente",
+     "amount": 300.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Falta de pago",
+     "amount": 360.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 500.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, restaurantes, entretenimiento, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Transferencia de Saldo",
+     "text": "Tasa del 21% si liquidas el saldo transferido entre 12 y 24 meses"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, peaje, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "036",
+   "name": "Tarjeta de Crédito Afirme Oro",
+   "institution": "Afirme",
+   "card_class": "Oro",
+   "cat": 70.9,
+   "annual_fee": 900.0,
+   "interest_rate": 64.8,
+   "credit_line_min": 20000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 69,
+    "score_min": null,
+    "work_seniority_min": 6,
+    "residence_seniority_min": null,
+    "monthly_income_min": 20000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 450.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 900.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.0007,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.0007,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 200.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Aclaración improcedente",
+     "amount": 300.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Falta de pago",
+     "amount": 320.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 500.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, restaurantes, entretenimiento, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Transferencia de Saldo",
+     "text": "Tasa del 21% si liquidas el saldo transferido entre 12 y 24 meses"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, peaje, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "037",
+   "name": "Tarjeta de Crédito Básica",
+   "institution": "Santander",
+   "card_class": "Básica",
+   "cat": 99.6,
+   "annual_fee": 0.0,
+   "interest_rate": 56.8,
+   "credit_line_min": 3000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 69,
+    "score_min": 580,
+    "work_seniority_min": 1,
+    "residence_seniority_min": 1,
+    "monthly_income_min": 7500.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Banca por App",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por Internet",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por teléfono",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Domiciliaciones",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por desgaste",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Aclaración improcedente",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Falta de pago",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Anualidad",
+     "text": "Sin anualidad"
+    }
+   ]
+  },
+  {
+   "id": "038",
+   "name": "Tarjeta de Crédito HSBC Easy Points",
+   "institution": "HSBC",
+   "card_class": "Oro",
+   "cat": 72.0,
+   "annual_fee": 1110.0,
+   "interest_rate": 46.0,
+   "credit_line_min": 12000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 74,
+    "score_min": 501,
+    "work_seniority_min": 1,
+    "residence_seniority_min": null,
+    "monthly_income_min": 12000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 325.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 1110.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Banca por Internet",
+     "amount": 0.065,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.065,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.065,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.065,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por desgaste",
+     "amount": 179.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 179.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Aclaración improcedente",
+     "amount": 200.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 425.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Puntos",
+     "text": "Club Premier ofrece 1 puntos por cada dólar gastado"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Transferencia de Saldo",
+     "text": "Tasa del 22% si liquidas el saldo transferido entre 6 y 18 meses"
+    },
+    {
+     "benefit_type": "Transferencia de Saldo",
+     "text": "Tasa del 10% si liquidas el saldo transferido entre 6 y 48 meses"
+    },
+    {
+     "benefit_type": "Transferencia de Saldo",
+     "text": "Tasa del 26% si liquidas el saldo transferido entre 24 y 48 meses"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, transporte aéreo, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "039",
+   "name": "Tarjeta de Crédito HSBC Oro",
+   "institution": "HSBC",
+   "card_class": "Oro",
+   "cat": 57.2,
+   "annual_fee": 1110.0,
+   "interest_rate": 22.2,
+   "credit_line_min": 12000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 74,
+    "score_min": 501,
+    "work_seniority_min": 1,
+    "residence_seniority_min": null,
+    "monthly_income_min": 12000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 325.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 1110.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Banca por Internet",
+     "amount": 0.065,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.065,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.065,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.065,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por desgaste",
+     "amount": 179.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 179.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Aclaración improcedente",
+     "amount": 200.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 425.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Puntos",
+     "text": "Club Premier ofrece 1 puntos por cada dólar gastado"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Transferencia de Saldo",
+     "text": "Tasa del 22% si liquidas el saldo transferido entre 6 y 18 meses"
+    },
+    {
+     "benefit_type": "Transferencia de Saldo",
+     "text": "Tasa del 10% si liquidas el saldo transferido entre 6 y 48 meses"
+    },
+    {
+     "benefit_type": "Transferencia de Saldo",
+     "text": "Tasa del 26% si liquidas el saldo transferido entre 24 y 48 meses"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, transporte aéreo, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "040",
+   "name": "Tarjeta de Crédito Inbursa Black American Express",
+   "institution": "Inbursa",
+   "card_class": "Platino",
+   "cat": 31.1,
+   "annual_fee": 2500.0,
+   "interest_rate": 24.0,
+   "credit_line_min": 70000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 80,
+    "score_min": 685,
+    "work_seniority_min": 12,
+    "residence_seniority_min": null,
+    "monthly_income_min": 5000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 55.0,
+     "denomination": "USD",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 2500.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por desgaste",
+     "amount": 55.0,
+     "denomination": "USD",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 55.0,
+     "denomination": "USD",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Aclaración improcedente",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 449.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Puntos",
+     "text": "Recompensas Inbursa ofrece 1 puntos por cada dólar gastado"
+    },
+    {
+     "benefit_type": "Descuentos",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, restaurantes, entretenimiento, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Seguros",
+     "text": "Seguro de accidentes en viaje, por emergencia médica, por pérdida de equipaje, por cancelación o demora de vuelo, para renta de auto"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, renta de auto, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "041",
+   "name": "Tarjeta de Crédito Inbursa Bodega Aurrera",
+   "institution": "Inbursa",
+   "card_class": "Clásica",
+   "cat": 119.2,
+   "annual_fee": 660.0,
+   "interest_rate": 72.7,
+   "credit_line_min": 2000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 65,
+    "score_min": 685,
+    "work_seniority_min": 12,
+    "residence_seniority_min": null,
+    "monthly_income_min": 5000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 150.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 660.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por desgaste",
+     "amount": 50.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 50.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 449.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Descuentos",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, restaurantes, entretenimiento, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, renta de auto, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "042",
+   "name": "Tarjeta de Crédito Inbursa Clásica",
+   "institution": "Inbursa",
+   "card_class": "Clásica",
+   "cat": 75.2,
+   "annual_fee": 384.0,
+   "interest_rate": 53.5,
+   "credit_line_min": 2000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 65,
+    "score_min": 685,
+    "work_seniority_min": 12,
+    "residence_seniority_min": null,
+    "monthly_income_min": 5000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad titular",
+     "amount": 384.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 449.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Puntos",
+     "text": "Recompensas Inbursa ofrece 1 puntos por cada dólar gastado"
+    },
+    {
+     "benefit_type": "Descuentos",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, restaurantes, entretenimiento, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, renta de auto, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "043",
+   "name": "Tarjeta de Crédito Inbursa Fundación UNAM",
+   "institution": "Inbursa",
+   "card_class": "Clásica",
+   "cat": 65.8,
+   "annual_fee": 750.0,
+   "interest_rate": 47.6,
+   "credit_line_min": 2000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 65,
+    "score_min": 685,
+    "work_seniority_min": 12,
+    "residence_seniority_min": null,
+    "monthly_income_min": 5000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad titular",
+     "amount": 750.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Aclaración improcedente",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 449.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Puntos",
+     "text": "Recompensas Inbursa ofrece 1 puntos por cada dólar gastado"
+    },
+    {
+     "benefit_type": "Descuentos",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, restaurantes, entretenimiento, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, renta de auto, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "044",
+   "name": "Tarjeta de Crédito Inbursa Naturgy",
+   "institution": "Inbursa",
+   "card_class": "Clásica",
+   "cat": 74.5,
+   "annual_fee": 516.0,
+   "interest_rate": 55.0,
+   "credit_line_min": 2000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 65,
+    "score_min": 685,
+    "work_seniority_min": 12,
+    "residence_seniority_min": null,
+    "monthly_income_min": 5000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad titular",
+     "amount": 516.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 449.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Puntos",
+     "text": "Recompensas Inbursa ofrece 0 puntos por cada peso gastado"
+    },
+    {
+     "benefit_type": "Descuentos",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, restaurantes, entretenimiento, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, renta de auto, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "045",
+   "name": "Tarjeta de Crédito Inbursa Óptima",
+   "institution": "Inbursa",
+   "card_class": "Oro",
+   "cat": 37.7,
+   "annual_fee": 650.0,
+   "interest_rate": 31.0,
+   "credit_line_min": 30000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 80,
+    "score_min": 690,
+    "work_seniority_min": 1,
+    "residence_seniority_min": null,
+    "monthly_income_min": null
+   },
+   "fees": [
+    {
+     "concept": "Anualidad titular",
+     "amount": 650.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Falta de pago",
+     "amount": 449.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Puntos",
+     "text": "Recompensas Inbursa ofrece 1 puntos por cada dólar gastado"
+    },
+    {
+     "benefit_type": "Descuentos",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, restaurantes, entretenimiento, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, renta de auto, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "046",
+   "name": "Tarjeta de Crédito Inbursa Oro",
+   "institution": "Inbursa",
+   "card_class": "Oro",
+   "cat": 58.1,
+   "annual_fee": 540.0,
+   "interest_rate": 45.9,
+   "credit_line_min": 30000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 65,
+    "score_min": 685,
+    "work_seniority_min": 12,
+    "residence_seniority_min": null,
+    "monthly_income_min": 5000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad titular",
+     "amount": 540.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 449.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Puntos",
+     "text": "Recompensas Inbursa ofrece 1 puntos por cada dólar gastado"
+    },
+    {
+     "benefit_type": "Descuentos",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, restaurantes, entretenimiento, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Seguros",
+     "text": "Seguro para renta de auto"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, renta de auto, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "047",
+   "name": "Tarjeta de Crédito Inbursa Platinum",
+   "institution": "Inbursa",
+   "card_class": "Platino",
+   "cat": 36.6,
+   "annual_fee": 1320.0,
+   "interest_rate": 29.7,
+   "credit_line_min": 70000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 65,
+    "score_min": 685,
+    "work_seniority_min": 12,
+    "residence_seniority_min": null,
+    "monthly_income_min": 5000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad titular",
+     "amount": 1320.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 449.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Puntos",
+     "text": "Recompensas Inbursa ofrece 1 puntos por cada dólar gastado"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, restaurantes, entretenimiento, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Seguros",
+     "text": "Seguro por emergencia médica, para renta de auto"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, renta de auto, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "048",
+   "name": "Tarjeta de Crédito Inbursa Sams Club",
+   "institution": "Inbursa",
+   "card_class": "Clásica",
+   "cat": 87.7,
+   "annual_fee": 660.0,
+   "interest_rate": 61.5,
+   "credit_line_min": 2000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 65,
+    "score_min": 685,
+    "work_seniority_min": 12,
+    "residence_seniority_min": null,
+    "monthly_income_min": 5000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 150.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 660.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por desgaste",
+     "amount": 50.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 50.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 449.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, restaurantes, entretenimiento, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, renta de auto, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "049",
+   "name": "Tarjeta de Crédito Inbursa Telcel Oro",
+   "institution": "Inbursa",
+   "card_class": "Oro",
+   "cat": 59.3,
+   "annual_fee": 540.0,
+   "interest_rate": 45.9,
+   "credit_line_min": 30000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 65,
+    "score_min": 685,
+    "work_seniority_min": 12,
+    "residence_seniority_min": null,
+    "monthly_income_min": 5000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad titular",
+     "amount": 540.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 449.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Puntos",
+     "text": "Recompensas Inbursa ofrece 0 puntos por cada peso gastado"
+    },
+    {
+     "benefit_type": "Descuentos",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, restaurantes, entretenimiento, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Seguros",
+     "text": "Seguro por emergencia médica, para renta de auto"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, renta de auto, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "050",
+   "name": "Tarjeta de Crédito Inbursa Walmart",
+   "institution": "Inbursa",
+   "card_class": "Clásica",
+   "cat": 113.3,
+   "annual_fee": 660.0,
+   "interest_rate": 72.8,
+   "credit_line_min": 2000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 65,
+    "score_min": 685,
+    "work_seniority_min": 12,
+    "residence_seniority_min": null,
+    "monthly_income_min": 5000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 150.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 660.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por desgaste",
+     "amount": 50.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 50.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 449.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Descuentos",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, restaurantes, entretenimiento, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, renta de auto, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "051",
+   "name": "Tarjeta de Credito Mifel Leones",
+   "institution": "Mifel",
+   "card_class": "Oro",
+   "cat": 63.4,
+   "annual_fee": 700.0,
+   "interest_rate": 55.3,
+   "credit_line_min": 5000.0,
+   "requirements": {
+    "age_min": 20,
+    "age_max": 75,
+    "score_min": 664,
+    "work_seniority_min": 1,
+    "residence_seniority_min": 1,
+    "monthly_income_min": 10000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 500.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 700.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Banca por App",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por Internet",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por teléfono",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.05,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.05,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Domiciliaciones",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por desgaste",
+     "amount": 200.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 200.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Aclaración improcedente",
+     "amount": 250.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Falta de pago",
+     "amount": 350.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 350.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Puntos",
+     "text": "Cash Back ofrece 0 puntos por cada peso gastado"
+    },
+    {
+     "benefit_type": "Descuentos",
+     "text": "En los siguientes tipos de servicios o establecimientos: otros"
+    },
+    {
+     "benefit_type": "Preventas",
+     "text": "Compra boletos de forma anticipada para Eventos deportivos"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, restaurantes, entretenimiento, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Transferencia de Saldo",
+     "text": "Tasa del 49% si liquidas el saldo transferido entre 6 y 12 meses"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, peaje, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "052",
+   "name": "Tarjeta de Crédito Santander Aeroméxico Blanca",
+   "institution": "Santander",
+   "card_class": "Clásica",
+   "cat": 91.5,
+   "annual_fee": 0.0,
+   "interest_rate": 66.8,
+   "credit_line_min": 3000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 69,
+    "score_min": 580,
+    "work_seniority_min": 1,
+    "residence_seniority_min": 1,
+    "monthly_income_min": 7500.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Banca por App",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por Internet",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por teléfono",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Domiciliaciones",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por desgaste",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 140.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Aclaración improcedente",
+     "amount": 200.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Falta de pago",
+     "amount": 350.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 350.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Puntos",
+     "text": "Club Premier ofrece 1 puntos por cada dólar gastado"
+    },
+    {
+     "benefit_type": "Preventas",
+     "text": "Compra boletos de forma anticipada para Conciertos y festivales de música, Teatro, Eventos deportivos, Otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, restaurantes, entretenimiento, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Anualidad",
+     "text": "Sin anualidad"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, peaje, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "053",
+   "name": "Tarjeta de Crédito Santander Aeromexico Infinite",
+   "institution": "Santander",
+   "card_class": "Platino",
+   "cat": 48.1,
+   "annual_fee": 5000.0,
+   "interest_rate": 36.8,
+   "credit_line_min": 100000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 69,
+    "score_min": 580,
+    "work_seniority_min": 1,
+    "residence_seniority_min": 1,
+    "monthly_income_min": 70000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 2500.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 5000.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Banca por App",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por Internet",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por teléfono",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Domiciliaciones",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por desgaste",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 140.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Aclaración improcedente",
+     "amount": 200.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Falta de pago",
+     "amount": 420.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 420.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Puntos",
+     "text": "Club Premier ofrece 2 puntos por cada dólar gastado"
+    },
+    {
+     "benefit_type": "Preventas",
+     "text": "Compra boletos de forma anticipada para Conciertos y festivales de música, Teatro, Eventos deportivos, Otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "departamentales, salud, restaurantes, entretenimiento, educativos, comercios en línea,"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, peaje, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "054",
+   "name": "Tarjeta de Crédito Santander Aeroméxico Platinum",
+   "institution": "Santander",
+   "card_class": "Platino",
+   "cat": 62.3,
+   "annual_fee": 3000.0,
+   "interest_rate": 46.8,
+   "credit_line_min": 30000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 69,
+    "score_min": 580,
+    "work_seniority_min": 1,
+    "residence_seniority_min": 1,
+    "monthly_income_min": 30000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 1500.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 3000.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Banca por App",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por Internet",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por teléfono",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Domiciliaciones",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por desgaste",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 140.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Aclaración improcedente",
+     "amount": 200.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Falta de pago",
+     "amount": 420.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 420.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Puntos",
+     "text": "Club Premier ofrece 1 puntos por cada dólar gastado"
+    },
+    {
+     "benefit_type": "Preventas",
+     "text": "Compra boletos de forma anticipada para Conciertos y festivales de música, Teatro, Eventos deportivos, Otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "departamentales, salud, restaurantes, entretenimiento, educativos, comercios en línea,"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, peaje, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "055",
+   "name": "Tarjeta de Credito Scotia Basica",
+   "institution": "Scotiabank",
+   "card_class": "Básica",
+   "cat": 113.7,
+   "annual_fee": 0.0,
+   "interest_rate": 85.2,
+   "credit_line_min": 6000.0,
+   "requirements": {
+    "age_min": 22,
+    "age_max": 74,
+    "score_min": 615,
+    "work_seniority_min": 12,
+    "residence_seniority_min": 3,
+    "monthly_income_min": 6000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Descuentos",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, restaurantes, entretenimiento, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Preventas",
+     "text": "Compra boletos de forma anticipada para Conciertos y festivales de música"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, restaurantes, entretenimiento, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Anualidad",
+     "text": "Sin anualidad"
+    },
+    {
+     "benefit_type": "Descuentos",
+     "text": "En agencias de viajes, peaje, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, peaje, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "056",
+   "name": "Tarjeta de Credito Tigres Afirme",
+   "institution": "Afirme",
+   "card_class": "Clásica",
+   "cat": 77.6,
+   "annual_fee": 600.0,
+   "interest_rate": 68.8,
+   "credit_line_min": 5000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 69,
+    "score_min": null,
+    "work_seniority_min": 6,
+    "residence_seniority_min": null,
+    "monthly_income_min": 8500.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 300.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 600.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.0008,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.0008,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 200.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Aclaración improcedente",
+     "amount": 300.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Falta de pago",
+     "amount": 320.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 500.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, restaurantes, entretenimiento, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Transferencia de Saldo",
+     "text": "Tasa del 18% si liquidas el saldo transferido entre 12 y 24 meses"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, peaje, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "057",
+   "name": "Tarjeta de Crédito Visa Infinite",
+   "institution": "Santander",
+   "card_class": "Platino",
+   "cat": 28.7,
+   "annual_fee": 5000.0,
+   "interest_rate": 22.8,
+   "credit_line_min": 100000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 69,
+    "score_min": 580,
+    "work_seniority_min": 1,
+    "residence_seniority_min": 1,
+    "monthly_income_min": 150000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 1000.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 5000.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Banca por App",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por Internet",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por teléfono",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Domiciliaciones",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por desgaste",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 140.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Aclaración improcedente",
+     "amount": 200.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Falta de pago",
+     "amount": 420.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 420.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Puntos",
+     "text": "Puntos Premia ofrece 2 puntos por cada dólar gastado"
+    },
+    {
+     "benefit_type": "Preventas",
+     "text": "Compra boletos de forma anticipada para Conciertos y festivales de música, Teatro, Eventos deportivos, Otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "departamentales, salud, restaurantes, entretenimiento, educativos, comercios en línea,"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, peaje, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "058",
+   "name": "Tarjeta Educación BBVA",
+   "institution": "BBVA México",
+   "card_class": "Clásica",
+   "cat": 89.3,
+   "annual_fee": 748.0,
+   "interest_rate": 58.8,
+   "credit_line_min": 3000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 75,
+    "score_min": 700,
+    "work_seniority_min": 12,
+    "residence_seniority_min": 12,
+    "monthly_income_min": 6000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 748.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Banca por App",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por Internet",
+     "amount": 0.07,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por teléfono",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.07,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.07,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.07,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por desgaste",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 192.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 490.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Puntos",
+     "text": "Puntos BBVA ofrece 0 puntos por cada peso gastado"
+    },
+    {
+     "benefit_type": "Descuentos",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, restaurantes, entretenimiento, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "departamentales, salud, restaurantes, entretenimiento, educativos, comercios en línea,"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "otros"
+    },
+    {
+     "benefit_type": "Descuentos",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "059",
+   "name": "Tarjeta IPN BBVA",
+   "institution": "BBVA México",
+   "card_class": "Clásica",
+   "cat": 70.1,
+   "annual_fee": 748.0,
+   "interest_rate": 61.8,
+   "credit_line_min": 5000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": null,
+    "score_min": 700,
+    "work_seniority_min": 12,
+    "residence_seniority_min": 12,
+    "monthly_income_min": 6000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 748.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Banca por App",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por Internet",
+     "amount": 0.065,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por teléfono",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.065,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.065,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.065,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por desgaste",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 192.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 490.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Puntos",
+     "text": "Puntos BBVA ofrece 0 puntos por cada peso gastado"
+    },
+    {
+     "benefit_type": "Descuentos",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, restaurantes, entretenimiento, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "departamentales, salud, restaurantes, entretenimiento, educativos, comercios en línea,"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "otros"
+    },
+    {
+     "benefit_type": "Seguros",
+     "text": "Seguro por pérdida de equipaje"
+    },
+    {
+     "benefit_type": "Descuentos",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "060",
+   "name": "Tarjeta Oro BBVA",
+   "institution": "BBVA México",
+   "card_class": "Oro",
+   "cat": 68.3,
+   "annual_fee": 1151.0,
+   "interest_rate": 48.8,
+   "credit_line_min": 20000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 75,
+    "score_min": 700,
+    "work_seniority_min": 12,
+    "residence_seniority_min": 12,
+    "monthly_income_min": 20000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 1151.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Banca por App",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por Internet",
+     "amount": 0.07,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por teléfono",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.07,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.07,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.07,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por desgaste",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 192.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 490.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Puntos",
+     "text": "Puntos BBVA ofrece 0 puntos por cada peso gastado"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, restaurantes, entretenimiento, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "061",
+   "name": "Tarjeta Platinum BBVA",
+   "institution": "BBVA México",
+   "card_class": "Platino",
+   "cat": 49.4,
+   "annual_fee": 2579.0,
+   "interest_rate": 36.8,
+   "credit_line_min": 50000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 79,
+    "score_min": 700,
+    "work_seniority_min": 12,
+    "residence_seniority_min": 12,
+    "monthly_income_min": 50000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 2579.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Banca por App",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por Internet",
+     "amount": 0.045,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por teléfono",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.045,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.045,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.045,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por desgaste",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 192.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 490.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Puntos",
+     "text": "Puntos BBVA ofrece 0 puntos por cada peso gastado"
+    },
+    {
+     "benefit_type": "Descuentos",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, restaurantes, entretenimiento, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "departamentales, salud, restaurantes, entretenimiento, educativos, comercios en línea,"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "otros"
+    },
+    {
+     "benefit_type": "Descuentos",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "062",
+   "name": "Tarjeta Rayados BBVA",
+   "institution": "BBVA México",
+   "card_class": "Clásica",
+   "cat": 92.3,
+   "annual_fee": 748.0,
+   "interest_rate": 61.8,
+   "credit_line_min": 3000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 75,
+    "score_min": 700,
+    "work_seniority_min": 12,
+    "residence_seniority_min": 12,
+    "monthly_income_min": 6000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 748.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Banca por App",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por Internet",
+     "amount": 0.07,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por teléfono",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.07,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.07,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.07,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por desgaste",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 192.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 490.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Puntos",
+     "text": "Puntos BBVA ofrece 0 puntos por cada peso gastado"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, restaurantes, entretenimiento, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "063",
+   "name": "Tarjeta Súper Créditos Inbursa",
+   "institution": "Inbursa",
+   "card_class": "Clásica",
+   "cat": 91.2,
+   "annual_fee": 750.0,
+   "interest_rate": 65.0,
+   "credit_line_min": 5000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 65,
+    "score_min": 690,
+    "work_seniority_min": 12,
+    "residence_seniority_min": null,
+    "monthly_income_min": 5000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 150.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 750.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por desgaste",
+     "amount": 50.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 50.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 449.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Descuentos",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, restaurantes, entretenimiento, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, restaurantes, entretenimiento, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Seguros",
+     "text": "Seguro por emergencia médica"
+    },
+    {
+     "benefit_type": "Descuentos",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "064",
+   "name": "Tarjeta Vive BBVA",
+   "institution": "BBVA México",
+   "card_class": "Clásica",
+   "cat": 72.0,
+   "annual_fee": 748.0,
+   "interest_rate": 58.8,
+   "credit_line_min": 5000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 75,
+    "score_min": 700,
+    "work_seniority_min": 12,
+    "residence_seniority_min": 12,
+    "monthly_income_min": 6000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 748.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Banca por App",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por Internet",
+     "amount": 0.065,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por teléfono",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.065,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.065,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.065,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por desgaste",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 192.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 490.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Puntos",
+     "text": "Puntos BBVA ofrece 0 puntos por cada peso gastado"
+    },
+    {
+     "benefit_type": "Descuentos",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, restaurantes, entretenimiento, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "departamentales, salud, restaurantes, entretenimiento, educativos, comercios en línea,"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "otros"
+    },
+    {
+     "benefit_type": "Seguros",
+     "text": "Seguro por pérdida de equipaje"
+    },
+    {
+     "benefit_type": "Descuentos",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "065",
+   "name": "TDC Hey",
+   "institution": "Hey Banco",
+   "card_class": "Clásica",
+   "cat": 38.1,
+   "annual_fee": 600.0,
+   "interest_rate": 31.7,
+   "credit_line_min": 1000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 74,
+    "score_min": null,
+    "work_seniority_min": null,
+    "residence_seniority_min": null,
+    "monthly_income_min": null
+   },
+   "fees": [
+    {
+     "concept": "Anualidad titular",
+     "amount": 600.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Banca por App",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por teléfono",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por desgaste",
+     "amount": 150.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 150.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Aclaración improcedente",
+     "amount": 250.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 300.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Puntos",
+     "text": "Cash Back ofrece 0 puntos por cada peso gastado"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, restaurantes, entretenimiento, otros"
+    },
+    {
+     "benefit_type": "Transferencia de Saldo",
+     "text": "Tasa del 20% si liquidas el saldo transferido entre 6 y 24 meses"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "066",
+   "name": "Teletón Banamex",
+   "institution": "No disponible",
+   "card_class": "Clásica",
+   "cat": 88.5,
+   "annual_fee": 540.0,
+   "interest_rate": 60.3,
+   "credit_line_min": 2000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 79,
+    "score_min": null,
+    "work_seniority_min": null,
+    "residence_seniority_min": null,
+    "monthly_income_min": 7000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 0.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 45.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Banca por App",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por Internet",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por teléfono",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 130.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Falta de pago",
+     "amount": 399.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 399.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Descuentos",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, restaurantes, entretenimiento, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Preventas",
+     "text": "Compra boletos de forma anticipada para Conciertos y festivales de música, Teatro, Eventos deportivos, Otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, restaurantes, entretenimiento, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Transferencia de Saldo",
+     "text": "Tasa del 17% si liquidas el saldo transferido entre 12 y 24 meses"
+    },
+    {
+     "benefit_type": "Descuentos",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, hoteles"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "067",
+   "name": "The Home Depot Banamex",
+   "institution": "Banamex",
+   "card_class": "Clásica",
+   "cat": 86.7,
+   "annual_fee": 774.0,
+   "interest_rate": 62.3,
+   "credit_line_min": 4000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 79,
+    "score_min": null,
+    "work_seniority_min": null,
+    "residence_seniority_min": null,
+    "monthly_income_min": 7000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 387.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 774.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Banca por App",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por Internet",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Banca por teléfono",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero mismo banco",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Disposición de efectivo en ventanilla",
+     "amount": 0.06,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Reposición por robo o extravío",
+     "amount": 130.0,
+     "denomination": "MXN",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Falta de pago",
+     "amount": 399.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 399.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Puntos",
+     "text": "Puntos Haz Más ofrece 0 puntos por cada peso gastado"
+    },
+    {
+     "benefit_type": "Descuentos",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, restaurantes, entretenimiento, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Preventas",
+     "text": "Compra boletos de forma anticipada para Conciertos y festivales de música, Teatro, Eventos deportivos, Otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, restaurantes, entretenimiento, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Transferencia de Saldo",
+     "text": "Tasa del 17% si liquidas el saldo transferido entre 12 y 24 meses"
+    },
+    {
+     "benefit_type": "Descuentos",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, hoteles"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, transporte terrestre, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "068",
+   "name": "Volaris INVEX",
+   "institution": "Invex",
+   "card_class": "Platino",
+   "cat": 34.2,
+   "annual_fee": 2890.0,
+   "interest_rate": 24.3,
+   "credit_line_min": 7000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 69,
+    "score_min": null,
+    "work_seniority_min": null,
+    "residence_seniority_min": null,
+    "monthly_income_min": 5000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 1445.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 2890.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 650.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Falta de pago",
+     "amount": 895.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, entretenimiento, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, hoteles"
+    }
+   ]
+  },
+  {
+   "id": "069",
+   "name": "Volaris INVEX 2.0",
+   "institution": "Invex",
+   "card_class": "Platino",
+   "cat": 32.8,
+   "annual_fee": 4299.0,
+   "interest_rate": 24.3,
+   "credit_line_min": 7000.0,
+   "requirements": {
+    "age_min": 18,
+    "age_max": 69,
+    "score_min": null,
+    "work_seniority_min": null,
+    "residence_seniority_min": null,
+    "monthly_income_min": 5000.0
+   },
+   "fees": [
+    {
+     "concept": "Anualidad adicional",
+     "amount": 2150.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Anualidad titular",
+     "amount": 4299.0,
+     "denomination": "MXN",
+     "fee_type": "obligatoria"
+    },
+    {
+     "concept": "Disposición de efectivo en cajero otro banco",
+     "amount": 0.1,
+     "denomination": "PCT",
+     "fee_type": "por_evento"
+    },
+    {
+     "concept": "Pago tardío",
+     "amount": 650.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    },
+    {
+     "concept": "Falta de pago",
+     "amount": 895.0,
+     "denomination": "MXN",
+     "fee_type": "penalizacion"
+    }
+   ],
+   "benefits": [
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En los siguientes tipos de servicios o establecimientos: tiendas de autoservicio y departamentales, salud, entretenimiento, educativos, comercios en línea, otros"
+    },
+    {
+     "benefit_type": "Meses sin intereses",
+     "text": "En agencias de viajes, renta de auto, transporte aéreo, hoteles"
+    }
+   ]
+  }
+ ]
+}

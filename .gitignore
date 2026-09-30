@@ -1,0 +1,43 @@
+# Secretos
+.env
+.env.*
+!.env.example
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+*.egg-info/
+
+# Base de datos local (se re-siembra)
+backend/data/*.db
+backend/data/*.db-*
+
+# Node / Angular
+node_modules/
+frontend/dist/
+frontend/.angular/
+frontend/coverage/
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Fuentes crudas pesadas (no versionar)
+datos/
+
+# Excel temporales / bloqueo
+~$*.xlsx
+~$*.xls
+
+# SO / IDE
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# Vercel
+.vercel/

@@ -1,0 +1,9 @@
+# Finales de linea LF en el repo (Vercel/Docker corren en Linux)
+* text=auto eol=lf
+
+*.xlsx binary
+*.xls binary
+*.png binary
+*.jpg binary
+*.ico binary
+*.pdf binary
