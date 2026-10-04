@@ -8,8 +8,6 @@ Plataforma de **educación financiera sobre tarjetas de crédito en México**. R
 
 > ⚠️ **CardIA es una herramienta de educación financiera, no un asesor financiero.** No está afiliada a ninguna institución financiera, no garantiza la aprobación de ningún crédito y nunca pide datos personales. Todo número de una tarjeta proviene de la base de datos, nunca del LLM.
 
-**En línea:** <https://cardia-wine.vercel.app>
-
 ---
 
 ## Índice
