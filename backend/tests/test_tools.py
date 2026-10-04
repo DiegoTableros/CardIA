@@ -42,7 +42,7 @@ def test_get_card_unknown_raises(cards) -> None:
 def test_compare_education_profiles(cards) -> None:
     assert len(run_tool("compare_cards", cards, {"card_ids": ["001", "002"]}).data["cards"]) == 2
     assert "Banxico" in run_tool("get_education_topic", cards, {"topic_id": "pago_minimo"}).data["body"]
-    assert len(run_tool("explain_profiles", cards, {}).data["profiles"]) == 4
+    assert len(run_tool("explain_profiles", cards, {}).data["profiles"]) == 6
     assert run_tool("get_card_profile", cards, {"card_id": "002"}).data["profile"]
 
 

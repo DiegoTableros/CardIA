@@ -9,6 +9,8 @@ from dataclasses import dataclass, field
 from typing import Any
 
 from app.domain.education import TOPICS, TOPICS_BY_ID
+from app.domain.glossary import SOURCE as GLOSSARY_SOURCE
+from app.domain.glossary import category_notes, find_terms
 from app.domain.models import CardRecord
 from app.ml.profiles import PROFILES, assign_card_profile
 from app.schemas.cards import CardQuery
@@ -147,6 +149,25 @@ def get_education_topic(_: list[CardRecord], args: dict[str, Any]) -> ToolResult
     )
 
 
+def search_glossary(_: list[CardRecord], args: dict[str, Any]) -> ToolResult:
+    query = str(args.get("query", ""))
+    terms = find_terms(query)
+    notes = category_notes()
+    data = {
+        "source": GLOSSARY_SOURCE,
+        "terms": [
+            {
+                "term": t.term,
+                "category": t.category,
+                "definition": t.definition,
+                **({"note": notes[t.category]} if t.category in notes else {}),
+            }
+            for t in terms
+        ],
+    }
+    return ToolResult(data=data, summary=f"{len(terms)} términos del glosario")
+
+
 def explain_profiles(cards: list[CardRecord], _: dict[str, Any]) -> ToolResult:
     items = []
     for p in PROFILES:
@@ -247,6 +268,18 @@ TOOLS: dict[str, ToolSpec] = {
                 "required": ["topic_id"],
             },
             get_education_topic,
+        ),
+        ToolSpec(
+            "search_glossary",
+            "EducativeAgent",
+            "Busca definiciones oficiales en el glosario de tarjetas de crédito de CONDUSEF "
+            "(términos generales, seguros y beneficios).",
+            {
+                "type": "object",
+                "properties": {"query": {"type": "string", "description": "Término o pregunta"}},
+                "required": ["query"],
+            },
+            search_glossary,
         ),
         ToolSpec(
             "explain_profiles",

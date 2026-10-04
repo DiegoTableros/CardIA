@@ -6,20 +6,20 @@ import { of } from 'rxjs';
 import { ApiService } from '../../core/api/api.service';
 import type { CompareMetric } from '../../core/api/types';
 import { money, pct } from '../../core/format';
-import { CardVisual } from '../../shared/card-visual';
+import { CardArt } from '../../shared/card-art';
 import { CompareStore, MAX_COMPARE } from '../../shared/compare-store';
 import { Icon } from '../../shared/icon';
 import { Disclaimer, EmptyState, ErrorState } from '../../shared/states';
 
 @Component({
   selector: 'app-compare',
-  imports: [FormsModule, RouterLink, CardVisual, Icon, ErrorState, EmptyState, Disclaimer],
+  imports: [FormsModule, RouterLink, CardArt, Icon, ErrorState, EmptyState, Disclaimer],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <header class="flex flex-wrap items-end justify-between gap-4">
       <div>
-        <p class="section-eyebrow">Dashboard comparativo</p>
-        <h1 class="section-title sm:text-4xl">Compara lado a lado</h1>
+        <p class="section-eyebrow">Comparador de tarjetas</p>
+        <h1 class="section-title sm:text-4xl">Explora sus diferencias</h1>
         <p class="mt-2 text-slate-400">Elige de 2 a {{ max }} tarjetas. Resaltamos el mejor valor de cada métrica.</p>
       </div>
       <div class="flex w-full gap-2 sm:w-auto">
@@ -55,8 +55,9 @@ import { Disclaimer, EmptyState, ErrorState } from '../../shared/states';
                 <button type="button" class="absolute top-2 right-2 z-10 rounded-lg bg-black/40 p-1 text-white hover:bg-black/60" (click)="store.toggle(c.id)" [attr.aria-label]="'Quitar ' + c.name">
                   <app-icon name="x" [size]="14" />
                 </button>
-                <a [routerLink]="['/tarjetas', c.id]" class="block text-[13px]"><app-card-visual [name]="c.name" [institution]="c.institution" [cardClass]="c.card_class" /></a>
+                <a [routerLink]="['/tarjetas', c.id]" class="block"><app-card-art [name]="c.name" [institution]="c.institution" [cardClass]="c.card_class" [imageUrl]="c.image_url" [orientation]="c.image_orientation" /></a>
                 <p class="mt-3 truncate font-semibold text-white">{{ c.name }}</p>
+                <p class="truncate text-xs text-slate-400">{{ c.institution }}</p>
                 <span class="badge mt-1" [style.background]="c.profile.color + '26'" [style.color]="c.profile.color">{{ c.profile.label }}</span>
               </div>
             }
@@ -107,7 +108,7 @@ import { Disclaimer, EmptyState, ErrorState } from '../../shared/states';
             }
           </div>
         </div>
-        <app-disclaimer class="mt-8 block" [text]="r.disclaimer" />
+        <app-disclaimer class="mt-8 block" />
       }
     </section>
   `,

@@ -115,12 +115,20 @@ Reglas de datos:
   desde el OpenAPI, no escritos a mano.
 - **D6 - Disclaimer siempre.** Respuestas de recomendacion y de chat incluyen el aviso de herramienta educativa.
 - **D7 - Sin secretos en el repo.** `OPENAI_API_KEY` solo en `.env` local y en variables de entorno de Vercel.
-- **D8 - Plan explicito antes de ejecutar.** El orquestador devuelve el plan (tool calls + dependencias) y el front lo muestra.
+- **D8 - Plan explicito antes de ejecutar.** El orquestador genera y persiste el plan (tool calls + dependencias) antes
+  de ejecutar y la API lo devuelve. Desde 2026-10-03 (pedido del usuario) el front NO muestra el plan ni los agentes al
+  usuario final: solo puntitos de color de los agentes activos. El plan queda en BD para trazabilidad (admin).
 - **D9 - Un solo modelo.** El "perfil de cliente" es la etiqueta interpretada del cluster. Mientras no exista el pipeline,
   `recommend()` usa un stub con el mismo contrato.
 - **D10 - Sin cashback en el formulario.** El Excel no tiene ese tipo de beneficio.
 - **D11 - Alcance prohibido.** Sin scraping, sin conexion a bancos, sin ejecucion de ordenes, sin datos sensibles
   (nada de RFC, CURP, cuentas). Sin sugerir contratar. Datos ERCO se descargan a mano.
+  Excepcion pedida por el usuario (2026-10-03): el detalle de tarjeta tiene "Aplica ahora:" con enlace al sitio
+  general de la institucion (hoja `Instituciones`, columna URL), nunca a una URL de producto.
+  El chat enmascara datos personales (`app/core/privacy.py`) antes de guardarlos o enviarlos al LLM.
+- **D12 - Producto, no proyecto academico.** UI sin conteos de la base ni menciones de ML/modelo/agentes al usuario
+  final. Solo "BI perfiles" (admin) habla del modelo. BI y Admin son solo para rol admin (front y API).
+- **D13 - Disclaimer unico.** Mismo texto en front (`shared/states.ts::DISCLAIMER_TEXT`) y back (`core/disclaimer.py`).
 
 ## 6. Convenciones de codigo
 
@@ -192,6 +200,38 @@ Git:
   `tests/test_domain.py::test_avoid_annual_fee_prioritizes_zero_fee_cards`.
 - 2026-09-30 - El chat hoy corre en modo `rules` (planner + narrador deterministas con las mismas tools y el mismo
   contrato `PlanStep`). La fase 4 cambia planner/narrador por OpenAI sin tocar tools ni frontend.
+- 2026-10-03 - Excel v2: encabezados ya en una linea, nueva hoja `Instituciones` (Institucion, Tarjetas, URL) y columna
+  `Nombre legacy` en Tarjetas (se ignora). Todo se relaciona por `ID_Tarjeta`.
+- 2026-10-03 - Imagenes: `imagenes_tarjetas/<Nombre de la tarjeta>.<png|jpg|jfif|PNG>` (versionadas). `make images`
+  quita fondo blanco exterior (floodfill desde esquinas), recorta, limita a 560 px y guarda `frontend/public/cards/<ID>.webp`
+  + `backend/data/images.json` (orientacion). 26 verticales / 43 horizontales; el front las pinta en un "escenario"
+  1.586 con object-contain (`shared/card-art.ts`) y cae a la ilustracion generada si no hay imagen. Orden: images -> data.
+- 2026-10-03 - Seed versionado: tabla `app_meta.cards_version` = `generated_at` de cards.json; si cambia, se recrean
+  solo las tablas estaticas (cards/fees/benefits). Usuarios y trazas no se tocan.
+- 2026-10-03 - Glosario CONDUSEF: el PDF es escaneado (pypdf no extrae texto); se transcribio a `backend/data/glossary.json`
+  (58 terminos). Tool `search_glossary` (EducativeAgent) y endpoint `GET /chat/topics`.
+- 2026-10-03 - LLM: SDK openai 3.22, Responses API. Planner = `responses.parse(text_format=PlanOut)` con `args_json`
+  (string) porque structured outputs estricto no admite dicts libres; el plan se valida contra TOOLS y el catalogo.
+  Narrador = `responses.create`. `reasoning={"effort": LLM_REASONING_EFFORT}`; si el modelo lo rechaza (400) se
+  reintenta sin el. Cualquier error -> planner/narrador por reglas. Modelos: LLM_MODEL_FAST=gpt-5.1-mini, LLM_MODEL=gpt-5.1.
+  Historial: ultimos LLM_HISTORY_TURNS turnos de la sesion (BD). Tests con cliente falso en `tests/test_llm.py`.
+- 2026-10-03 - Planner por reglas: `_fold` quita signos (¿?¡!) y los temas casan por palabra completa; "que es"
+  ya no es keyword (hacia que todo cayera en `que_es_tdc`). Preguntas "¿Qué es X?" con termino del glosario -> glosario.
+- 2026-10-04 - Perfiles = los 6 clusters del Excel (columna `Cluster`, hoja Tarjetas). Nombres/textos en `backend/data/clusters.json`
+  (editable). Variables `benef_*` y `com_*` de la hoja `dataset_tarjetas_ingenieria` se guardan en `cards.features`. Los
+  promedios por cluster reproducen `perfilamiento_clusters.docx` (test `test_cluster_stats_match_report`).
+- 2026-10-04 - Recomendador v1 (`app/ml/recommender.py`): 9 dimensiones por tarjeta (min-max p5-p95), pesos desde las
+  respuestas, afinidad por perfil ponderada por elegibilidad, 75% utilidad + 25% afinidad del perfil. Contrato compatible:
+  `payment_habit`, `residence_months` y `avoid_fees` son opcionales; `pays_in_full` queda obsoleto.
+- 2026-10-04 - Metodo de perfil: el perfil del usuario es el cluster de su tarjeta Top 1 (decidido por el usuario); la UI muestra
+  Top 1, Top 2... en vez de puntaje. Tarjetas periferas solo se advierten, no se degradan. Evitar anualidad: peso 6.0 y x0.75.
+- 2026-10-04 - Imagenes: lienzo uniforme 560x353 transparente, verticales mas chicas (no mas largas); el procesado trata
+  como fondo lo semitransparente (sombras) y pela un marco claro de profundidad limitada. El relleno de fondo se hace con
+  numpy (`ImageDraw.floodfill` era demasiado lento). Tarda ~12 min; correr con `make images` en segundo plano.
+- 2026-10-04 - `uvicorn --reload` deja un proceso hijo (`multiprocessing.spawn`) que sigue sirviendo con la config vieja:
+  para reiniciar hay que cerrar tambien ese hijo. Cambios en `.env` requieren reinicio (Settings usa lru_cache).
+- 2026-10-04 - PowerShell: `R` es alias de Invoke-History (no usarlo como nombre de funcion); al pasar un solo par a una
+  funcion con `@(@(a,b))` PowerShell aplana el arreglo y puede corromper archivos: verificar con tsc/git diff.
 - 2026-09-30 - Algunos nombres del Excel vienen crudos (`Plata_Credito_Basico_531722`, `Tarjeta de Credito Basica`).
   Corregirlos en el Excel y correr `make data` (no se renombran en codigo).
 
@@ -200,10 +240,11 @@ Git:
 | Comando | Que hace |
 |---|---|
 | `make setup` | `uv sync` (backend) + `npm install` (frontend) |
-| `make data` | Excel -> `backend/data/cards.json` (falla si el Excel esta abierto) |
+| `make images` | `imagenes_tarjetas/` -> `frontend/public/cards/<ID>.webp` + `backend/data/images.json` |
+| `make data` | Excel -> `backend/data/cards.json` (falla si el Excel esta abierto; correr despues de `images`) |
 | `make seed` | Esquema + tarjetas + usuarios en SQLite (idempotente; tambien corre al arrancar la API) |
 | `make dev` | API :8000 + front :4200 (o por separado: `make dev-backend`, `make dev-frontend`) |
-| `make test` | pytest (23) + vitest (3) |
+| `make test` | pytest (30) + vitest (3) |
 | `make lint` / `make format` | ruff + tsc / ruff format + prettier |
 | `make contracts` | `/openapi.json` -> `frontend/src/app/core/api/schema.d.ts` |
 | `make build` | Build de produccion del front (`frontend/dist/`) |
@@ -211,11 +252,11 @@ Git:
 Usuarios semilla: `admin@cardia.local / admin1234` (admin) y `demo@cardia.local / demo1234`.
 
 API (`/api/v1`): `meta/health`, `meta/disclaimer`, `auth/{login,me,logout}`, `cards`, `cards/facets`, `cards/{id}`,
-`compare`, `recommend`, `chat/plan`, `chat/runs/{id}/execute`, `chat/runs/{id}`, `chat/runs`, `bi`,
-`admin/{overview,events,chat-runs,users}`. Todo excepto `meta/*` y `auth/login` requiere Bearer.
+`compare`, `recommend`, `chat/topics`, `chat/plan`, `chat/runs/{id}/execute`, `chat/runs/{id}`, `chat/runs`,
+`bi` (admin), `admin/{overview,events,chat-runs,users}`. Todo excepto `meta/*` y `auth/login` requiere Bearer.
 
-Rutas front: `/login`, `/` (home), `/tarjetas`, `/tarjetas/:id`, `/comparar`, `/para-ti`, `/asistente`, `/perfiles` (BI),
-`/admin` (solo admin).
+Rutas front (orden del menu): `/` Inicio, `/encuentra-tu-tarjeta` (antes `/para-ti`, redirige), `/tarjetas`,
+`/tarjetas/:id`, `/comparar`, `/asistente`; solo admin: `/perfiles` (BI) y `/admin`. `/login` publica.
 
 ## 10. Estado del proyecto
 
@@ -226,6 +267,9 @@ Rutas front: `/login`, `/` (home), `/tarjetas`, `/tarjetas/:id`, `/comparar`, `/
 - [x] Fase 1: ETL Excel -> JSON -> SQLite (seed idempotente), esquemas Pydantic
 - [ ] Fase 2: EDA y notebook de clustering, pipeline joblib (hoy `recommend()` es STUB por reglas, `app/ml/`)
 - [x] Fase 3: API v1 completa + trazabilidad + tests
-- [~] Fase 4: orquestador con plan explicito + 7 tools + 4 agentes en modo reglas. Falta LLM (OpenAI) y ERCO
-- [x] Fase 5 (v1): UI completa: login, home, catalogo, detalle, comparador, recomendador, chat, BI, admin
+- [~] Fase 4: orquestador + 8 tools + 4 agentes; LLM OpenAI (planner+narrador) con fallback a reglas. Falta ERCO
+- [x] Fase 5 (v2, 2026-10-03): correcciones de UI, imagenes reales, glosario, privacidad, BI/admin solo admin
+- [x] Modelo final integrado (2026-10-04): 6 clusters, recomendador v1, cuestionario nuevo, vista Perfiles (admin) con metodo y
+  documentacion del docx (`backend/data/cluster_report.json`, `make`/`scripts.build_cluster_report`). Sin PCA (descartado).
+- [ ] Pendiente: notebook de clustering en `notebooks/` (hoy el Excel trae el resultado), tuning del recomendador
 - [ ] Fase 6: Docker compose + Vercel

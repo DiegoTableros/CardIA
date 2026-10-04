@@ -1,6 +1,9 @@
 """Planner por reglas: produce un plan explicito de tool calls con dependencias ANTES de ejecutar."""
 
+import re
+
 from app.domain.education import TOPICS
+from app.domain.glossary import find_terms
 from app.domain.models import CardRecord
 from app.domain.normalize import strip_accents
 from app.ml.profiles import assign_card_profile
@@ -21,6 +24,7 @@ SEARCH_WORDS = (
     "hay tarjetas",
     "tarjetas con",
 )
+DEFINITION_WORDS = (" que es ", " que son ", " que significa ", " explica", " define ", " definicion")
 BENEFIT_WORDS = {
     "meses sin intereses": "Meses sin intereses",
     "msi": "Meses sin intereses",
@@ -33,7 +37,8 @@ BENEFIT_WORDS = {
 
 
 def _fold(text: str) -> str:
-    return " " + strip_accents(text).lower() + " "
+    cleaned = re.sub(r"[¿?¡!,.;:«»\"()]", " ", strip_accents(text).lower())
+    return " " + re.sub(r"\s+", " ", cleaned).strip() + " "
 
 
 def _step(
@@ -58,7 +63,7 @@ def _topics(fold: str, exclude: set[str]) -> list[str]:
     for t in TOPICS:
         if t.id in exclude:
             continue
-        hits = [len(k) for k in t.keywords if f"{k}" in fold]
+        hits = [len(k) for k in t.keywords if f" {k} " in fold or (len(k) > 6 and k in fold)]
         if hits:
             scored.append((max(hits), t.id))
     scored.sort(reverse=True)
@@ -120,6 +125,16 @@ def build_plan(message: str, cards: list[CardRecord]) -> tuple[list[PlanStep], l
                 [pid, detail_ids[c.id]],
             )
 
+    glossary_hits = find_terms(message) if not mentioned else []
+    definitional = any(w in fold for w in DEFINITION_WORDS)
+    if definitional and glossary_hits:
+        # "¿Qué es X?": la definicion oficial manda; no se buscan tarjetas.
+        _step(steps, "search_glossary", {"query": message}, "Buscar la definición oficial en el glosario")
+        topics = _topics(fold, {"beneficios", "comisiones"})[:1]
+        for tid in topics:
+            _step(steps, "get_education_topic", {"topic_id": tid}, "Explicar el concepto con lenguaje claro")
+        return steps, _suggestions(mentioned, wants_fees, wants_profile)
+
     has_filters = bool(institution or benefit or no_fee or low_rate)
     if not mentioned and (has_filters or any(w in fold for w in SEARCH_WORDS)):
         args: dict[str, object] = {"limit": 5, "sort": "interest_rate" if low_rate else "annual_fee"}
@@ -134,8 +149,11 @@ def build_plan(message: str, cards: list[CardRecord]) -> tuple[list[PlanStep], l
     exclude = {"comisiones"} if (mentioned and wants_fees) else set()
     if mentioned or has_filters:
         exclude |= {"beneficios", "anualidad"} if not wants_fees else set()
-    for tid in _topics(fold, exclude):
+    topics = _topics(fold, exclude)
+    for tid in topics:
         _step(steps, "get_education_topic", {"topic_id": tid}, "Explicar el concepto con lenguaje claro")
+    if not topics and glossary_hits:
+        _step(steps, "search_glossary", {"query": message}, "Buscar la definición oficial en el glosario")
 
     if not steps:
         _step(steps, "get_education_topic", {"topic_id": "que_es_tdc"}, "Dar contexto básico sobre las TDC")

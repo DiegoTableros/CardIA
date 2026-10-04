@@ -22,9 +22,10 @@ async def test_cards_list_filter_detail(client: httpx.AsyncClient, user_headers)
     r = await client.get(f"{API}/cards/002", headers=user_headers)
     body = r.json()
     assert body["name"] == "Black Unlimited" and body["disclaimer"] and body["fees"]
+    assert body["image_url"] == "/cards/002.webp" and body["institution_url"].startswith("https://")
     assert (await client.get(f"{API}/cards/999", headers=user_headers)).status_code == 404
     facets = (await client.get(f"{API}/cards/facets", headers=user_headers)).json()
-    assert len(facets["profiles"]) == 4
+    assert len(facets["profiles"]) == 6
 
 
 async def test_compare(client: httpx.AsyncClient, user_headers) -> None:
@@ -49,7 +50,7 @@ async def test_recommend_endpoint(client: httpx.AsyncClient, user_headers) -> No
     r = await client.post(f"{API}/recommend", json=payload, headers=user_headers)
     assert r.status_code == 200, r.text
     body = r.json()
-    assert body["disclaimer"] and body["assumptions"] and body["model"]["is_stub"]
+    assert body["disclaimer"] and body["assumptions"] and not body["model"]["is_stub"]
     assert body["recommendations"]
     bad = await client.post(f"{API}/recommend", json=payload | {"age": 15}, headers=user_headers)
     assert bad.status_code == 422
@@ -68,9 +69,15 @@ async def test_chat_plan_then_execute(client: httpx.AsyncClient, user_headers) -
     assert len(runs) == 1
 
 
-async def test_bi(client: httpx.AsyncClient, user_headers) -> None:
-    r = (await client.get(f"{API}/bi", headers=user_headers)).json()
-    assert r["kpis"]["cards"] == 69 and len(r["profiles"]) == 4 and len(r["scatter"]) == 69
+async def test_bi_admin_only(client: httpx.AsyncClient, user_headers, admin_headers) -> None:
+    assert (await client.get(f"{API}/bi", headers=user_headers)).status_code == 403
+    r = (await client.get(f"{API}/bi", headers=admin_headers)).json()
+    assert (
+        r["kpis"]["cards"] == 69
+        and len(r["profiles"]) == 6
+        and len(r["scatter"]) == 69
+        and len(r["report"]["clusters"]) == 6
+    )
 
 
 async def test_admin_requires_role_and_traces(client: httpx.AsyncClient, user_headers, admin_headers) -> None:

@@ -17,11 +17,11 @@ interface NavItem {
 
 const NAV: NavItem[] = [
   { path: '/', label: 'Inicio', icon: 'home', exact: true },
+  { path: '/encuentra-tu-tarjeta', label: 'Encuentra tu tarjeta', icon: 'sparkles' },
   { path: '/tarjetas', label: 'Catálogo', icon: 'cards' },
-  { path: '/para-ti', label: 'Para ti', icon: 'sparkles' },
-  { path: '/asistente', label: 'Asistente', icon: 'chat' },
   { path: '/comparar', label: 'Comparar', icon: 'compare' },
-  { path: '/perfiles', label: 'BI perfiles', icon: 'chart' },
+  { path: '/asistente', label: 'Asistente', icon: 'chat' },
+  { path: '/perfiles', label: 'Perfiles', icon: 'chart', admin: true },
   { path: '/admin', label: 'Admin', icon: 'shield', admin: true },
 ];
 
@@ -36,15 +36,18 @@ const NAV: NavItem[] = [
     <header class="sticky top-0 z-40 border-b border-white/6 bg-ink-950/70 backdrop-blur-xl">
       <div class="mx-auto flex h-16 max-w-7xl items-center gap-4 px-4 sm:px-6">
         <a routerLink="/" aria-label="CardIA, inicio"><app-logo [size]="32" /></a>
-        <nav class="ml-4 hidden items-center gap-1 lg:flex" aria-label="Principal">
+        <nav class="ml-2 hidden items-center gap-0.5 lg:flex xl:ml-4" aria-label="Principal">
           @for (item of nav(); track item.path) {
+            @if (item.admin && !nav()[$index - 1]?.admin) {
+              <span class="mx-1.5 h-5 w-px bg-white/10" aria-hidden="true"></span>
+            }
             <a
               [routerLink]="item.path"
               routerLinkActive="!text-white bg-white/8"
               [routerLinkActiveOptions]="{ exact: !!item.exact }"
-              class="relative inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-400 transition hover:bg-white/5 hover:text-white"
+              class="relative inline-flex items-center gap-2 rounded-lg px-2.5 py-2 text-sm font-medium whitespace-nowrap text-slate-400 transition hover:bg-white/5 hover:text-white"
             >
-              <app-icon [name]="item.icon" [size]="16" />
+              <app-icon [name]="item.icon" [size]="16" class="hidden xl:inline-flex" />
               {{ item.label }}
               @if (item.path === '/comparar' && compare.count()) {
                 <span class="grid h-4.5 min-w-4.5 place-items-center rounded-full bg-hot-500 px-1 text-[10px] font-bold text-white">{{ compare.count() }}</span>
@@ -53,7 +56,7 @@ const NAV: NavItem[] = [
           }
         </nav>
         <div class="ml-auto flex items-center gap-2">
-          <div class="hidden items-center gap-2.5 rounded-xl border border-white/8 bg-white/4 py-1.5 pr-3 pl-1.5 sm:flex">
+          <div class="hidden items-center gap-2.5 rounded-xl border border-white/8 bg-white/4 py-1.5 pr-3 pl-1.5 sm:flex lg:hidden 2xl:flex">
             <span class="grid h-7 w-7 place-items-center rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 text-xs font-bold text-white">
               {{ initials() }}
             </span>
@@ -106,8 +109,8 @@ const NAV: NavItem[] = [
 
     <footer class="border-t border-white/6">
       <div class="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-6 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between sm:px-6">
-        <p>CardIA · Proyecto educativo de Machine Learning y agentes IA. Datos públicos de Banxico y CONDUSEF.</p>
-        <p>No afiliado a ninguna institución financiera · No es asesoría financiera.</p>
+        <p>CardIA · Descubre todo sobre tarjetas de crédito mexicanas.</p>
+        <p>Datos públicos oficiales de Banxico y CONDUSEF, no afiliado a ninguna institución financiera.</p>
       </div>
     </footer>
   `,

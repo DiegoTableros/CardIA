@@ -8,6 +8,8 @@ function escapeHtml(s: string): string {
 
 function inline(s: string): string {
   return s
+    .replace(/\[([^\]]+)\]\((?:[^)]+)\)/g, '$1') // enlaces: solo el texto (no se generan hrefs)
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
     .replace(/(^|[^*])\*(?!\s)(.+?)\*(?!\*)/g, '$1<em>$2</em>')
     .replace(/«(.+?)»/g, '«<strong>$1</strong>»');
@@ -45,7 +47,10 @@ export function renderMarkdown(src: string): string {
     }
     closeTable();
     let m: RegExpMatchArray | null;
-    if ((m = line.match(/^#{1,4}\s+(.*)$/))) {
+    if (/^\s*(-{3,}|\*{3,}|_{3,})\s*$/.test(line)) {
+      closeList();
+      out.push('<hr>');
+    } else if ((m = line.match(/^#{1,6}\s+(.*)$/))) {
       closeList();
       out.push(`<h3>${inline(m[1])}</h3>`);
     } else if ((m = line.match(/^\s*[-•]\s+(.*)$/))) {

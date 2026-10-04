@@ -1,8 +1,6 @@
-"""Aviso educativo obligatorio (D6)."""
+"""Aviso de educacion financiera obligatorio (D6). Mismo texto en toda la app."""
 
 DISCLAIMER = (
-    "CardIA es una herramienta educativa y no está afiliada a ninguna institución financiera. "
-    "La información proviene de fuentes públicas (Banxico, CONDUSEF) y puede no estar actualizada. "
-    "No es asesoría financiera, no garantiza la aprobación de ningún crédito y no sugiere contratar "
-    "ningún producto. Verifica siempre las condiciones vigentes directamente con la institución."
+    "Herramienta de educación financiera. CardIA no está afiliada a ninguna institución financiera y no "
+    "garantiza la aprobación de ningún crédito. Verifica condiciones vigentes con cada institución."
 )

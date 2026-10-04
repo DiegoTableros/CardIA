@@ -33,6 +33,11 @@ class Card(Base):
     id: Mapped[str] = mapped_column(String(10), primary_key=True)
     name: Mapped[str] = mapped_column(String(200), index=True)
     institution: Mapped[str] = mapped_column(String(100), index=True)
+    institution_url: Mapped[str | None] = mapped_column(String(300), nullable=True)
+    image_url: Mapped[str | None] = mapped_column(String(200), nullable=True)
+    image_orientation: Mapped[str | None] = mapped_column(String(20), nullable=True)
+    cluster: Mapped[int | None] = mapped_column(Integer, nullable=True, index=True)
+    features: Mapped[dict[str, Any] | None] = mapped_column(JSON, nullable=True)
     card_class: Mapped[str] = mapped_column(String(40), index=True)
     cat: Mapped[float | None] = mapped_column(Float, nullable=True)
     annual_fee: Mapped[float | None] = mapped_column(Float, nullable=True)
@@ -72,6 +77,15 @@ class Benefit(Base):
     text: Mapped[str] = mapped_column(Text)
 
     card: Mapped[Card] = relationship(back_populates="benefits")
+
+
+class AppMeta(Base):
+    """Clave/valor interno (p. ej. version de los datos sembrados)."""
+
+    __tablename__ = "app_meta"
+
+    key: Mapped[str] = mapped_column(String(60), primary_key=True)
+    value: Mapped[str] = mapped_column(String(200))
 
 
 class AuditEvent(Base):

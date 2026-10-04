@@ -37,6 +37,10 @@ class Settings(BaseSettings):
     openai_api_key: str = ""
     llm_model: str = "gpt-5.1"
     llm_model_fast: str = "gpt-5.1-mini"
+    llm_reasoning_effort: str = "low"  # vacio para modelos sin razonamiento
+    llm_max_plan_steps: int = 6
+    llm_timeout_seconds: float = 45.0
+    llm_history_turns: int = 4
 
     @field_validator("cors_origins", mode="before")
     @classmethod

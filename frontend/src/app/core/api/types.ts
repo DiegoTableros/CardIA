@@ -19,6 +19,7 @@ export type ProfileOut = S['ProfileOut'];
 export type ChatPlanResponse = S['ChatPlanResponse'];
 export type ChatRunResponse = S['ChatRunResponse'];
 export type PlanStep = S['PlanStep'];
+export type ChatTopicsResponse = S['ChatTopicsResponse'];
 export type BIResponse = S['BIResponse'];
 export type LabelCount = S['LabelCount'];
 export type AdminOverview = S['AdminOverview'];

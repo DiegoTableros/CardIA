@@ -2,12 +2,12 @@ import { ChangeDetectionStrategy, Component, input, output } from '@angular/core
 import { RouterLink } from '@angular/router';
 import type { CardSummary } from '../core/api/types';
 import { BENEFIT_ICON, money, pct } from '../core/format';
-import { CardVisual } from './card-visual';
+import { CardArt } from './card-art';
 import { Icon } from './icon';
 
 @Component({
   selector: 'app-card-tile',
-  imports: [CardVisual, Icon, RouterLink],
+  imports: [CardArt, Icon, RouterLink],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'block' },
   template: `
@@ -16,7 +16,7 @@ import { Icon } from './icon';
       class="group surface relative flex h-full flex-col gap-4 p-4 transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:shadow-(--shadow-glow)"
     >
       <a [routerLink]="['/tarjetas', c.id]" class="block rounded-2xl text-[15px] transition duration-500 group-hover:[transform:perspective(900px)_rotateX(6deg)_rotateY(-8deg)]" [attr.aria-label]="'Ver detalle de ' + c.name">
-        <app-card-visual [name]="c.name" [institution]="c.institution" [cardClass]="c.card_class" />
+        <app-card-art [name]="c.name" [institution]="c.institution" [cardClass]="c.card_class" [imageUrl]="c.image_url" [orientation]="c.image_orientation" />
       </a>
       <div class="flex items-start justify-between gap-2">
         <div class="min-w-0">

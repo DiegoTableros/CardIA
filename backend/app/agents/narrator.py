@@ -71,7 +71,7 @@ def _compare_block(d: dict[str, Any]) -> str:
 
 def _search_block(d: dict[str, Any]) -> str:
     if not d["cards"]:
-        return "No encontré tarjetas con esos criterios en la base de CardIA."
+        return "No encontré tarjetas con esos criterios."
     lines = [f"### Encontré {d['count']} tarjetas", ""]
     for c in d["cards"]:
         lines.append(
@@ -88,7 +88,7 @@ def _profiles_block(d: dict[str, Any]) -> str:
         lines.append(f"- **{p['label']}** ({p['count']} tarjetas): {p['tagline']}. Ejemplos: {ex}.")
     lines += [
         "",
-        "Para ubicar tu perfil, usa la sección **Para ti** con tus preferencias (sin datos sensibles).",
+        "Para ubicar tu perfil, responde las preguntas de **Encuentra tu tarjeta** (sin datos personales).",
     ]
     return "\n".join(lines)
 
@@ -97,7 +97,21 @@ def _profile_block(d: dict[str, Any]) -> str:
     return f"**{d['card']}** pertenece al perfil **{d['profile']}**: {d['description']}"
 
 
+def _glossary_block(d: dict[str, Any]) -> str:
+    if not d["terms"]:
+        return "No encontré ese término en el glosario."
+    lines: list[str] = []
+    for t in d["terms"]:
+        lines += [f"### {t['term']}", "", t["definition"]]
+        if t.get("note"):
+            lines += ["", f"*{t['note']}*"]
+        lines.append("")
+    lines.append(f"Fuente: {d['source']}.")
+    return "\n".join(lines)
+
+
 RENDER = {
+    "search_glossary": _glossary_block,
     "get_card_details": _card_block,
     "get_card_fees": _fees_block,
     "compare_cards": _compare_block,

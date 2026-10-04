@@ -20,6 +20,11 @@ def _cards() -> list[CardRecord]:
                 annual_fee=c["annual_fee"],
                 interest_rate=c["interest_rate"],
                 credit_line_min=c["credit_line_min"],
+                institution_url=c.get("institution_url"),
+                image_url=c.get("image_url"),
+                image_orientation=c.get("image_orientation"),
+                cluster=c.get("cluster"),
+                features=c.get("features") or {},
                 fees=[FeeRecord(**f) for f in c["fees"]],
                 benefits=[BenefitRecord(**b) for b in c["benefits"]],
                 **r,
@@ -54,7 +59,18 @@ def test_cards_json_integrity() -> None:
 def test_every_card_gets_a_profile() -> None:
     cards = _cards()
     ids = {assign_card_profile(c).id for c in cards}
-    assert ids == {p.id for p in PROFILES}
+    assert ids == {p.id for p in PROFILES} == set(range(6))
+
+
+def test_cluster_stats_match_report() -> None:
+    """Las cifras de perfilamiento_clusters.docx deben reproducirse desde los datos cargados."""
+    by: dict[int, list[CardRecord]] = {}
+    for c in _cards():
+        by.setdefault(c.cluster, []).append(c)
+    assert {k: len(v) for k, v in by.items()} == {0: 10, 1: 14, 2: 13, 3: 10, 4: 12, 5: 10}
+    cat = {k: round(sum(c.cat for c in v) / len(v), 2) for k, v in by.items()}
+    assert cat == {0: 79.87, 1: 72.35, 2: 70.45, 3: 86.74, 4: 71.74, 5: 42.92}
+    assert round(sum(c.annual_fee for c in by[5]) / 10) == 3276
 
 
 def test_recommend_respects_eligibility_and_contract() -> None:
@@ -63,7 +79,7 @@ def test_recommend_respects_eligibility_and_contract() -> None:
         age=22, income_range="lt_7k", avoid_annual_fee=True, pays_in_full=True, main_use="historial"
     )
     res = recommend(p, cards)
-    assert res.is_stub
+    assert not res.is_stub
     assert 0 < len(res.items) <= 6
     assert res.excluded_count > 0
     for s in res.items:
@@ -75,20 +91,27 @@ def test_recommend_respects_eligibility_and_contract() -> None:
     assert scores == sorted(scores, reverse=True)
 
 
-def test_avoid_annual_fee_prioritizes_zero_fee_cards() -> None:
+def test_avoid_annual_fee_prioritizes_zero_fee_cards_and_warns() -> None:
     cards = _cards()
     p = UserProfileIn(
-        age=27,
-        income_range="15k_30k",
-        credit_score="medium",
-        pays_in_full=True,
+        age=21,
+        income_range="lt_7k",
+        credit_score="none",
+        main_use="historial",
         avoid_annual_fee=True,
-        benefits=["Meses sin intereses"],
+        payment_habit="sometimes",
     )
     res = recommend(p, cards)
-    top3 = res.items[:3]
-    assert all((s.card.annual_fee or 0) == 0 for s in top3)
-    assert res.profile.key == "arranque"
+    assert sum((s.card.annual_fee or 0) == 0 for s in res.items[:3]) >= 2
+    charged = next(s for s in res.items if (s.card.annual_fee or 0) > 0)
+    assert any("anualidad" in w for w in charged.warnings)
+
+
+def test_high_rate_warning_when_user_finances() -> None:
+    p = UserProfileIn(age=40, income_range="15k_30k", credit_score="medium", payment_habit="revolving")
+    res = recommend(p, _cards(), top_k=30)
+    assert any("financiar sale caro" in w for s in res.items for w in s.warnings)
+    assert len(res.profile_fit) == 6
 
 
 def test_recommend_is_deterministic() -> None:
@@ -99,4 +122,6 @@ def test_recommend_is_deterministic() -> None:
     a = [s.card.id for s in recommend(p, cards).items]
     b = [s.card.id for s in recommend(p, cards).items]
     assert a == b
-    assert recommend(p, cards).profile.key == "premium"
+    res = recommend(p, cards)
+    assert res.profile.key in {x.key for x in PROFILES}
+    assert res.profile.id == res.items[0].profile.id  # perfil = cluster de la tarjeta Top 1

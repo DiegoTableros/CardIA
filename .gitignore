@@ -41,3 +41,9 @@ Thumbs.db
 
 # Vercel
 .vercel/
+
+# Temporales de Office
+~$*.docx
+~$*.xlsx
+~$*.pptx
+prompt.docx

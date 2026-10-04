@@ -37,6 +37,25 @@ class Kpis(BaseModel):
     fees: int
 
 
+class ReportBlock(BaseModel):
+    kind: str
+    text: str
+
+
+class ClusterReport(BaseModel):
+    id: int
+    title: str
+    blocks: list[ReportBlock]
+
+
+class ProfileReport(BaseModel):
+    source: str
+    method: list[str]
+    intro: list[ReportBlock]
+    closing: list[ReportBlock]
+    clusters: list[ClusterReport]
+
+
 class BIResponse(BaseModel):
     kpis: Kpis
     by_class: list[LabelCount]
@@ -47,3 +66,4 @@ class BIResponse(BaseModel):
     profiles: list[ProfileStats]
     scatter: list[ScatterPoint]
     model: ModelInfo
+    report: ProfileReport | None = None

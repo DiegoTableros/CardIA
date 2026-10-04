@@ -23,105 +23,123 @@ type SortKey = NonNullable<CardQueryParams['sort']>;
         <h1 class="section-title sm:text-4xl">Explora las tarjetas</h1>
         <p class="mt-2 text-slate-400">Filtra por banco, perfil o beneficio y compara hasta {{ max }} tarjetas.</p>
       </div>
-      <div class="flex items-center gap-2 text-sm text-slate-400" aria-live="polite">
-        <span class="font-display text-2xl font-bold text-white">{{ filtered().length }}</span> de {{ all().length }} tarjetas
-      </div>
     </header>
 
-    <!-- Filtros -->
-    <section class="glass sticky top-18 z-20 mt-6 p-4" aria-label="Filtros">
-      <div class="grid gap-3 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
-        <div class="relative">
+    <div class="mt-6 grid gap-6 lg:grid-cols-[300px_minmax(0,1fr)] lg:items-start">
+      <!-- Filtros (estaticos a la izquierda) -->
+      <aside class="glass p-4 lg:sticky lg:top-20 lg:max-h-[calc(100dvh-6rem)] lg:overflow-y-auto" aria-label="Filtros">
+        <div class="flex items-center justify-between">
+          <h2 class="flex items-center gap-2 text-sm font-semibold text-white"><app-icon name="filter" [size]="15" /> Filtros</h2>
+          @if (hasFilters()) {
+            <button type="button" class="btn-ghost btn-sm -mr-2 text-rose-300" (click)="reset()"><app-icon name="x" [size]="14" /> Limpiar</button>
+          }
+        </div>
+
+        <div class="relative mt-4">
           <label for="q" class="sr-only">Buscar</label>
           <app-icon name="search" [size]="16" class="absolute top-1/2 left-3.5 -translate-y-1/2 text-slate-500" />
-          <input id="q" class="input pl-10" placeholder="Buscar por nombre o banco…" [ngModel]="q()" (ngModelChange)="q.set($event)" />
+          <input id="q" class="input pl-10" placeholder="Nombre o banco…" [ngModel]="q()" (ngModelChange)="q.set($event)" />
         </div>
-        <div>
-          <label for="inst" class="sr-only">Institución</label>
-          <select id="inst" class="input" [ngModel]="institution()" (ngModelChange)="institution.set($event)">
-            <option value="">Todas las instituciones</option>
-            @for (i of facets.value()?.institutions ?? []; track i) {
-              <option [value]="i">{{ i }}</option>
-            }
-          </select>
-        </div>
-        <div>
-          <label for="cls" class="sr-only">Clase</label>
-          <select id="cls" class="input" [ngModel]="cardClass()" (ngModelChange)="cardClass.set($event)">
-            <option value="">Todas las clases</option>
-            @for (c of facets.value()?.classes ?? []; track c) {
-              <option [value]="c">{{ c }}</option>
-            }
-          </select>
-        </div>
-        <div>
-          <label for="sort" class="sr-only">Ordenar</label>
-          <select id="sort" class="input" [ngModel]="sort()" (ngModelChange)="sort.set($event)">
-            <option value="name">Orden: nombre</option>
-            <option value="annual_fee">Menor anualidad</option>
-            <option value="cat">Menor CAT</option>
-            <option value="interest_rate">Menor tasa</option>
-            <option value="benefits">Más beneficios</option>
-            <option value="credit_line_min">Menor línea inicial</option>
-          </select>
-        </div>
-      </div>
-      <div class="mt-3 flex flex-wrap items-center gap-2">
-        <span class="mr-1 text-xs font-semibold tracking-wide text-slate-500 uppercase">Perfil</span>
-        @for (p of facets.value()?.profiles ?? []; track p.id) {
-          <button type="button" class="chip" [class.chip-active]="profileId() === p.id" [attr.aria-pressed]="profileId() === p.id" (click)="toggleProfile(p.id)">
-            <span class="h-2 w-2 rounded-full" [style.background]="p.color"></span>{{ p.label }}
-          </button>
-        }
-        <span class="mx-1 hidden h-5 w-px bg-white/10 sm:block"></span>
-        <button type="button" class="chip" [class.chip-active]="noFee()" [attr.aria-pressed]="noFee()" (click)="noFee.set(!noFee())">
-          <app-icon name="gift" [size]="13" /> Sin anualidad
-        </button>
-        @for (b of facets.value()?.benefit_types ?? []; track b) {
-          <button type="button" class="chip" [class.chip-active]="benefit() === b" [attr.aria-pressed]="benefit() === b" (click)="benefit.set(benefit() === b ? '' : b)">
-            <app-icon [name]="icon(b)" [size]="13" /> {{ b }}
-          </button>
-        }
-        @if (hasFilters()) {
-          <button type="button" class="btn-ghost btn-sm ml-auto text-rose-300" (click)="reset()"><app-icon name="x" [size]="14" /> Limpiar</button>
-        }
-      </div>
-      <div class="mt-3 flex items-center gap-3">
-        <label for="fee" class="text-xs font-semibold tracking-wide whitespace-nowrap text-slate-500 uppercase">Anualidad máx.</label>
-        <input id="fee" type="range" min="0" [max]="feeMax()" step="100" class="w-full accent-brand-500" [ngModel]="maxFee()" (ngModelChange)="maxFee.set(+$event)" />
-        <span class="w-24 text-right text-sm font-semibold text-white tabular-nums">{{ maxFee() >= feeMax() ? 'Cualquiera' : money(maxFee()) }}</span>
-      </div>
-    </section>
 
-    <!-- Resultados -->
-    <section class="mt-6">
-      @if (cards.error()) {
-        <app-error-state (retry)="cards.reload()" />
-      } @else if (cards.isLoading()) {
-        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          @for (i of [1, 2, 3, 4, 5, 6, 7, 8]; track i) {
-            <div class="surface space-y-3 p-4"><div class="skeleton aspect-[1.586]"></div><div class="skeleton h-4 w-2/3"></div><div class="skeleton h-12"></div></div>
-          }
+        <div class="mt-4 space-y-3">
+          <div>
+            <label for="sort" class="label">Ordenar por</label>
+            <select id="sort" class="input" [ngModel]="sort()" (ngModelChange)="sort.set($event)">
+              <option value="name">Nombre</option>
+              <option value="annual_fee">Menor anualidad</option>
+              <option value="cat">Menor CAT</option>
+              <option value="interest_rate">Menor tasa</option>
+              <option value="benefits">Más beneficios</option>
+              <option value="credit_line_min">Menor línea inicial</option>
+            </select>
+          </div>
+          <div>
+            <label for="inst" class="label">Institución</label>
+            <select id="inst" class="input" [ngModel]="institution()" (ngModelChange)="institution.set($event)">
+              <option value="">Todas</option>
+              @for (i of facets.value()?.institutions ?? []; track i) {
+                <option [value]="i">{{ i }}</option>
+              }
+            </select>
+          </div>
+          <div>
+            <label for="cls" class="label">Clase</label>
+            <select id="cls" class="input" [ngModel]="cardClass()" (ngModelChange)="cardClass.set($event)">
+              <option value="">Todas</option>
+              @for (c of facets.value()?.classes ?? []; track c) {
+                <option [value]="c">{{ c }}</option>
+              }
+            </select>
+          </div>
         </div>
-      } @else if (filtered().length === 0) {
-        <app-empty-state title="Ninguna tarjeta coincide" message="Quita algún filtro o amplía la anualidad máxima.">
-          <button type="button" class="btn-secondary btn-sm mt-2" (click)="reset()">Limpiar filtros</button>
-        </app-empty-state>
-      } @else {
-        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          @for (c of filtered(); track c.id; let i = $index) {
-            <app-card-tile
-              class="animate-fade-up"
-              [style.animation-delay]="(i % 12) * 35 + 'ms'"
-              [card]="c"
-              [selectable]="true"
-              [selected]="compare.has(c.id)"
-              (toggle)="onToggle($event)"
-            />
-          }
+
+        <div class="mt-5">
+          <span class="label">Perfil</span>
+          <div class="flex flex-wrap gap-2">
+            @for (p of facets.value()?.profiles ?? []; track p.id) {
+              <button type="button" class="chip" [class.chip-active]="profileId() === p.id" [attr.aria-pressed]="profileId() === p.id" (click)="toggleProfile(p.id)">
+                <span class="h-2 w-2 rounded-full" [style.background]="p.color"></span>{{ p.label }}
+              </button>
+            }
+          </div>
         </div>
-      }
-    </section>
+
+        <div class="mt-5">
+          <span class="label">Beneficios</span>
+          <div class="flex flex-wrap gap-2">
+            <button type="button" class="chip" [class.chip-active]="noFee()" [attr.aria-pressed]="noFee()" (click)="noFee.set(!noFee())">
+              <app-icon name="gift" [size]="13" /> Sin anualidad
+            </button>
+            @for (b of facets.value()?.benefit_types ?? []; track b) {
+              <button type="button" class="chip" [class.chip-active]="benefit() === b" [attr.aria-pressed]="benefit() === b" (click)="benefit.set(benefit() === b ? '' : b)">
+                <app-icon [name]="icon(b)" [size]="13" /> {{ b }}
+              </button>
+            }
+          </div>
+        </div>
+
+        <div class="mt-5">
+          <div class="flex items-center justify-between">
+            <label for="fee" class="label !mb-0">Anualidad máxima</label>
+            <span class="text-sm font-semibold text-white tabular-nums">{{ maxFee() >= feeMax() ? 'Cualquiera' : money(maxFee()) }}</span>
+          </div>
+          <input id="fee" type="range" min="0" [max]="feeMax()" step="100" class="mt-2 w-full accent-brand-500" [ngModel]="maxFee()" (ngModelChange)="maxFee.set(+$event)" />
+        </div>
+      </aside>
+
+      <!-- Resultados: dos por fila -->
+      <section aria-label="Tarjetas">
+        <p class="mb-4 text-sm text-slate-400" aria-live="polite">
+          <span class="font-semibold text-white">{{ filtered().length }}</span> {{ filtered().length === 1 ? 'resultado' : 'resultados' }}
+        </p>
+        @if (cards.error()) {
+          <app-error-state (retry)="cards.reload()" />
+        } @else if (cards.isLoading()) {
+          <div class="grid gap-5 sm:grid-cols-2">
+            @for (i of [1, 2, 3, 4]; track i) {
+              <div class="surface space-y-3 p-4"><div class="skeleton aspect-[1.586]"></div><div class="skeleton h-4 w-2/3"></div><div class="skeleton h-12"></div></div>
+            }
+          </div>
+        } @else if (filtered().length === 0) {
+          <app-empty-state title="Ninguna tarjeta coincide" message="Quita algún filtro o amplía la anualidad máxima.">
+            <button type="button" class="btn-secondary btn-sm mt-2" (click)="reset()">Limpiar filtros</button>
+          </app-empty-state>
+        } @else {
+          <div class="grid gap-5 sm:grid-cols-2">
+            @for (c of filtered(); track c.id; let i = $index) {
+              <app-card-tile
+                class="animate-fade-up"
+                [style.animation-delay]="(i % 8) * 40 + 'ms'"
+                [card]="c"
+                [selectable]="true"
+                [selected]="compare.has(c.id)"
+                (toggle)="onToggle($event)"
+              />
+            }
+          </div>
+        }
+      </section>
+    </div>
 
     <app-disclaimer class="mt-10 block" />
 

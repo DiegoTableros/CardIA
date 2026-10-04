@@ -5,32 +5,30 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { ApiService } from '../../core/api/api.service';
 import type { RecommendResponse, UserProfileIn } from '../../core/api/types';
 import { BENEFIT_ICON, money, pct } from '../../core/format';
+import { CardArt } from '../../shared/card-art';
 import { CardVisual } from '../../shared/card-visual';
 import { CompareStore } from '../../shared/compare-store';
 import { Icon } from '../../shared/icon';
 import { Disclaimer } from '../../shared/states';
-import { ScoreRing } from '../../viz/score-ring';
 
 type Income = UserProfileIn['income_range'];
 type Use = NonNullable<UserProfileIn['main_use']>;
 type Score = NonNullable<UserProfileIn['credit_score']>;
 type Benefit = NonNullable<UserProfileIn['benefits']>[number];
+type Habit = NonNullable<UserProfileIn['payment_habit']>;
 
 const PROFILE_ICON: Record<string, string> = { arranque: 'sprout', cotidiana: 'cart', tasa_baja: 'percent', premium: 'plane' };
 const STORAGE = 'cardia.recommend.form';
 
 @Component({
   selector: 'app-recommend',
-  imports: [FormsModule, RouterLink, CardVisual, Icon, Disclaimer, ScoreRing],
+  imports: [FormsModule, RouterLink, CardArt, CardVisual, Icon, Disclaimer],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <header class="max-w-3xl">
-      <p class="section-eyebrow">Para ti</p>
+      <p class="section-eyebrow">Encuentra tu tarjeta</p>
       <h1 class="section-title sm:text-4xl">¿Qué tarjeta va con tu perfil?</h1>
-      <p class="mt-2 text-slate-400">
-        Responde 4 preguntas rápidas. Solo usamos rangos y preferencias: <strong class="text-slate-200">nunca</strong> pedimos nombre, RFC, CURP ni datos
-        bancarios.
-      </p>
+      <p class="mt-2 text-slate-400">Responde 4 preguntas rápidas sobre ti (nunca te pediremos datos personales).</p>
     </header>
 
     <div class="mt-8 grid gap-8 lg:grid-cols-[minmax(0,420px)_1fr]">
@@ -104,6 +102,16 @@ const STORAGE = 'cardia.recommend.form';
                   <option [ngValue]="48">Más de 3 años</option>
                 </select>
               </div>
+              <div>
+                <label for="residence" class="label">Tiempo viviendo en tu domicilio actual</label>
+                <select id="residence" name="residence" class="input" [ngModel]="residence()" (ngModelChange)="residence.set($event)">
+                  <option [ngValue]="null">Prefiero no decir</option>
+                  <option [ngValue]="3">Menos de 6 meses</option>
+                  <option [ngValue]="9">6 a 12 meses</option>
+                  <option [ngValue]="24">1 a 3 años</option>
+                  <option [ngValue]="48">Más de 3 años</option>
+                </select>
+              </div>
             </fieldset>
           }
           @case (2) {
@@ -124,6 +132,16 @@ const STORAGE = 'cardia.recommend.form';
                   </button>
                 }
               </div>
+              <div>
+                <span class="label" id="habit-l">¿Cómo pagas normalmente tu tarjeta?</span>
+                <div class="grid gap-2" role="radiogroup" aria-labelledby="habit-l">
+                  @for (o of habits; track o.v) {
+                    <button type="button" role="radio" class="chip justify-between py-2.5" [class.chip-active]="habit() === o.v" [attr.aria-checked]="habit() === o.v" (click)="habit.set(o.v)">
+                      <span>{{ o.l }}</span><span class="text-slate-500">{{ o.h }}</span>
+                    </button>
+                  }
+                </div>
+              </div>
             </fieldset>
           }
           @case (3) {
@@ -131,10 +149,10 @@ const STORAGE = 'cardia.recommend.form';
               <legend class="text-lg font-semibold text-white">Tus preferencias</legend>
               <label class="flex cursor-pointer items-center justify-between gap-4 rounded-xl border border-white/8 bg-white/3 p-3.5">
                 <span>
-                  <span class="block text-sm font-medium text-white">¿Pagas el total cada mes?</span>
-                  <span class="block text-xs text-slate-400">Ser «totalero» evita pagar intereses</span>
+                  <span class="block text-sm font-medium text-white">Quiero evitar comisiones altas</span>
+                  <span class="block text-xs text-slate-400">Cuidamos aclaraciones, reposiciones y penalizaciones</span>
                 </span>
-                <input type="checkbox" name="full" class="peer sr-only" [ngModel]="paysInFull()" (ngModelChange)="paysInFull.set($event)" />
+                <input type="checkbox" name="nofees" class="peer sr-only" [ngModel]="avoidFees()" (ngModelChange)="avoidFees.set($event)" />
                 <span class="relative h-6 w-11 shrink-0 rounded-full bg-white/15 transition peer-checked:bg-emerald-500 peer-focus-visible:outline-2 peer-focus-visible:outline-accent-400 after:absolute after:top-0.5 after:left-0.5 after:h-5 after:w-5 after:rounded-full after:bg-white after:transition peer-checked:after:translate-x-5"></span>
               </label>
               <label class="flex cursor-pointer items-center justify-between gap-4 rounded-xl border border-white/8 bg-white/3 p-3.5">
@@ -146,7 +164,7 @@ const STORAGE = 'cardia.recommend.form';
                 <span class="relative h-6 w-11 shrink-0 rounded-full bg-white/15 transition peer-checked:bg-emerald-500 peer-focus-visible:outline-2 peer-focus-visible:outline-accent-400 after:absolute after:top-0.5 after:left-0.5 after:h-5 after:w-5 after:rounded-full after:bg-white after:transition peer-checked:after:translate-x-5"></span>
               </label>
               <div>
-                <span class="label">Beneficios que te interesan</span>
+                <span class="label">Beneficios que te interesan (elige uno o varios)</span>
                 <div class="flex flex-wrap gap-2">
                   @for (b of benefitOptions; track b) {
                     <button type="button" class="chip" [class.chip-active]="benefits().includes(b)" [attr.aria-pressed]="benefits().includes(b)" (click)="toggleBenefit(b)">
@@ -195,16 +213,13 @@ const STORAGE = 'cardia.recommend.form';
             <div class="pointer-events-none absolute -top-16 -right-16 h-56 w-56 rounded-full opacity-40 blur-3xl" [style.background]="r.profile.color"></div>
             <div class="relative flex flex-wrap items-start gap-4">
               <span class="grid h-14 w-14 place-items-center rounded-2xl" [style.background]="r.profile.color + '33'" [style.color]="r.profile.color">
-                <app-icon [name]="profileIcon(r.profile.key)" [size]="28" />
+                <app-icon [name]="r.profile.icon || 'layers'" [size]="28" />
               </span>
               <div class="min-w-0 flex-1">
                 <p class="text-xs font-bold tracking-[0.2em] uppercase" [style.color]="r.profile.color">Tu perfil</p>
                 <h2 class="mt-1 text-3xl font-bold">{{ r.profile.label }}</h2>
                 <p class="mt-1 text-slate-300">{{ r.profile.tagline }}</p>
               </div>
-              @if (r.model.is_stub) {
-                <span class="badge bg-amber-400/15 text-amber-300" title="{{ r.model.description }}">Modelo preliminar {{ r.model.version }}</span>
-              }
             </div>
             <p class="relative mt-4 text-sm text-slate-300">{{ r.profile_reason }}</p>
             <p class="relative mt-2 text-sm text-slate-400">{{ r.profile.description }}</p>
@@ -228,14 +243,14 @@ const STORAGE = 'cardia.recommend.form';
               <li class="surface grid gap-4 p-4 animate-fade-up sm:grid-cols-[180px_1fr_auto] sm:items-center" [style.animation-delay]="i * 70 + 'ms'">
                 <a [routerLink]="['/tarjetas', rec.card.id]" class="relative block text-[12px]">
                   <span class="absolute -top-2 -left-2 z-10 grid h-7 w-7 place-items-center rounded-full bg-gradient-to-br from-brand-500 to-hot-500 text-xs font-bold text-white shadow-lg">{{ i + 1 }}</span>
-                  <app-card-visual [name]="rec.card.name" [institution]="rec.card.institution" [cardClass]="rec.card.card_class" />
+                  <app-card-art [name]="rec.card.name" [institution]="rec.card.institution" [cardClass]="rec.card.card_class" [imageUrl]="rec.card.image_url" [orientation]="rec.card.image_orientation" [padded]="false" />
                 </a>
                 <div class="min-w-0">
                   <div class="flex flex-wrap items-center gap-2">
                     <a [routerLink]="['/tarjetas', rec.card.id]" class="font-semibold text-white hover:text-brand-300">{{ rec.card.name }}</a>
                     <span class="badge" [class]="eligClass(rec.eligibility)">{{ eligLabel(rec.eligibility) }}</span>
                   </div>
-                  <p class="text-xs text-slate-400">{{ rec.card.institution }} · {{ rec.card.card_class }} · Perfil {{ rec.card.profile.label }}</p>
+                  <p class="text-xs text-slate-400">{{ rec.card.institution }} · {{ rec.card.card_class }}</p>
                   <p class="mt-2 text-xs text-slate-300">
                     Anualidad <strong class="text-white">{{ rec.card.annual_fee ? money(rec.card.annual_fee) : '$0' }}</strong> · CAT
                     <strong class="text-white">{{ pct(rec.card.cat) }}</strong> · Tasa <strong class="text-white">{{ pct(rec.card.interest_rate) }}</strong>
@@ -250,8 +265,7 @@ const STORAGE = 'cardia.recommend.form';
                   </ul>
                 </div>
                 <div class="flex items-center gap-3 sm:flex-col">
-                  <app-score-ring [value]="rec.score" [color]="r.profile.color" />
-                  <span class="text-[10px] tracking-wide text-slate-500 uppercase">Afinidad</span>
+                  <span class="rounded-xl px-3 py-1.5 font-display text-lg font-bold text-white" [style.background]="i === 0 ? r.profile.color : r.profile.color + '40'">Top {{ i + 1 }}</span>
                   <button type="button" class="btn-ghost btn-sm" (click)="compare.toggle(rec.card.id)" [attr.aria-pressed]="compare.has(rec.card.id)">
                     <app-icon [name]="compare.has(rec.card.id) ? 'check' : 'compare'" [size]="14" />
                   </button>
@@ -262,7 +276,7 @@ const STORAGE = 'cardia.recommend.form';
 
           <!-- Supuestos -->
           <details class="surface mt-6 p-5" open>
-            <summary class="cursor-pointer font-semibold text-white">Supuestos de esta recomendación</summary>
+            <summary class="cursor-pointer font-semibold text-white">Tus respuestas</summary>
             <ul class="mt-3 space-y-1.5 text-sm text-slate-400">
               @for (a of r.assumptions; track a) {
                 <li class="flex gap-2"><app-icon name="info" [size]="14" class="mt-0.5 text-accent-400" /> {{ a }}</li>
@@ -273,7 +287,7 @@ const STORAGE = 'cardia.recommend.form';
             <a routerLink="/comparar" class="btn-secondary btn-sm"><app-icon name="compare" [size]="14" /> Comparar seleccionadas ({{ compare.count() }})</a>
             <button type="button" class="btn-secondary btn-sm" (click)="askProfile(r.profile.label)"><app-icon name="chat" [size]="14" /> Preguntar sobre mi perfil</button>
           </div>
-          <app-disclaimer class="mt-6 block" [text]="r.disclaimer" />
+          <app-disclaimer class="mt-6 block" />
         } @else {
           <div class="surface flex h-full min-h-80 flex-col items-center justify-center gap-4 border-dashed p-8 text-center">
             <div class="relative h-36 w-56">
@@ -281,7 +295,7 @@ const STORAGE = 'cardia.recommend.form';
               <div class="animate-float absolute right-0 bottom-0 w-40 text-[10px] [--r:8deg]"><app-card-visual name="Tu tarjeta" institution="CardIA" cardClass="Platino" /></div>
             </div>
             <p class="text-lg font-semibold text-white">Tus recomendaciones aparecerán aquí</p>
-            <p class="max-w-sm text-sm text-slate-400">Completa los pasos y te diremos tu perfil y las tarjetas con mayor afinidad, con todos los supuestos a la vista.</p>
+            <p class="max-w-sm text-sm text-slate-400">Completa los pasos y te diremos tu perfil y las tarjetas con mayor afinidad para ti.</p>
           </div>
         }
       </section>
@@ -320,6 +334,11 @@ export class RecommendPage {
     { v: 'transferir_saldo', l: 'Pasar una deuda', i: 'swap' },
     { v: 'emergencias', l: 'Emergencias', i: 'shield' },
   ];
+  protected readonly habits: { v: Habit; l: string; h: string }[] = [
+    { v: 'full', l: 'Pago el total cada mes', h: 'Totalero' },
+    { v: 'sometimes', l: 'A veces financio', h: 'Pago más del mínimo' },
+    { v: 'revolving', l: 'Suelo financiar', h: 'Pago parcial o el mínimo' },
+  ];
   protected readonly benefitOptions: Benefit[] = ['Meses sin intereses', 'Puntos', 'Descuentos', 'Preventas', 'Transferencia de Saldo', 'Seguros'];
 
   private readonly saved = this.read();
@@ -328,7 +347,9 @@ export class RecommendPage {
   protected readonly score = signal<Score>(this.saved.credit_score ?? 'unknown');
   protected readonly seniority = signal<number | null>(this.saved.work_seniority_months ?? null);
   protected readonly use = signal<Use>(this.saved.main_use ?? 'diario');
-  protected readonly paysInFull = signal(this.saved.pays_in_full ?? true);
+  protected readonly habit = signal<Habit>(this.saved.payment_habit ?? 'full');
+  protected readonly residence = signal<number | null>(this.saved.residence_months ?? null);
+  protected readonly avoidFees = signal(this.saved.avoid_fees ?? false);
   protected readonly avoidFee = signal(this.saved.avoid_annual_fee ?? false);
   protected readonly benefits = signal<Benefit[]>(this.saved.benefits ?? []);
 
@@ -342,8 +363,11 @@ export class RecommendPage {
     credit_score: this.score(),
     work_seniority_months: this.seniority(),
     main_use: this.use(),
-    pays_in_full: this.paysInFull(),
+    pays_in_full: this.habit() === 'full',
+    payment_habit: this.habit(),
+    residence_months: this.residence(),
     avoid_annual_fee: this.avoidFee(),
+    avoid_fees: this.avoidFees(),
     benefits: this.benefits(),
   }));
 

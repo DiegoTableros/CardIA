@@ -33,6 +33,11 @@ class CardRecord:
     work_seniority_min: int | None = None
     residence_seniority_min: int | None = None
     monthly_income_min: float | None = None
+    institution_url: str | None = None
+    image_url: str | None = None
+    image_orientation: str | None = None
+    cluster: int | None = None
+    features: dict[str, float | None] = field(default_factory=dict)
     fees: list[FeeRecord] = field(default_factory=list)
     benefits: list[BenefitRecord] = field(default_factory=list)
 

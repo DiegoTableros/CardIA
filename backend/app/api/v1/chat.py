@@ -4,10 +4,25 @@ from fastapi import APIRouter, Query
 
 from app.agents import orchestrator
 from app.api.deps import CardsDep, CurrentUser, SessionDep
-from app.schemas.chat import ChatPlanResponse, ChatRequest, ChatRunResponse
+from app.domain.glossary import SOURCE as GLOSSARY_SOURCE
+from app.domain.glossary import featured_terms, load_terms
+from app.schemas.chat import ChatPlanResponse, ChatRequest, ChatRunResponse, ChatTopicsResponse, TopicOut
 from app.services import audit
 
 router = APIRouter(prefix="/chat", tags=["chat"])
+
+
+@router.get("/topics", response_model=ChatTopicsResponse)
+async def topics(_: CurrentUser) -> ChatTopicsResponse:
+    """Temas para aprender (glosario oficial de CONDUSEF)."""
+    return ChatTopicsResponse(
+        featured=[
+            TopicOut(term=t.term, category=t.category, question=f"¿Qué significa «{t.term}»?")
+            for t in featured_terms()
+        ],
+        total_terms=len(load_terms()),
+        source=GLOSSARY_SOURCE,
+    )
 
 
 @router.post("/plan", response_model=ChatPlanResponse)

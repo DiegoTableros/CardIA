@@ -1,10 +1,11 @@
 from app.core.disclaimer import DISCLAIMER
 from app.domain.models import CardRecord
-from app.ml.profiles import FEATURES, IS_STUB, MODEL_VERSION, Profile, assign_card_profile
+from app.ml.profiles import FEATURES, IS_STUB, MODEL_DESCRIPTION, MODEL_VERSION, Profile, assign_card_profile
 from app.ml.recommender import RecommendResult, recommend
 from app.schemas.recommend import (
     ModelInfo,
     ProfileOut,
+    ProfileScore,
     Recommendation,
     RecommendResponse,
     UserProfileIn,
@@ -17,10 +18,7 @@ def model_info() -> ModelInfo:
         version=MODEL_VERSION,
         is_stub=IS_STUB,
         features=list(FEATURES),
-        description=(
-            "Perfiles preliminares por reglas. Se reemplazarán por el pipeline de clustering "
-            "no supervisado entrenado en el notebook del proyecto."
-        ),
+        description=MODEL_DESCRIPTION,
     )
 
 
@@ -30,6 +28,7 @@ def profile_out(profile: Profile, cards: list[CardRecord]) -> ProfileOut:
         id=profile.id,
         key=profile.key,
         label=profile.label,
+        analytic_name=profile.analytic_name,
         tagline=profile.tagline,
         description=profile.description,
         color=profile.color,
@@ -44,6 +43,10 @@ def run_recommendation(payload: UserProfileIn, cards: list[CardRecord]) -> Recom
     return RecommendResponse(
         profile=profile_out(result.profile, cards),
         profile_reason=result.profile_reason,
+        profile_scores=[
+            ProfileScore(id=p.id, label=p.label, color=p.color, score=round(s * 100, 1))
+            for p, s in result.profile_fit
+        ],
         recommendations=[
             Recommendation(
                 card=to_summary(s.card),

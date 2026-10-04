@@ -33,6 +33,18 @@ class ChatPlanResponse(BaseModel):
     mode: Literal["rules", "llm"]
 
 
+class TopicOut(BaseModel):
+    term: str
+    category: str
+    question: str
+
+
+class ChatTopicsResponse(BaseModel):
+    featured: list[TopicOut]
+    total_terms: int
+    source: str
+
+
 class ChatRunResponse(BaseModel):
     run_id: str
     session_id: str

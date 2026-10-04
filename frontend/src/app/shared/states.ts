@@ -16,7 +16,7 @@ import { Icon } from './icon';
 })
 export class ErrorState {
   readonly title = input('Algo salió mal');
-  readonly message = input('No pudimos cargar la información. Verifica que el backend esté corriendo.');
+  readonly message = input('No pudimos cargar la información. Intenta de nuevo en unos segundos.');
   readonly retry = output<void>();
 }
 
@@ -39,6 +39,10 @@ export class EmptyState {
   readonly message = input('Prueba con otros filtros.');
 }
 
+export const DISCLAIMER_TEXT =
+  'CardIA no está afiliada a ninguna institución financiera y no garantiza la aprobación de ningún crédito. Verifica condiciones vigentes con cada institución.';
+
+/** Aviso unico para todas las paginas (mismo texto que el backend). */
 @Component({
   selector: 'app-disclaimer',
   imports: [Icon],
@@ -46,12 +50,10 @@ export class EmptyState {
   template: `
     <aside class="flex gap-3 rounded-xl border border-amber-400/20 bg-amber-400/5 p-3.5 text-xs leading-relaxed text-amber-100/80">
       <app-icon name="info" [size]="16" class="mt-0.5 text-amber-300" />
-      <p><strong class="text-amber-200">Herramienta educativa.</strong> {{ text() }}</p>
+      <p><strong class="text-amber-200">Herramienta de educación financiera.</strong> {{ text }}</p>
     </aside>
   `,
 })
 export class Disclaimer {
-  readonly text = input(
-    'CardIA no está afiliada a ninguna institución financiera, no es asesoría financiera y no garantiza la aprobación de ningún crédito. Verifica condiciones vigentes con cada institución.',
-  );
+  protected readonly text = DISCLAIMER_TEXT;
 }

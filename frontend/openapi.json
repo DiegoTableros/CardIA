@@ -475,6 +475,33 @@
     ]
    }
   },
+  "/api/v1/chat/topics": {
+   "get": {
+    "tags": [
+     "chat"
+    ],
+    "summary": "Topics",
+    "description": "Temas para aprender (glosario oficial de CONDUSEF).",
+    "operationId": "topics_api_v1_chat_topics_get",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ChatTopicsResponse"
+        }
+       }
+      }
+     }
+    },
+    "security": [
+     {
+      "HTTPBearer": []
+     }
+    ]
+   }
+  },
   "/api/v1/chat/plan": {
    "post": {
     "tags": [
@@ -694,6 +721,7 @@
      "bi"
     ],
     "summary": "Bi",
+    "description": "BI de perfiles: solo administradores.",
     "operationId": "bi_api_v1_bi_get",
     "responses": {
      "200": {
@@ -1144,6 +1172,16 @@
      },
      "model": {
       "$ref": "#/components/schemas/ModelInfo"
+     },
+     "report": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/ProfileReport"
+       },
+       {
+        "type": "null"
+       }
+      ]
      }
     },
     "type": "object",
@@ -1251,6 +1289,32 @@
       ],
       "title": "Monthly Income Min"
      },
+     "image_url": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Image Url"
+     },
+     "image_orientation": {
+      "anyOf": [
+       {
+        "type": "string",
+        "enum": [
+         "portrait",
+         "landscape"
+        ]
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Image Orientation"
+     },
      "benefit_types": {
       "items": {
        "type": "string"
@@ -1263,6 +1327,17 @@
      },
      "profile": {
       "$ref": "#/components/schemas/ProfileTag"
+     },
+     "institution_url": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Institution Url"
      },
      "requirements": {
       "$ref": "#/components/schemas/Requirements"
@@ -1452,6 +1527,32 @@
        }
       ],
       "title": "Monthly Income Min"
+     },
+     "image_url": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Image Url"
+     },
+     "image_orientation": {
+      "anyOf": [
+       {
+        "type": "string",
+        "enum": [
+         "portrait",
+         "landscape"
+        ]
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Image Orientation"
      },
      "benefit_types": {
       "items": {
@@ -1681,6 +1782,58 @@
      "steps"
     ],
     "title": "ChatRunSummary"
+   },
+   "ChatTopicsResponse": {
+    "properties": {
+     "featured": {
+      "items": {
+       "$ref": "#/components/schemas/TopicOut"
+      },
+      "type": "array",
+      "title": "Featured"
+     },
+     "total_terms": {
+      "type": "integer",
+      "title": "Total Terms"
+     },
+     "source": {
+      "type": "string",
+      "title": "Source"
+     }
+    },
+    "type": "object",
+    "required": [
+     "featured",
+     "total_terms",
+     "source"
+    ],
+    "title": "ChatTopicsResponse"
+   },
+   "ClusterReport": {
+    "properties": {
+     "id": {
+      "type": "integer",
+      "title": "Id"
+     },
+     "title": {
+      "type": "string",
+      "title": "Title"
+     },
+     "blocks": {
+      "items": {
+       "$ref": "#/components/schemas/ReportBlock"
+      },
+      "type": "array",
+      "title": "Blocks"
+     }
+    },
+    "type": "object",
+    "required": [
+     "id",
+     "title",
+     "blocks"
+    ],
+    "title": "ClusterReport"
    },
    "CompareMetric": {
     "properties": {
@@ -2125,6 +2278,11 @@
       "type": "string",
       "title": "Label"
      },
+     "analytic_name": {
+      "type": "string",
+      "title": "Analytic Name",
+      "default": ""
+     },
      "tagline": {
       "type": "string",
       "title": "Tagline"
@@ -2166,6 +2324,81 @@
      "traits"
     ],
     "title": "ProfileOut"
+   },
+   "ProfileReport": {
+    "properties": {
+     "source": {
+      "type": "string",
+      "title": "Source"
+     },
+     "method": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Method"
+     },
+     "intro": {
+      "items": {
+       "$ref": "#/components/schemas/ReportBlock"
+      },
+      "type": "array",
+      "title": "Intro"
+     },
+     "closing": {
+      "items": {
+       "$ref": "#/components/schemas/ReportBlock"
+      },
+      "type": "array",
+      "title": "Closing"
+     },
+     "clusters": {
+      "items": {
+       "$ref": "#/components/schemas/ClusterReport"
+      },
+      "type": "array",
+      "title": "Clusters"
+     }
+    },
+    "type": "object",
+    "required": [
+     "source",
+     "method",
+     "intro",
+     "closing",
+     "clusters"
+    ],
+    "title": "ProfileReport"
+   },
+   "ProfileScore": {
+    "properties": {
+     "id": {
+      "type": "integer",
+      "title": "Id"
+     },
+     "label": {
+      "type": "string",
+      "title": "Label"
+     },
+     "color": {
+      "type": "string",
+      "title": "Color"
+     },
+     "score": {
+      "type": "number",
+      "maximum": 100.0,
+      "minimum": 0.0,
+      "title": "Score"
+     }
+    },
+    "type": "object",
+    "required": [
+     "id",
+     "label",
+     "color",
+     "score"
+    ],
+    "title": "ProfileScore"
    },
    "ProfileStats": {
     "properties": {
@@ -2224,6 +2457,16 @@
      "color": {
       "type": "string",
       "title": "Color"
+     },
+     "icon": {
+      "type": "string",
+      "title": "Icon",
+      "default": ""
+     },
+     "tagline": {
+      "type": "string",
+      "title": "Tagline",
+      "default": ""
      }
     },
     "type": "object",
@@ -2263,6 +2506,13 @@
       "type": "string",
       "title": "Profile Reason"
      },
+     "profile_scores": {
+      "items": {
+       "$ref": "#/components/schemas/ProfileScore"
+      },
+      "type": "array",
+      "title": "Profile Scores"
+     },
      "recommendations": {
       "items": {
        "$ref": "#/components/schemas/Recommendation"
@@ -2293,6 +2543,7 @@
     "required": [
      "profile",
      "profile_reason",
+     "profile_scores",
      "recommendations",
      "excluded_count",
      "assumptions",
@@ -2345,6 +2596,24 @@
      "warnings"
     ],
     "title": "Recommendation"
+   },
+   "ReportBlock": {
+    "properties": {
+     "kind": {
+      "type": "string",
+      "title": "Kind"
+     },
+     "text": {
+      "type": "string",
+      "title": "Text"
+     }
+    },
+    "type": "object",
+    "required": [
+     "kind",
+     "text"
+    ],
+    "title": "ReportBlock"
    },
    "Requirements": {
     "properties": {
@@ -2484,6 +2753,29 @@
     ],
     "title": "TokenResponse"
    },
+   "TopicOut": {
+    "properties": {
+     "term": {
+      "type": "string",
+      "title": "Term"
+     },
+     "category": {
+      "type": "string",
+      "title": "Category"
+     },
+     "question": {
+      "type": "string",
+      "title": "Question"
+     }
+    },
+    "type": "object",
+    "required": [
+     "term",
+     "category",
+     "question"
+    ],
+    "title": "TopicOut"
+   },
    "UserOut": {
     "properties": {
      "id": {
@@ -2600,7 +2892,44 @@
      "pays_in_full": {
       "type": "boolean",
       "title": "Pays In Full",
-      "description": "Totalero: paga el total cada mes",
+      "description": "Obsoleto: usar payment_habit",
+      "default": false
+     },
+     "payment_habit": {
+      "anyOf": [
+       {
+        "type": "string",
+        "enum": [
+         "full",
+         "sometimes",
+         "revolving"
+        ]
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Payment Habit",
+      "description": "full=totalero, sometimes=a veces financia, revolving=suele financiar"
+     },
+     "residence_months": {
+      "anyOf": [
+       {
+        "type": "integer",
+        "maximum": 600.0,
+        "minimum": 0.0
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Residence Months",
+      "description": "Antiguedad en el domicilio"
+     },
+     "avoid_fees": {
+      "type": "boolean",
+      "title": "Avoid Fees",
+      "description": "Quiere evitar comisiones y penalizaciones altas",
       "default": false
      },
      "benefits": {

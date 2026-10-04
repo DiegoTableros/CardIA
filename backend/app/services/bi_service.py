@@ -1,9 +1,11 @@
+import json
 from collections import Counter
 from statistics import fmean
 
+from app.core.config import DATA_DIR
 from app.domain.models import CardRecord
 from app.ml.profiles import PROFILES, assign_card_profile
-from app.schemas.bi import BIResponse, Kpis, LabelCount, ProfileStats, ScatterPoint
+from app.schemas.bi import BIResponse, Kpis, LabelCount, ProfileReport, ProfileStats, ScatterPoint
 from app.services.recommend_service import model_info, profile_out
 
 FEE_TYPE_LABEL = {"obligatoria": "Obligatoria", "por_evento": "Por evento", "penalizacion": "Penalización"}
@@ -23,6 +25,11 @@ def _avg(values: list[float | None]) -> float:
 
 def _counts(counter: Counter[str]) -> list[LabelCount]:
     return [LabelCount(label=k, count=v) for k, v in counter.most_common()]
+
+
+def _report() -> ProfileReport | None:
+    path = DATA_DIR / "cluster_report.json"
+    return ProfileReport(**json.loads(path.read_text(encoding="utf-8"))) if path.exists() else None
 
 
 def build_bi(cards: list[CardRecord]) -> BIResponse:
@@ -77,4 +84,5 @@ def build_bi(cards: list[CardRecord]) -> BIResponse:
             for c in cards
         ],
         model=model_info(),
+        report=_report(),
     )

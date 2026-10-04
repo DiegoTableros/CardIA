@@ -1,10 +1,11 @@
 # CardIA - comandos del monorepo. Recetas compatibles con cmd (Windows) y sh.
 
-.PHONY: help setup setup-backend setup-frontend data seed dev dev-backend dev-frontend test test-backend test-frontend lint format contracts build
+.PHONY: help setup setup-backend setup-frontend images data seed dev dev-backend dev-frontend test test-backend test-frontend lint format contracts build
 
 help:
 	@echo setup      - instala dependencias (uv + npm)
-	@echo data       - Excel -> backend/data/cards.json
+	@echo images     - imagenes_tarjetas/ -> frontend/public/cards/ID.webp
+	@echo data       - Excel -> backend/data/cards.json (correr despues de images)
 	@echo seed       - crea esquema y siembra SQLite
 	@echo dev        - backend :8000 + frontend :4200
 	@echo test       - pytest + vitest
@@ -19,6 +20,9 @@ setup-backend:
 
 setup-frontend:
 	cd frontend && npm install
+
+images:
+	cd backend && uv run python -m scripts.build_images
 
 data:
 	cd backend && uv run python -m scripts.build_data

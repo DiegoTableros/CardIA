@@ -22,6 +22,7 @@ from app.domain.normalize import (
 
 SOURCE = REPO_DIR / "datos_consolidados" / "tarjetas.xlsx"
 OUTPUT = DATA_DIR / "cards.json"
+IMAGES = DATA_DIR / "images.json"  # generado por scripts.build_images
 
 
 def read_sheet(wb, name: str) -> list[dict[str, object]]:
@@ -46,6 +47,17 @@ def build() -> dict[str, object]:
 
     wb = load_workbook(SOURCE, read_only=True, data_only=True)
     cards_raw = read_sheet(wb, "Tarjetas")
+    institutions = {
+        str(i["institucion"]).strip(): (str(i["url"]).strip() if i.get("url") else None)
+        for i in read_sheet(wb, "Instituciones")
+        if i.get("institucion")
+    }
+    images = json.loads(IMAGES.read_text(encoding="utf-8")) if IMAGES.exists() else {}
+    # Variables de ingenieria del modelo de clustering (beneficios y comisiones), por ID_Tarjeta.
+    eng = {
+        card_id(r["id_tarjeta"]): {k: to_float(v) for k, v in r.items() if k.startswith(("benef_", "com_"))}
+        for r in read_sheet(wb, "dataset_tarjetas_ingenieria")
+    }
     reqs = {card_id(r["id_tarjeta"]): r for r in read_sheet(wb, "Requisitos")}
     fees: dict[str, list[dict[str, object]]] = {}
     for f in read_sheet(wb, "Comisiones"):
@@ -68,11 +80,18 @@ def build() -> dict[str, object]:
     for c in cards_raw:
         cid = card_id(c["id_tarjeta"])
         r = reqs.get(cid, {})
+        institution = str(c["institucion"]).strip()
+        image = images.get(cid) or {}
         cards.append(
             {
                 "id": cid,
                 "name": str(c["nombre_de_la_tarjeta"]).strip(),
-                "institution": str(c["institucion"]).strip(),
+                "institution": institution,
+                "institution_url": institutions.get(institution),
+                "image_url": image.get("file"),
+                "image_orientation": image.get("orientation"),
+                "cluster": to_int(c.get("cluster")),
+                "features": eng.get(cid, {}),
                 "card_class": str(c["clase"]).strip(),
                 "cat": to_float(c["cat_publicidad"]),
                 "annual_fee": to_float(c["anualidad"]),
@@ -105,7 +124,16 @@ def main() -> None:
     OUTPUT.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
     n_fees = sum(len(c["fees"]) for c in data["cards"])
     n_ben = sum(len(c["benefits"]) for c in data["cards"])
-    print(f"OK {data['count']} tarjetas, {n_fees} comisiones, {n_ben} beneficios -> {OUTPUT}")
+    n_img = sum(1 for c in data["cards"] if c["image_url"])
+    no_cluster = [c["id"] for c in data["cards"] if c["cluster"] is None]
+    if no_cluster:
+        print(f"ATENCION: tarjetas sin Cluster: {no_cluster}")
+    no_url = sorted({c["institution"] for c in data["cards"] if not c["institution_url"]})
+    print(
+        f"OK {data['count']} tarjetas, {n_fees} comisiones, {n_ben} beneficios, {n_img} imagenes -> {OUTPUT}"
+    )
+    if no_url:
+        print(f"Instituciones sin URL: {no_url}")
 
 
 if __name__ == "__main__":

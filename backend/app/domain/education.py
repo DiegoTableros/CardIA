@@ -20,7 +20,7 @@ TOPICS: tuple[Topic, ...] = (
     Topic(
         id="que_es_tdc",
         title="¿Qué es y cómo funciona una tarjeta de crédito?",
-        keywords=("que es", "como funciona", "funciona", "tarjeta de credito", "tdc", "credito revolvente"),
+        keywords=("como funciona", "como funcionan", "que es una tarjeta", "tdc", "credito revolvente"),
         summary="Es un préstamo revolvente: el banco te presta hasta tu línea de crédito y tú lo devuelves.",
         body=(
             "Una **tarjeta de crédito (TDC)** es un **crédito revolvente**: el banco te autoriza un límite "
@@ -105,8 +105,7 @@ TOPICS: tuple[Topic, ...] = (
             "**para fines informativos y de comparación**.\n\n"
             "- Sirve para **comparar** tarjetas: a menor CAT, más barato es financiarte con ella.\n"
             "- Es un **promedio**: tu costo real depende de cómo uses la tarjeta.\n"
-            "- Si eres totalero, te afecta más la **anualidad** que el CAT.\n\n"
-            "En CardIA verás el **CAT de publicidad** de cada tarjeta."
+            "- Si eres totalero, te afecta más la **anualidad** que el CAT."
         ),
     ),
     Topic(
@@ -160,8 +159,7 @@ TOPICS: tuple[Topic, ...] = (
             "- Una **comisión** por disposición (porcentaje del monto), distinta si es en cajero propio, "
             "de otro banco o en ventanilla.\n"
             "- **Intereses desde el primer día**, sin periodo de gracia.\n\n"
-            "Es de las operaciones **más caras**. En CardIA puedes ver cuánto cobra cada tarjeta en su "
-            "desglose de comisiones."
+            "Es de las operaciones **más caras**: úsala solo en una emergencia real."
         ),
     ),
     Topic(
@@ -194,12 +192,12 @@ TOPICS: tuple[Topic, ...] = (
         ),
         summary="Obligatorias, por evento y penalizaciones: conócelas para evitar sorpresas.",
         body=(
-            "En CardIA las comisiones se agrupan en tres tipos:\n"
+            "Las comisiones de una tarjeta se agrupan en tres tipos:\n"
             "- **Obligatorias**: se cobran por tener la tarjeta (p. ej. anualidad del titular o adicionales).\n"
             "- **Por evento**: solo si usas cierto servicio (disposición de efectivo, reposición de "
             "plástico, banca por teléfono...).\n"
             "- **Penalizaciones**: por incumplir (pago tardío, falta de pago, sobregiro).\n\n"
-            "Las penalizaciones se evitan pagando a tiempo; revisa el desglose de cada tarjeta."
+            "Las penalizaciones se evitan pagando a tiempo."
         ),
     ),
     Topic(
@@ -208,7 +206,7 @@ TOPICS: tuple[Topic, ...] = (
         keywords=("beneficio", "beneficios", "puntos", "recompensas", "descuentos", "seguros", "preventas"),
         summary="Puntos, descuentos, MSI, seguros y preventas: valen si los usas de verdad.",
         body=(
-            "Los beneficios más comunes en la base de CardIA son:\n"
+            "Los beneficios más comunes en las tarjetas del mercado mexicano son:\n"
             "- **Meses sin intereses**, **Descuentos** y **Puntos** (los más frecuentes).\n"
             "- **Preventas** de boletos, **Transferencia de saldo** y **Seguros**.\n\n"
             "Un beneficio solo te conviene si **lo usarías de todos modos**. Nunca gastes más para ganar "

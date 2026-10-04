@@ -46,6 +46,11 @@ def _to_record(c: Card) -> CardRecord:
         work_seniority_min=c.work_seniority_min,
         residence_seniority_min=c.residence_seniority_min,
         monthly_income_min=c.monthly_income_min,
+        institution_url=c.institution_url,
+        image_url=c.image_url,
+        image_orientation=c.image_orientation,
+        cluster=c.cluster,
+        features=c.features or {},
         fees=[FeeRecord(f.concept, f.amount, f.denomination, f.fee_type) for f in c.fees],
         benefits=[BenefitRecord(b.benefit_type, b.text) for b in c.benefits],
     )
@@ -105,7 +110,7 @@ def find_cards_in_text(cards: list[CardRecord], text: str, limit: int = 3) -> li
 
 def profile_tag(card: CardRecord) -> ProfileTag:
     p = assign_card_profile(card)
-    return ProfileTag(id=p.id, key=p.key, label=p.label, color=p.color)
+    return ProfileTag(id=p.id, key=p.key, label=p.label, color=p.color, icon=p.icon, tagline=p.tagline)
 
 
 def to_summary(card: CardRecord) -> CardSummary:
@@ -119,6 +124,8 @@ def to_summary(card: CardRecord) -> CardSummary:
         interest_rate=card.interest_rate,
         credit_line_min=card.credit_line_min,
         monthly_income_min=card.monthly_income_min,
+        image_url=card.image_url,
+        image_orientation=card.image_orientation,
         benefit_types=card.benefit_types,
         fee_counts=FeeCounts(**card.fee_counts()),
         profile=profile_tag(card),
@@ -128,6 +135,7 @@ def to_summary(card: CardRecord) -> CardSummary:
 def to_detail(card: CardRecord) -> CardDetail:
     return CardDetail(
         **to_summary(card).model_dump(),
+        institution_url=card.institution_url,
         requirements=Requirements(
             age_min=card.age_min,
             age_max=card.age_max,
@@ -186,7 +194,10 @@ def facets(cards: list[CardRecord]) -> CardFacets:
         institutions=sorted({c.institution for c in cards}),
         classes=sorted({c.card_class for c in cards}),
         benefit_types=sorted({t for c in cards for t in c.benefit_types}),
-        profiles=[ProfileTag(id=p.id, key=p.key, label=p.label, color=p.color) for p in PROFILES],
+        profiles=[
+            ProfileTag(id=p.id, key=p.key, label=p.label, color=p.color, icon=p.icon, tagline=p.tagline)
+            for p in PROFILES
+        ],
         annual_fee=_range([c.annual_fee for c in cards]),
         cat=_range([c.cat for c in cards]),
         interest_rate=_range([c.interest_rate for c in cards]),

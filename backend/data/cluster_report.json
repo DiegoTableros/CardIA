@@ -1,0 +1,522 @@
+{
+ "source": "perfilamiento_clusters.docx",
+ "method": [
+  "El usuario responde el cuestionario (edad, ingreso, historial, uso, forma de pago, preferencias e intereses).",
+  "Cada tarjeta se resume en 9 dimensiones entre 0 y 1: anualidad, tasa, comisiones, puntos, viaje, promociones, MSI, transferencia de saldo y requisitos accesibles. Se calculan con las variables de ingeniería (benef_*, com_*) y se escalan por percentiles 5-95 para que los extremos no aplanen la escala.",
+  "Las respuestas se convierten en pesos por dimensión (p. ej. evitar anualidad pesa 6.0; quien financia pesa más la tasa; cada interés marcado suma peso a su dimensión). Se pueden elegir varios intereses.",
+  "Elegibilidad: se descartan las tarjetas cuyos requisitos publicados no cumple (edad, ingreso, score). Si falta un dato del usuario o de la tarjeta, queda «por confirmar» y su puntaje baja 8%.",
+  "Puntaje de tarjeta = 75% utilidad propia (suma ponderada de dimensiones) + 25% afinidad de su cluster (utilidad media de las tarjetas del cluster, ajustada por elegibilidad). Si el usuario evita anualidad, las tarjetas con anualidad se multiplican por 0.75.",
+  "Perfil del usuario = cluster de la tarjeta mejor calificada (Top 1). Al usuario solo se le muestra el orden Top 1, Top 2, ... y no el puntaje.",
+  "Advertencias (sin penalización extra): anualidad contra lo que pidió, tasa o CAT altos si no paga el total, comisiones altas si las quiere evitar, y beneficios buscados que la tarjeta no ofrece. Las tarjetas periféricas de su cluster solo se advierten; no se degradan."
+ ],
+ "intro": [
+  {
+   "kind": "p",
+   "text": "Una aclaración para leer los resultados: cuando score_minimo_modelo = 0 o alguna antigüedad vale 0, no significa score real cero; en tu ingeniería significa “la tarjeta no exige ese requisito”."
+  }
+ ],
+ "closing": [
+  {
+   "kind": "h",
+   "text": "Cómo leer los seis clusters en conjunto"
+  },
+  {
+   "kind": "p",
+   "text": "Hay tres ejes que me parecen especialmente fuertes."
+  },
+  {
+   "kind": "p",
+   "text": "El primer eje es costo financiero vs. costo fijo. El cluster 3 está en el extremo de CAT/tasa alta (CAT 86.7%, tasa 59.9%), mientras que el cluster 5 ocupa el extremo contrario (CAT 42.9%, tasa 28.6%) pero con anualidad de $3,276. El cluster 2 también paga anualidades altas, pero a cambio de mayores líneas y beneficios."
+  },
+  {
+   "kind": "p",
+   "text": "El segundo eje es amplitud de beneficios. El cluster 3 promedia 4.8 tipos, el 0 tiene 3.3, el 2 tiene 3.15, mientras que el 5 tiene exactamente 1. El cluster 2 destaca no tanto por cantidad total sino por una combinación muy específica y consistente: puntos por dólar + MSI de viaje + preventas."
+  },
+  {
+   "kind": "p",
+   "text": "El tercero es exigencia de entrada. Cluster 0 es el más exigente en score/antigüedad; cluster 2 exige score 580 de forma uniforme y mayor capacidad económica; clusters 3 y 5 no exigen score ni antigüedades según tu base."
+  },
+  {
+   "kind": "p",
+   "text": "Una conclusión metodológica importante: el promedio por sí solo no alcanza para perfilar estos grupos. Ejemplos claros son la línea de crédito del cluster 1 ($17.6k de media vs $2k de mediana), la línea del cluster 5 ($16.3k vs $7k) y las anualidades con productos $0 dentro de clusters cuyo promedio ronda $1,000–$2,000."
+  },
+  {
+   "kind": "p",
+   "text": "También dejaría explícito que las tarjetas “periféricas” no son errores de clustering. Ward está agrupando en 59 variables reducidas a 12 componentes, así que una tarjeta puede ser muy distinta en anualidad y aun pertenecer correctamente al grupo por coincidir en requisitos, beneficios y comisiones. Eso explica muy bien casos como Santander Free, Scotia Básica o Mercado Libre INVEX."
+  }
+ ],
+ "clusters": [
+  {
+   "id": 0,
+   "title": "Requisitos exigentes con descuentos y coberturas amplias",
+   "blocks": [
+    {
+     "kind": "p",
+     "text": "Tamaño: 10 tarjetas. El 80% son BBVA México; las otras dos son Súper Créditos Inbursa y Scotia Básica."
+    },
+    {
+     "kind": "p",
+     "text": "Este grupo tiene un perfil financiero relativamente costoso. Su CAT promedio es 79.87%, segundo más alto de los seis clusters después del cluster 3. Sin embargo, el rango es muy amplio: 49.4% a 113.7%, con mediana de 80.65%. Lo mismo ocurre con la tasa: 58.76% promedio, rango 36.8%–85.2%, mediana 58.8%. Por tanto, decir “CAT y tasa altos” significa concretamente que el centro del grupo está cerca de 80% de CAT y 59% de tasa, aunque contiene tanto una Platinum BBVA relativamente barata como una Scotia Básica extremadamente costosa."
+    },
+    {
+     "kind": "p",
+     "text": "La anualidad promedio es $937, mediana $748, con rango $0–$2,579. La línea inicial promedio es $13,000, pero la mediana es solo $5,000 y el rango va de $3,000 a $50,000; Platinum BBVA empuja considerablemente el promedio hacia arriba."
+    },
+    {
+     "kind": "p",
+     "text": "Lo que realmente define este cluster son los requisitos. El score promedio exigido es 690.5, rango 615–700 y mediana 700; además, las 10 tarjetas exigen score. La antigüedad laboral mínima vale 12 en las 10 tarjetas y nueve de diez exigen también antigüedad residencial, cuyo promedio es 9.9 y máximo 12. En el Top 30 del modelo, la antigüedad residencial está +2.03 desviaciones estándar sobre el promedio global y la laboral +1.51σ."
+    },
+    {
+     "kind": "p",
+     "text": "En beneficios también está claramente diferenciado. Tiene en promedio 3.3 tipos de beneficio por tarjeta, rango 2–4. Los descuentos cubren en promedio 4.1 categorías de viaje y 3.5 categorías de consumo; el 80% presenta descuento en transporte terrestre. El 40% incluye seguro de equipaje. Los puntos están orientados al gasto en pesos: benef_puntos_por_peso_max promedia 0.081 y llega a 0.11. En contraste, los puntos por dólar son cero en todo el grupo."
+    },
+    {
+     "kind": "p",
+     "text": "Matemáticamente, algunas de sus señales más fuertes son:"
+    },
+    {
+     "kind": "li",
+     "text": "descuento en transporte terrestre: +2.14σ;"
+    },
+    {
+     "kind": "li",
+     "text": "antigüedad residencial: +2.03σ;"
+    },
+    {
+     "kind": "li",
+     "text": "antigüedad laboral: +1.51σ;"
+    },
+    {
+     "kind": "li",
+     "text": "amplitud de descuentos de viaje: +1.51σ;"
+    },
+    {
+     "kind": "li",
+     "text": "comisión por falta de pago: −1.06σ respecto al promedio global."
+    },
+    {
+     "kind": "p",
+     "text": "Tarjetas periféricas. La más alejada del centro del cluster es Scotia Básica. Es una excepción muy importante: tiene $0 de anualidad, mientras el grupo promedia $937, y al mismo tiempo presenta el CAT máximo del cluster, 113.7%, y la tasa máxima, 85.2%. Está en este grupo porque comparte buena parte de la estructura de requisitos y beneficios, no porque su estructura de costo sea típica. También es relativamente periférica Tarjeta Afinidad UNAM BBVA, sobre todo por sus seguros, y Súper Créditos Inbursa, que rompe parcialmente el patrón BBVA."
+    },
+    {
+     "kind": "p",
+     "text": "Interpretación: tarjetas con elegibilidad más exigente, descuentos relativamente amplios y algunas coberturas, a cambio de un costo financiero normalmente elevado."
+    }
+   ]
+  },
+  {
+   "id": 1,
+   "title": "Costo fijo bajo y beneficios moderados",
+   "blocks": [
+    {
+     "kind": "p",
+     "text": "Tamaño: 14 tarjetas. Es 78.6% Inbursa, con Plata Crédito, Básica Santander y TDC Hey como excepciones."
+    },
+    {
+     "kind": "p",
+     "text": "Tiene la menor anualidad promedio de todos los clusters: $698.57, mediana $625 y rango $0–$2,500. Esto sí justifica llamarlo un segmento de costo fijo relativamente bajo, aunque hay una excepción premium importante."
+    },
+    {
+     "kind": "p",
+     "text": "El CAT promedio es 72.35%, rango muy amplio 31.1%–119.2%, mediana 70.15%. La tasa promedio es 50.57%, rango 24.0%–79.9%. En comparación con clusters 0 y 3, sus costos financieros centrales son menores, pero el grupo no es homogéneo en esa dimensión."
+    },
+    {
+     "kind": "p",
+     "text": "La línea inicial muestra una distribución especialmente sesgada: promedio $17,593, pero mediana apenas $2,000, con rango $300–$70,000. El promedio elevado está producido por tarjetas Inbursa Oro/Platino con líneas de $30,000–$70,000. Para describir este cluster, aquí la mediana es mucho más representativa que la media."
+    },
+    {
+     "kind": "p",
+     "text": "En requisitos ocurre algo parecido. El score promedio codificado es 580, mediana 685 y rango 0–690. 12 de 14 tarjetas (85.7%) exigen score; las dos que no lo hacen son parte de las excepciones del grupo. El ingreso mínimo promedio es apenas $4,107, rango $0–$7,500 y mediana $5,000. Es por tanto mucho más accesible económicamente que el cluster 2."
+    },
+    {
+     "kind": "p",
+     "text": "Tiene 2.64 tipos de beneficio en promedio, rango 1–4. Su perfil se caracteriza más por la ausencia de ciertos beneficios que por beneficios especialmente fuertes. Las tarjetas cubren en promedio 2.71 categorías de MSI relacionadas con viaje frente a 6 en cluster 2. Solo una de las 14 presenta MSI de transporte aéreo y ninguna aparece con MSI educativos en la ingeniería."
+    },
+    {
+     "kind": "p",
+     "text": "Eso también aparece directamente en las variables estandarizadas:"
+    },
+    {
+     "kind": "li",
+     "text": "MSI educativos: −1.90σ;"
+    },
+    {
+     "kind": "li",
+     "text": "MSI transporte aéreo: −1.89σ;"
+    },
+    {
+     "kind": "li",
+     "text": "amplitud MSI de viaje: −1.42σ;"
+    },
+    {
+     "kind": "li",
+     "text": "penalización monetaria: −1.05σ;"
+    },
+    {
+     "kind": "li",
+     "text": "comisión por falta de pago: −0.96σ."
+    },
+    {
+     "kind": "p",
+     "text": "Tarjetas periféricas. La más diferente es Inbursa Black American Express: CAT 31.1%, tasa 24%, anualidad $2,500 y línea $70,000. Es mucho más premium y barata financieramente que la tarjeta típica del cluster, pero coincide con Inbursa en otras comisiones/requisitos/beneficios. Plata Crédito es casi la excepción contraria: anualidad $0, CAT 116.7%, tasa 79.9%, línea de apenas $300 y sin requisito explícito de ingreso o score. TDC Hey también es periférica por no exigir score ni ingreso y por diferir en MSI/comisiones."
+    },
+    {
+     "kind": "p",
+     "text": "Por tanto, este es uno de los clusters menos homogéneos internamente. El nombre debe centrarse en lo que domina al grupo, no asumir que todas sus tarjetas son baratas."
+    },
+    {
+     "kind": "p",
+     "text": "Interpretación: productos con anualidad generalmente baja, beneficios menos extensos y requisitos económicos moderados, pero con algunas tarjetas extremas tanto de bajo como de alto costo financiero."
+    }
+   ]
+  },
+  {
+   "id": 2,
+   "title": "Recompensas por dólar, viajes y alta capacidad de crédito",
+   "blocks": [
+    {
+     "kind": "p",
+     "text": "Tamaño: 13 tarjetas. El 100% es Santander."
+    },
+    {
+     "kind": "p",
+     "text": "Es uno de los clusters más estructurados del modelo. Todas sus tarjetas exigen exactamente score mínimo de 580."
+    },
+    {
+     "kind": "p",
+     "text": "La línea inicial promedio es la más alta de los seis grupos: $34,577, mediana $20,000 y rango $3,000–$100,000. El ingreso mínimo promedio también es, por mucho, el más alto: $37,500, mediana $20,000 y rango $7,500–$150,000."
+    },
+    {
+     "kind": "p",
+     "text": "La anualidad promedio es $1,964, segunda más alta detrás del cluster 5; mediana $1,100 y rango $0–$5,000. Esto indica que el grupo contiene tanto tarjetas de entrada como productos premium."
+    },
+    {
+     "kind": "p",
+     "text": "El CAT promedio es 70.45%, con rango enorme 28.7%–104%; la tasa media es 51.48%, rango 22.8%–66.8%. La dispersión ocurre porque Santander agrupa en la misma estructura de beneficios tarjetas clásicas y World Elite/Infinite."
+    },
+    {
+     "kind": "p",
+     "text": "Los beneficios son extremadamente consistentes. Todas las tarjetas tienen:"
+    },
+    {
+     "kind": "li",
+     "text": "6 de 6 categorías de MSI de viaje;"
+    },
+    {
+     "kind": "li",
+     "text": "MSI en peaje;"
+    },
+    {
+     "kind": "li",
+     "text": "preventa de teatro;"
+    },
+    {
+     "kind": "li",
+     "text": "preventa de conciertos/festivales;"
+    },
+    {
+     "kind": "li",
+     "text": "preventa de eventos deportivos."
+    },
+    {
+     "kind": "p",
+     "text": "Además, los puntos por dólar son la principal característica cuantitativa: 1.62 puntos por dólar promedio, rango 1–3, mediana 2. Es la media más alta de todos los clusters y aparece a +1.64σ sobre el promedio global."
+    },
+    {
+     "kind": "p",
+     "text": "Otras señales fuertes son MSI en peaje (+1.57σ) y las tres variables de preventa (~+1.4σ)."
+    },
+    {
+     "kind": "p",
+     "text": "Tarjetas periféricas. Visa Infinite Santander es la más distante del centro: ingreso requerido $150,000, línea inicial $100,000, anualidad $5,000, pero CAT 28.7% y tasa 22.8%. Santander World Elite tiene una estructura casi idéntica en esa dirección premium. Santander Aeroméxico Infinite también está en el extremo alto de línea/anualidad."
+    },
+    {
+     "kind": "p",
+     "text": "En el extremo opuesto, hay dos excepciones particularmente interesantes para tu futuro recomendador: Santander Free y Santander Aeroméxico Blanca tienen $0 de anualidad, pese a que el cluster promedia casi $2,000. No están mal clasificadas: comparten el patrón Santander de score, MSI, preventas y recompensas, pero son alternativas de menor costo fijo."
+    },
+    {
+     "kind": "p",
+     "text": "Interpretación: tarjetas orientadas a viajes, recompensas y preventas, con requisitos de crédito bien definidos y, en la parte premium, líneas e ingresos significativamente mayores."
+    }
+   ]
+  },
+  {
+   "id": 3,
+   "title": "Beneficios promocionales amplios y transferencia de saldo, con costo financiero alto",
+   "blocks": [
+    {
+     "kind": "p",
+     "text": "Tamaño: 10 tarjetas. 100% Banamex."
+    },
+    {
+     "kind": "p",
+     "text": "Este es probablemente el cluster más compacto y fácil de interpretar. Su distancia media al centro del cluster en PCA es de solo 1.46, la menor de todos los grupos."
+    },
+    {
+     "kind": "p",
+     "text": "Tiene el CAT promedio más alto: 86.74%, y además el rango es bastante estrecho: 80.8%–90.2%, mediana 87.3%. Por tanto aquí “CAT alto” no se debe a una tarjeta extrema: prácticamente todas están alrededor de 80–90%."
+    },
+    {
+     "kind": "p",
+     "text": "También tiene la tasa promedio más alta, 59.9%, rango estrecho 55.8%–62.3%, mediana 60.3%. Esto hace que el costo financiero elevado sea un rasgo realmente estructural."
+    },
+    {
+     "kind": "p",
+     "text": "La anualidad promedio es $951.57, mediana $815 y rango $54.17–$2,725. La línea promedio es $9,100, pero la mediana es $4,500; Explora Banamex, con $50,000 de línea, eleva bastante la media."
+    },
+    {
+     "kind": "p",
+     "text": "Ninguna de las diez tarjetas exige score dentro de la información de la base. Tampoco exigen antigüedad laboral ni residencial. El ingreso mínimo está mucho más concentrado: promedio $9,350, mediana $7,000 y rango $7,000–$30,000."
+    },
+    {
+     "kind": "p",
+     "text": "La diversidad de beneficios es la más alta de todo el modelo: 4.8 tipos en promedio, rango 4–5. Nueve de diez presentan descuentos educativos; las categorías de descuento promedian 4.5 de consumo y 3.6 de viaje."
+    },
+    {
+     "kind": "p",
+     "text": "La transferencia de saldo es una marca muy fuerte: en las diez tarjetas la ingeniería extrae 17% de tasa mínima y plazo mínimo de 12, sin variabilidad dentro del cluster."
+    },
+    {
+     "kind": "p",
+     "text": "Además, las diez tienen las tres modalidades de preventa analizadas."
+    },
+    {
+     "kind": "p",
+     "text": "En el Top 30, sus rasgos más extremos son:"
+    },
+    {
+     "kind": "li",
+     "text": "banca por app (% transacción): +2.42σ;"
+    },
+    {
+     "kind": "li",
+     "text": "descuentos educativos: +2.14σ;"
+    },
+    {
+     "kind": "li",
+     "text": "plazo de transferencia de saldo: +1.90σ;"
+    },
+    {
+     "kind": "li",
+     "text": "amplitud de descuentos de consumo: +1.60σ;"
+    },
+    {
+     "kind": "li",
+     "text": "número de tipos de beneficios: +1.49σ."
+    },
+    {
+     "kind": "p",
+     "text": "Tarjetas periféricas. La más alejada es La Comer Card Banamex. Su anualidad es solo $102.50 y además carece de buena parte de los descuentos que caracterizan al cluster; por otra parte, presenta una acumulación de puntos por peso que la diferencia mucho del resto. Aun así conserva la arquitectura Banamex de MSI, preventas, transferencias y comisiones."
+    },
+    {
+     "kind": "p",
+     "text": "Explora Banamex también es diferente por línea de $50,000 y anualidad $2,725, pero no se separa demasiado en beneficios y comisiones."
+    },
+    {
+     "kind": "p",
+     "text": "Costco Banamex tiene una anualidad extraordinariamente baja de $54.17, comparada con la media de $951.57, pero sigue siendo muy central en las demás dimensiones."
+    },
+    {
+     "kind": "p",
+     "text": "Interpretación: tarjetas con gran amplitud promocional y de beneficios, sin requisitos explícitos de score/antigüedad, pero con un costo financiero sistemáticamente alto."
+    }
+   ]
+  },
+  {
+   "id": 4,
+   "title": "Comisiones monetarias altas y transferencia de saldo, con beneficios acotados",
+   "blocks": [
+    {
+     "kind": "p",
+     "text": "Tamaño: 12 tarjetas. Es el grupo institucionalmente más mixto: 41.7% INVEX, 33.3% Afirme, 16.7% HSBC y 8.3% Mifel."
+    },
+    {
+     "kind": "p",
+     "text": "Su CAT promedio es 71.74%, rango 49.6%–101%, mediana 72%. La tasa promedio es 50.56%, rango 22.2%–76.8%, mediana 46.3%. No hay un costo financiero homogéneo; conviven productos relativamente baratos y otros caros."
+    },
+    {
+     "kind": "p",
+     "text": "La anualidad es más estable: promedio $947.50, mediana $850 y rango $0–$2,000. La línea inicial es relativamente baja: promedio $8,250, mediana $7,000 y rango $5,000–$20,000."
+    },
+    {
+     "kind": "p",
+     "text": "La mayoría no exige score: solo 3 de 12 tarjetas (25%) lo hacen. Por ello la media codificada es apenas 138.8, aunque las que sí piden score llegan a 664. El ingreso mínimo promedio es $8,708, rango $5,000–$20,000."
+    },
+    {
+     "kind": "p",
+     "text": "Los beneficios son relativamente poco diversos: 2.08 tipos promedio, mediana 2, rango 1–5. El 58.3% tiene transferencia de saldo. Al incluir los ceros, la tasa mínima de transferencia promedia 12.5%; entre las tarjetas que sí ofrecen este beneficio puede alcanzar 49%."
+    },
+    {
+     "kind": "p",
+     "text": "La verdadera característica de este grupo son las comisiones expresadas en pesos:"
+    },
+    {
+     "kind": "li",
+     "text": "comisiones por evento: promedio $300.50, rango $130–$400;"
+    },
+    {
+     "kind": "li",
+     "text": "penalizaciones agregadas: promedio $1,322, rango $625–$1,845;"
+    },
+    {
+     "kind": "li",
+     "text": "aclaración improcedente: promedio $272.50, rango $200–$300;"
+    },
+    {
+     "kind": "li",
+     "text": "reposición por desgaste: promedio $119.83, rango $0–$200;"
+    },
+    {
+     "kind": "li",
+     "text": "reposición por robo/extravío: promedio $180.67, rango $130–$200."
+    },
+    {
+     "kind": "p",
+     "text": "En el Top 30 aparecen precisamente como señales principales:"
+    },
+    {
+     "kind": "li",
+     "text": "aclaración improcedente: +1.57σ;"
+    },
+    {
+     "kind": "li",
+     "text": "comisiones por evento en pesos: +1.53σ;"
+    },
+    {
+     "kind": "li",
+     "text": "reposición por robo/extravío: +1.01σ;"
+    },
+    {
+     "kind": "li",
+     "text": "penalizaciones: +0.90σ."
+    },
+    {
+     "kind": "p",
+     "text": "Tarjetas periféricas. La más diferente es Mifel Leones. Tiene 5 tipos de beneficio frente a 2.08 promedio, score mínimo 664 y una tasa de transferencia de saldo que llega a 49%; se parece poco al centro en beneficios y requisitos."
+    },
+    {
+     "kind": "p",
+     "text": "Afirme Construrama también queda en la periferia: CAT 101% y tasa 76.8%, muy por encima de las medias del cluster, además de presentar requisitos residenciales diferentes."
+    },
+    {
+     "kind": "p",
+     "text": "HSBC Oro se desvía en la dirección opuesta: tasa 22.2%, la mínima del cluster."
+    },
+    {
+     "kind": "p",
+     "text": "Finalmente, Mercado Libre INVEX tiene $0 de anualidad, aunque el grupo promedia $947.50. Su permanencia se explica mejor por las comisiones, línea y estructura de beneficios que por el costo fijo."
+    },
+    {
+     "kind": "p",
+     "text": "Interpretación: grupo intermedio y heterogéneo en CAT/tasa, pero unido por comisiones monetarias relativamente elevadas, pocos beneficios y presencia frecuente de transferencia de saldo."
+    }
+   ]
+  },
+  {
+   "id": 5,
+   "title": "Baja tasa y CAT, pero anualidad y penalizaciones elevadas",
+   "blocks": [
+    {
+     "kind": "p",
+     "text": "Tamaño: 10 tarjetas. 100% INVEX."
+    },
+    {
+     "kind": "p",
+     "text": "Este grupo tiene una relación costo-beneficio completamente distinta a los demás."
+    },
+    {
+     "kind": "p",
+     "text": "El CAT promedio es 42.92%, el más bajo de los seis y muy por debajo del segundo más bajo (~70.45%). Su rango es 32.8%–74%, mediana 39.65%."
+    },
+    {
+     "kind": "p",
+     "text": "La tasa de interés es también la más baja: promedio 28.64%, rango 24.3%–41.8%, mediana 27.2%. Esto permite decir con bastante precisión que el cluster representa productos de bajo costo financiero relativo, no solo “algo más baratos”."
+    },
+    {
+     "kind": "p",
+     "text": "A cambio, tiene la anualidad promedio más alta de todo el modelo: $3,276, mediana $3,395 y rango $892–$7,000."
+    },
+    {
+     "kind": "p",
+     "text": "La línea inicial promedio de $16,300 resulta engañosa: la mediana es solamente $7,000 y nueve de las diez tarjetas están alrededor de ese nivel; INVEX AAdvantage World Elite, con $100,000, eleva fuertemente el promedio."
+    },
+    {
+     "kind": "p",
+     "text": "Ninguna tarjeta exige score y el ingreso mínimo es extraordinariamente homogéneo: $5,000 en las diez tarjetas."
+    },
+    {
+     "kind": "p",
+     "text": "En beneficios es el grupo más sencillo de todo el modelo: exactamente 1 tipo de beneficio en las 10 tarjetas. No aparecen puntos por peso, puntos por dólar ni transferencia de saldo. La oferta está concentrada fundamentalmente en MSI: 4–5 categorías de viaje y 5–6 categorías de consumo."
+    },
+    {
+     "kind": "p",
+     "text": "Las comisiones son, en cambio, muy altas y homogéneas:"
+    },
+    {
+     "kind": "li",
+     "text": "falta de pago: $895 en todas las tarjetas;"
+    },
+    {
+     "kind": "li",
+     "text": "pago tardío: $650 en todas;"
+    },
+    {
+     "kind": "li",
+     "text": "anualidad adicional: promedio $1,643.90, rango $504–$3,500;"
+    },
+    {
+     "kind": "li",
+     "text": "comisión/anualidad titular: promedio $3,276, rango $892–$7,000;"
+    },
+    {
+     "kind": "li",
+     "text": "suma de comisiones obligatorias: promedio $4,920, rango $1,396–$10,500;"
+    },
+    {
+     "kind": "li",
+     "text": "penalización agregada: $1,545 en todas."
+    },
+    {
+     "kind": "p",
+     "text": "En variables estandarizadas, sus señales son muy claras:"
+    },
+    {
+     "kind": "li",
+     "text": "falta de pago: +1.62σ;"
+    },
+    {
+     "kind": "li",
+     "text": "anualidad adicional: +1.61σ;"
+    },
+    {
+     "kind": "li",
+     "text": "penalizaciones: +1.37σ;"
+    },
+    {
+     "kind": "li",
+     "text": "número de tipos de beneficio: −1.36σ;"
+    },
+    {
+     "kind": "li",
+     "text": "tasa de interés: −1.32σ."
+    },
+    {
+     "kind": "p",
+     "text": "Tarjetas periféricas. INVEX AAdvantage World Elite es claramente la más extrema: anualidad $7,000 y línea inicial $100,000, frente a medianas de $3,395 y $7,000 respectivamente. Aun así comparte perfectamente el patrón central de bajo CAT/tasa, un único tipo de beneficio y estructura de comisiones INVEX."
+    },
+    {
+     "kind": "p",
+     "text": "CIBanco Oro también se aparta del perfil: CAT 74% y tasa 41.8%, ambos máximos del grupo, mientras su anualidad de $1,381 está muy por debajo de la media. Matemáticamente es una tarjeta fronteriza dentro del cluster."
+    },
+    {
+     "kind": "p",
+     "text": "MI BANCO tiene la anualidad mínima del grupo, $892, pero mantiene la estructura de tasa, requisitos y beneficios."
+    },
+    {
+     "kind": "p",
+     "text": "Interpretación: productos que intercambian menor costo financiero variable por costos fijos y penalizaciones significativamente mayores, con una oferta de beneficios muy concentrada."
+    }
+   ]
+  }
+ ]
+}

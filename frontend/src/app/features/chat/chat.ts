@@ -1,23 +1,13 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  ElementRef,
-  afterNextRender,
-  computed,
-  effect,
-  inject,
-  input,
-  signal,
-  viewChild,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, afterNextRender, effect, inject, input, signal, viewChild } from '@angular/core';
+import { rxResource } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 import { ApiService } from '../../core/api/api.service';
-import type { CardSummary, PlanStep } from '../../core/api/types';
+import type { CardSummary } from '../../core/api/types';
 import { money, pct } from '../../core/format';
 import { renderMarkdown } from '../../core/markdown';
-import { CardVisual } from '../../shared/card-visual';
+import { CardArt } from '../../shared/card-art';
 import { Icon } from '../../shared/icon';
 import { Logo } from '../../shared/logo';
 
@@ -26,30 +16,36 @@ interface Message {
   role: 'user' | 'assistant';
   text: string;
   html?: string;
-  plan?: PlanStep[];
+  agents?: string[];
   cards?: CardSummary[];
   suggestions?: string[];
-  status?: 'planning' | 'running' | 'done' | 'error';
-  mode?: string;
-  ms?: number;
+  status?: 'thinking' | 'done' | 'error';
 }
 
 const SESSION_KEY = 'cardia.chat.session';
 const HISTORY_KEY = 'cardia.chat.history';
 
-const AGENT_META: Record<string, { label: string; color: string; icon: string }> = {
-  FundamentalsAgent: { label: 'Fundamentals', color: '#a78bfa', icon: 'cards' },
-  ComisionesAgent: { label: 'Comisiones', color: '#f472b6', icon: 'wallet' },
-  EducativeAgent: { label: 'Educativo', color: '#22d3ee', icon: 'book' },
-  PerfilAgent: { label: 'Perfil', color: '#f59e0b', icon: 'brain' },
+/** Color por agente: solo se muestran puntitos mientras responden (sin exponer el plan). */
+const AGENT_COLOR: Record<string, string> = {
+  FundamentalsAgent: '#a78bfa',
+  ComisionesAgent: '#f472b6',
+  EducativeAgent: '#22d3ee',
+  PerfilAgent: '#f59e0b',
 };
+
+const QUESTION_TYPES = [
+  { icon: 'cards', color: '#a78bfa', title: 'Sobre tarjetas', desc: 'Características, requisitos y comparativas.', q: 'Compara Black Unlimited y Santander Free' },
+  { icon: 'wallet', color: '#f472b6', title: 'Sobre comisiones', desc: 'Qué cobra cada tarjeta y cómo te afecta.', q: '¿Qué comisiones cobra Santander Free?' },
+  { icon: 'book', color: '#22d3ee', title: 'Educación financiera', desc: 'Conceptos explicados con ejemplos.', q: '¿Cómo funciona una tarjeta de crédito?' },
+  { icon: 'brain', color: '#f59e0b', title: 'Perfiles', desc: 'Interpreta tus resultados de perfilamiento.', q: '¿Qué significan los perfiles de tarjeta y cuál va conmigo?' },
+];
 
 @Component({
   selector: 'app-chat',
-  imports: [FormsModule, RouterLink, Icon, Logo, CardVisual],
+  imports: [FormsModule, RouterLink, Icon, Logo, CardArt],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="grid gap-6 lg:grid-cols-[1fr_300px]">
+    <div class="grid gap-6 lg:grid-cols-[1fr_320px]">
       <!-- Conversacion -->
       <section class="glass flex h-[calc(100dvh-10rem)] min-h-[520px] flex-col overflow-hidden">
         <header class="flex items-center justify-between gap-3 border-b border-white/6 px-4 py-3 sm:px-5">
@@ -58,7 +54,7 @@ const AGENT_META: Record<string, { label: string; color: string; icon: string }>
             <div>
               <h1 class="text-base font-semibold">Asistente CardIA</h1>
               <p class="flex items-center gap-1.5 text-xs text-slate-400">
-                <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span> 4 agentes · datos de la base de tarjetas
+                <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span> En línea · datos oficiales de Banxico y CONDUSEF
               </p>
             </div>
           </div>
@@ -71,8 +67,8 @@ const AGENT_META: Record<string, { label: string; color: string; icon: string }>
               <div class="mx-auto mb-4 w-fit"><app-logo [size]="56" [showText]="false" /></div>
               <h2 class="text-2xl font-bold">¿En qué te ayudo hoy?</h2>
               <p class="mt-2 text-sm text-slate-400">
-                Pregúntame cómo funciona una tarjeta, qué cobra un banco o qué tarjetas tienen cierto beneficio. Antes de responder te muestro el plan de
-                consultas que voy a hacer.
+                Pregúntame cómo funciona una tarjeta, qué cobra un banco o qué significa algún concepto. No necesito ningún dato personal para
+                ayudarte.
               </p>
               <div class="mt-6 grid gap-2 text-left sm:grid-cols-2">
                 @for (s of starters; track s.q) {
@@ -93,48 +89,12 @@ const AGENT_META: Record<string, { label: string; color: string; icon: string }>
               <div class="flex gap-3 animate-fade-up">
                 <app-logo [size]="30" [showText]="false" class="mt-1 hidden sm:inline-flex" />
                 <div class="min-w-0 flex-1 space-y-3">
-                  <!-- PLAN -->
-                  @if (m.plan?.length) {
-                    <div class="rounded-2xl border border-white/8 bg-ink-950/50 p-3.5">
-                      <p class="mb-2.5 flex items-center justify-between gap-2 text-xs font-semibold tracking-wide text-slate-400 uppercase">
-                        <span class="flex items-center gap-1.5"><app-icon name="layers" [size]="13" /> Plan de ejecución · {{ m.plan!.length }} pasos</span>
-                        @if (m.ms !== undefined) {
-                          <span class="font-normal normal-case text-slate-500">{{ m.ms }} ms · modo {{ m.mode }}</span>
-                        }
-                      </p>
-                      <ol class="space-y-1.5">
-                        @for (s of m.plan; track s.id) {
-                          <li class="flex items-start gap-2.5 rounded-lg px-2 py-1.5 text-sm" [class.bg-white/3]="s.status === 'running'">
-                            <span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full" [class]="stepClass(s.status)">
-                              @switch (s.status) {
-                                @case ('ok') { <app-icon name="check" [size]="11" [stroke]="3" /> }
-                                @case ('error') { <app-icon name="x" [size]="11" [stroke]="3" /> }
-                                @case ('running') { <span class="h-2.5 w-2.5 animate-spin rounded-full border-2 border-white/30 border-t-white"></span> }
-                                @default { <span class="text-[10px] font-bold">{{ $index + 1 }}</span> }
-                              }
-                            </span>
-                            <span class="min-w-0 flex-1">
-                              <span class="flex flex-wrap items-center gap-1.5">
-                                <span class="badge !normal-case" [style.background]="agent(s.agent).color + '22'" [style.color]="agent(s.agent).color">
-                                  <app-icon [name]="agent(s.agent).icon" [size]="11" /> {{ agent(s.agent).label }}
-                                </span>
-                                <code class="text-xs text-slate-300">{{ s.tool }}</code>
-                                @if (s.depends_on?.length) {
-                                  <span class="text-[11px] text-slate-500">← {{ s.depends_on!.join(', ') }}</span>
-                                }
-                              </span>
-                              <span class="mt-0.5 block text-xs text-slate-400">{{ s.summary || s.rationale }}</span>
-                            </span>
-                          </li>
-                        }
-                      </ol>
-                    </div>
-                  }
-
-                  @if (m.status === 'planning') {
-                    <div class="flex items-center gap-2 text-sm text-slate-400">
-                      <span class="flex gap-1"><span class="h-2 w-2 animate-pulse-soft rounded-full bg-brand-400"></span><span class="h-2 w-2 animate-pulse-soft rounded-full bg-hot-400 [animation-delay:.2s]"></span><span class="h-2 w-2 animate-pulse-soft rounded-full bg-accent-400 [animation-delay:.4s]"></span></span>
-                      Planeando consultas…
+                  @if (m.status === 'thinking') {
+                    <div class="inline-flex items-center gap-1.5 rounded-2xl rounded-tl-md border border-white/8 bg-ink-950/50 px-4 py-3" role="status">
+                      @for (c of dots(m); track $index) {
+                        <span class="h-2.5 w-2.5 animate-pulse-soft rounded-full" [style.background]="c" [style.animation-delay]="$index * 0.18 + 's'"></span>
+                      }
+                      <span class="sr-only">CardIA está escribiendo…</span>
                     </div>
                   }
 
@@ -146,16 +106,12 @@ const AGENT_META: Record<string, { label: string; color: string; icon: string }>
                     <div class="flex gap-3 overflow-x-auto pb-1">
                       @for (c of m.cards; track c.id) {
                         <a [routerLink]="['/tarjetas', c.id]" class="surface w-52 shrink-0 p-2.5 transition hover:border-white/20">
-                          <div class="text-[11px]"><app-card-visual [name]="c.name" [institution]="c.institution" [cardClass]="c.card_class" /></div>
+                          <app-card-art [name]="c.name" [institution]="c.institution" [cardClass]="c.card_class" [imageUrl]="c.image_url" [orientation]="c.image_orientation" />
                           <p class="mt-2 truncate text-sm font-semibold text-white">{{ c.name }}</p>
                           <p class="text-xs text-slate-400">{{ c.annual_fee ? money(c.annual_fee) : 'Sin anualidad' }} · {{ pct(c.interest_rate) }}</p>
                         </a>
                       }
                     </div>
-                  }
-
-                  @if (m.status === 'done') {
-                    <p class="text-[11px] leading-relaxed text-slate-500">Herramienta educativa: datos de Banxico y CONDUSEF; no es asesoría financiera.</p>
                   }
 
                   @if (m.suggestions?.length && $last) {
@@ -189,37 +145,45 @@ const AGENT_META: Record<string, { label: string; color: string; icon: string }>
               <app-icon name="send" [size]="16" />
             </button>
           </div>
-          <p class="mt-2 px-1 text-[11px] text-slate-500">No compartas datos personales (RFC, CURP, números de tarjeta). CardIA no los necesita.</p>
+          <p class="mt-2 flex items-center gap-1.5 px-1 text-[11px] text-slate-500">
+            <app-icon name="lock" [size]="12" /> Nunca compartas RFC, CURP, números de tarjeta ni contraseñas. CardIA no los necesita.
+          </p>
         </form>
       </section>
 
-      <!-- Lateral -->
-      <aside class="hidden space-y-4 lg:block">
+      <!-- Lateral: temas + tipos de preguntas -->
+      <aside class="space-y-4">
         <div class="surface p-4">
-          <h2 class="text-sm font-semibold">Equipo de agentes</h2>
-          <ul class="mt-3 space-y-3">
-            @for (a of agents; track a.key) {
-              <li class="flex gap-3">
-                <span class="grid h-8 w-8 shrink-0 place-items-center rounded-lg" [style.background]="a.color + '22'" [style.color]="a.color"><app-icon [name]="a.icon" [size]="16" /></span>
-                <span>
-                  <span class="block text-sm font-medium text-white">{{ a.label }}</span>
-                  <span class="block text-xs text-slate-400">{{ a.desc }}</span>
-                </span>
+          <h2 class="flex items-center gap-2 text-sm font-semibold"><app-icon name="book" [size]="15" class="text-accent-400" /> Temas para aprender</h2>
+          <p class="mt-1 text-xs text-slate-500">Conceptos del glosario oficial de CONDUSEF.</p>
+          <div class="mt-3 flex flex-wrap gap-1.5">
+            @for (t of topics.value()?.featured ?? []; track t.term) {
+              <button type="button" class="chip" (click)="send(t.question)" [disabled]="busy()">{{ t.term }}</button>
+            } @empty {
+              @for (i of [1, 2, 3, 4, 5, 6]; track i) {
+                <span class="skeleton h-7 w-24"></span>
+              }
+            }
+          </div>
+
+          <h2 class="mt-6 text-sm font-semibold">Puedes preguntar sobre</h2>
+          <ul class="mt-3 space-y-2">
+            @for (t of questionTypes; track t.title) {
+              <li>
+                <button type="button" class="flex w-full gap-3 rounded-xl p-2 text-left transition hover:bg-white/5" (click)="send(t.q)" [disabled]="busy()">
+                  <span class="grid h-8 w-8 shrink-0 place-items-center rounded-lg" [style.background]="t.color + '22'" [style.color]="t.color"><app-icon [name]="t.icon" [size]="16" /></span>
+                  <span>
+                    <span class="block text-sm font-medium text-white">{{ t.title }}</span>
+                    <span class="block text-xs text-slate-400">{{ t.desc }}</span>
+                  </span>
+                </button>
               </li>
             }
           </ul>
         </div>
-        <div class="surface p-4">
-          <h2 class="text-sm font-semibold">Temas para aprender</h2>
-          <div class="mt-3 flex flex-wrap gap-1.5">
-            @for (t of topics; track t) {
-              <button type="button" class="chip" (click)="send('¿Qué es ' + t + '?')" [disabled]="busy()">{{ t }}</button>
-            }
-          </div>
-        </div>
-        <div class="rounded-xl border border-amber-400/20 bg-amber-400/5 p-3.5 text-xs leading-relaxed text-amber-100/80">
-          <strong class="text-amber-200">Modo actual: reglas.</strong> Las respuestas se arman solo con datos de las tools. Con una
-          <code>OPENAI_API_KEY</code> el planner y el narrador usarán el LLM (fase 4).
+        <div class="flex gap-3 rounded-xl border border-emerald-400/20 bg-emerald-400/5 p-3.5 text-xs leading-relaxed text-emerald-100/80">
+          <app-icon name="shield" [size]="16" class="mt-0.5 text-emerald-300" />
+          <p><strong class="text-emerald-200">Sin datos personales.</strong> Para orientarte solo uso tus preguntas y, si quieres, las respuestas de «Encuentra tu tarjeta».</p>
         </div>
       </aside>
     </div>
@@ -236,23 +200,16 @@ export class ChatPage {
   protected draft = '';
   protected readonly messages = signal<Message[]>(this.readHistory());
   protected readonly busy = signal(false);
+  protected readonly topics = rxResource({ stream: () => this.api.chatTopics() });
+  protected readonly questionTypes = QUESTION_TYPES;
   private sessionId = localStorage.getItem(SESSION_KEY) ?? this.newSessionId();
 
   protected readonly starters = [
     { icon: 'book', q: '¿Cómo funciona una tarjeta de crédito?' },
     { icon: 'wallet', q: '¿Qué es el pago mínimo y cómo se calcula?' },
-    { icon: 'gift', q: '¿Qué tarjetas no cobran anualidad? sin anualidad' },
+    { icon: 'gift', q: '¿Qué tarjetas no cobran anualidad?' },
     { icon: 'compare', q: 'Compara Black Unlimited y Santander Free' },
   ];
-  protected readonly topics = ['el CAT', 'la fecha de corte', 'el pago mínimo', 'la anualidad', 'el Buró de Crédito', 'la disposición de efectivo', 'los meses sin intereses'];
-  protected readonly agents = [
-    { key: 'f', label: 'Fundamentals', color: '#a78bfa', icon: 'cards', desc: 'Fichas, búsquedas y comparativas de tarjetas.' },
-    { key: 'c', label: 'Comisiones', color: '#f472b6', icon: 'wallet', desc: 'Desglose de cobros y su impacto si la tienes.' },
-    { key: 'e', label: 'Educativo', color: '#22d3ee', icon: 'book', desc: 'Conceptos de TDC para inclusión financiera.' },
-    { key: 'p', label: 'Perfil', color: '#f59e0b', icon: 'brain', desc: 'Interpreta los perfiles del modelo de clusters.' },
-  ];
-
-  protected readonly hasMessages = computed(() => this.messages().length > 0);
 
   constructor() {
     effect(() => {
@@ -266,6 +223,11 @@ export class ChatPage {
         this.send(q);
       }
     });
+  }
+
+  dots(m: Message): string[] {
+    const colors = (m.agents ?? []).map((a) => AGENT_COLOR[a]).filter(Boolean);
+    return colors.length ? colors : ['#a78bfa', '#f472b6', '#22d3ee'];
   }
 
   onEnter(e: Event): void {
@@ -283,29 +245,24 @@ export class ChatPage {
     this.busy.set(true);
     const aid = crypto.randomUUID();
     this.push({ id: crypto.randomUUID(), role: 'user', text: message });
-    this.push({ id: aid, role: 'assistant', text: '', status: 'planning' });
+    this.push({ id: aid, role: 'assistant', text: '', status: 'thinking' });
 
     try {
-      // Paso 1 (D8): el plan llega ANTES de ejecutar y se muestra.
+      // El backend genera y guarda el plan (D8); al usuario solo se le muestran los agentes activos como puntitos.
       const plan = await firstValueFrom(this.api.chatPlan(message, this.sessionId));
-      this.patch(aid, { plan: plan.plan.map((s) => ({ ...s, status: 'pending' })), status: 'running', mode: plan.mode });
-      await this.animatePlan(aid, plan.plan.length);
-      // Paso 2: ejecucion por niveles.
+      this.patch(aid, { agents: [...new Set(plan.plan.map((s) => s.agent))] });
       const run = await firstValueFrom(this.api.chatExecute(plan.run_id));
       this.patch(aid, {
-        plan: run.plan,
         text: run.answer,
         html: renderMarkdown(run.answer),
         cards: run.cards,
         suggestions: run.suggestions,
         status: 'done',
-        ms: run.duration_ms,
-        mode: run.mode,
       });
     } catch {
       this.patch(aid, {
         status: 'error',
-        html: renderMarkdown('> No pude conectar con el asistente. Verifica que el backend esté corriendo e inténtalo de nuevo.'),
+        html: renderMarkdown('> No pude responder en este momento. Inténtalo de nuevo en unos segundos.'),
       });
     } finally {
       this.busy.set(false);
@@ -317,35 +274,6 @@ export class ChatPage {
     this.messages.set([]);
     this.sessionId = this.newSessionId();
     localStorage.removeItem(HISTORY_KEY);
-  }
-
-  agent(name: string) {
-    return AGENT_META[name] ?? { label: name, color: '#94a3b8', icon: 'bolt' };
-  }
-
-  stepClass(status: string): string {
-    switch (status) {
-      case 'ok':
-        return 'bg-emerald-500 text-white';
-      case 'error':
-        return 'bg-rose-500 text-white';
-      case 'skipped':
-        return 'bg-slate-600 text-white';
-      case 'running':
-        return 'bg-brand-500 text-white';
-      default:
-        return 'bg-white/10 text-slate-400';
-    }
-  }
-
-  /** Marca visualmente cada paso como "ejecutando" mientras llega la respuesta. */
-  private async animatePlan(id: string, n: number): Promise<void> {
-    for (let i = 0; i < n; i++) {
-      const m = this.messages().find((x) => x.id === id);
-      if (!m?.plan) return;
-      this.patch(id, { plan: m.plan.map((s, j) => ({ ...s, status: j < i ? 'ok' : j === i ? 'running' : 'pending' })) });
-      await new Promise((r) => setTimeout(r, 260));
-    }
   }
 
   private push(m: Message): void {
@@ -369,6 +297,7 @@ export class ChatPage {
 
   private saveHistory(): void {
     const slim = this.messages()
+      .filter((m) => m.status !== 'thinking')
       .slice(-30)
       .map(({ html: _h, ...rest }) => rest);
     localStorage.setItem(HISTORY_KEY, JSON.stringify(slim));

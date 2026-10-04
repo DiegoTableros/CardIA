@@ -13,6 +13,8 @@ class ProfileTag(BaseModel):
     key: str
     label: str
     color: str
+    icon: str = ""
+    tagline: str = ""
 
 
 class Requirements(BaseModel):
@@ -52,12 +54,15 @@ class CardSummary(BaseModel):
     interest_rate: float | None
     credit_line_min: float | None
     monthly_income_min: float | None
+    image_url: str | None = None
+    image_orientation: Literal["portrait", "landscape"] | None = None
     benefit_types: list[str]
     fee_counts: FeeCounts
     profile: ProfileTag
 
 
 class CardDetail(CardSummary):
+    institution_url: str | None = None
     requirements: Requirements
     fees: list[FeeOut]
     benefits: list[BenefitOut]

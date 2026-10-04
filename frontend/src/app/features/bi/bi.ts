@@ -19,7 +19,7 @@ const PALETTE = ['#8b5cf6', '#22d3ee', '#f472b6', '#f59e0b', '#10b981', '#6366f1
   template: `
     <header class="flex flex-wrap items-end justify-between gap-4">
       <div>
-        <p class="section-eyebrow">Business Intelligence</p>
+        <p class="section-eyebrow">Perfiles</p>
         <h1 class="section-title sm:text-4xl">Perfiles y mercado de tarjetas</h1>
         <p class="mt-2 max-w-2xl text-slate-400">Resultados del agrupamiento de las tarjetas en perfiles y panorama del mercado con la base consolidada.</p>
       </div>
@@ -51,7 +51,7 @@ const PALETTE = ['#8b5cf6', '#22d3ee', '#f472b6', '#f59e0b', '#10b981', '#6366f1
       <!-- Perfiles -->
       <section class="mt-10">
         <h2 class="text-xl font-semibold">Perfiles (clusters)</h2>
-        <div class="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        <div class="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           @for (p of d.profiles; track p.profile.id) {
             <button
               type="button"
@@ -63,7 +63,7 @@ const PALETTE = ['#8b5cf6', '#22d3ee', '#f472b6', '#f59e0b', '#10b981', '#6366f1
             >
               <div class="pointer-events-none absolute -top-12 -right-12 h-36 w-36 rounded-full opacity-25 blur-2xl" [style.background]="p.profile.color"></div>
               <div class="flex items-center justify-between">
-                <span class="grid h-10 w-10 place-items-center rounded-xl" [style.background]="p.profile.color + '26'" [style.color]="p.profile.color"><app-icon [name]="icon(p.profile.key)" [size]="20" /></span>
+                <span class="grid h-10 w-10 place-items-center rounded-xl" [style.background]="p.profile.color + '26'" [style.color]="p.profile.color"><app-icon [name]="p.profile.icon || 'layers'" [size]="20" /></span>
                 <span class="font-display text-3xl font-bold text-white">{{ p.profile.card_count }}</span>
               </div>
               <h3 class="mt-3 text-lg font-semibold">{{ p.profile.label }}</h3>
@@ -125,11 +125,59 @@ const PALETTE = ['#8b5cf6', '#22d3ee', '#f472b6', '#f59e0b', '#10b981', '#6366f1
         <div class="mt-4 grid gap-x-10 md:grid-cols-2"><app-bar-list [items]="bars(d.by_institution)" /></div>
       </section>
 
+      @if (d.report; as rep) {
+        <section class="surface mt-6 p-5">
+          <h2 class="text-lg font-semibold">Cómo se asigna el perfil y se ordenan las tarjetas</h2>
+          <ol class="mt-4 list-decimal space-y-2 pl-5 text-sm leading-relaxed text-slate-300 marker:text-accent-400">
+            @for (m of rep.method; track $index) {
+              <li>{{ m }}</li>
+            }
+          </ol>
+        </section>
+
+        <section class="mt-6">
+          <h2 class="text-lg font-semibold">Documentación de los clusters</h2>
+          <p class="text-xs text-slate-500">Fuente: {{ rep.source }}. Texto original del perfilamiento.</p>
+          @for (b of rep.intro; track $index) {
+            <p class="mt-3 text-sm text-slate-400">{{ b.text }}</p>
+          }
+          <div class="mt-4 space-y-3">
+            @for (c of rep.clusters; track c.id) {
+              <details class="surface p-5" [open]="c.id === 0">
+                <summary class="cursor-pointer font-semibold text-white">
+                  Cluster {{ c.id }} · {{ profileOf(c.id)?.profile?.label }}
+                  <span class="font-normal text-slate-500">({{ profileOf(c.id)?.profile?.analytic_name }})</span>
+                  <span class="block text-sm font-normal text-slate-400">{{ c.title }}</span>
+                </summary>
+                <div class="mt-4 space-y-2 text-sm leading-relaxed text-slate-300">
+                  @for (b of c.blocks; track $index) {
+                    @if (b.kind === 'li') {
+                      <p class="pl-4 text-slate-400">• {{ b.text }}</p>
+                    } @else {
+                      <p>{{ b.text }}</p>
+                    }
+                  }
+                </div>
+              </details>
+            }
+          </div>
+          <div class="surface mt-4 space-y-2 p-5 text-sm leading-relaxed text-slate-300">
+            @for (b of rep.closing; track $index) {
+              @if (b.kind === 'h') {
+                <h3 class="text-base font-semibold text-white">{{ b.text }}</h3>
+              } @else {
+                <p>{{ b.text }}</p>
+              }
+            }
+          </div>
+        </section>
+      }
+
       <section class="mt-6 rounded-xl border border-white/8 bg-white/3 p-4 text-sm text-slate-400">
         <p class="font-semibold text-white">Sobre el modelo</p>
         <p class="mt-1">{{ d.model.description }}</p>
         <p class="mt-2 text-xs">Variables: {{ d.model.features.join(', ') }}</p>
-        <a routerLink="/para-ti" class="btn-secondary btn-sm mt-3"><app-icon name="sparkles" [size]="14" /> Descubre tu perfil</a>
+        <a routerLink="/encuentra-tu-tarjeta" class="btn-secondary btn-sm mt-3"><app-icon name="sparkles" [size]="14" /> Descubre tu perfil</a>
       </section>
     }
   `,
@@ -158,6 +206,10 @@ export class BiPage {
   protected readonly classSlices = computed(() =>
     (this.bi.value()?.by_class ?? []).map((c, i) => ({ label: c.label, value: c.count, color: PALETTE[i % PALETTE.length] })),
   );
+
+  profileOf(id: number) {
+    return this.bi.value()?.profiles.find((p) => p.profile.id === id);
+  }
 
   bars(items: { label: string; count: number }[]) {
     return items.map((i) => ({ label: i.label, value: i.count }));

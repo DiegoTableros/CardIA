@@ -3,13 +3,13 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from '../../core/auth/auth.service';
-import { CardVisual } from '../../shared/card-visual';
+import { CardArt } from '../../shared/card-art';
 import { Icon } from '../../shared/icon';
 import { Logo } from '../../shared/logo';
 
 @Component({
   selector: 'app-login',
-  imports: [FormsModule, CardVisual, Icon, Logo],
+  imports: [FormsModule, CardArt, Icon, Logo],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="grid min-h-dvh lg:grid-cols-[1.15fr_1fr]">
@@ -19,28 +19,23 @@ import { Logo } from '../../shared/logo';
         <app-logo [size]="40" class="relative" />
         <div class="relative mx-auto w-full max-w-lg py-10">
           <div class="relative h-80">
-            <div class="animate-float-slow absolute top-4 left-0 w-64 [--r:-12deg] text-[15px]">
-              <app-card-visual name="Arranque" institution="CardIA" cardClass="Básica" />
+            <div class="animate-float-slow absolute top-4 left-0 w-64 [--r:-12deg]">
+              <app-card-art name="Tarjeta clásica" cardClass="Clásica" imageUrl="/cards/004.webp" orientation="landscape" [padded]="false" />
             </div>
-            <div class="animate-float absolute top-0 right-0 w-64 [--r:10deg] text-[15px] [animation-delay:-2s]">
-              <app-card-visual name="Premium viajero" institution="CardIA" cardClass="Platino" />
+            <div class="animate-float absolute top-0 right-0 w-64 [--r:10deg] [animation-delay:-2s]">
+              <app-card-art name="Tarjeta azul" cardClass="Clásica" imageUrl="/cards/064.webp" orientation="landscape" [padded]="false" />
             </div>
-            <div class="animate-float absolute bottom-0 left-1/2 w-72 -translate-x-1/2 [--r:-3deg] text-[16px] [animation-delay:-4s]">
-              <app-card-visual name="Cotidiana" institution="CardIA" cardClass="Oro" />
+            <div class="animate-float absolute bottom-0 left-1/2 w-72 -translate-x-1/2 [--r:-3deg] [animation-delay:-4s]">
+              <app-card-art name="Tarjeta oro" cardClass="Oro" imageUrl="/cards/060.webp" orientation="landscape" [padded]="false" />
             </div>
           </div>
         </div>
         <div class="relative max-w-lg">
-          <h1 class="text-4xl leading-tight font-bold">Entiende tu tarjeta de crédito <span class="gradient-text">antes de usarla.</span></h1>
+          <h1 class="text-4xl leading-tight font-bold">Encuentra y entiende <span class="gradient-text">tu tarjeta de crédito.</span></h1>
           <p class="mt-4 text-slate-400">
-            Explora 69 tarjetas del mercado mexicano, descubre su perfil con machine learning y resuelve tus dudas con un asistente
-            que consulta datos reales de Banxico y CONDUSEF.
+            CardIA te permite explorar tarjetas del mercado mexicano, encontrar la mejor adaptada a tu perfil y resolver tus dudas con un
+            asistente, todo con datos oficiales de Banxico y CONDUSEF.
           </p>
-          <ul class="mt-6 flex flex-wrap gap-2 text-xs">
-            <li class="chip !cursor-default"><app-icon name="cards" [size]="14" /> Catálogo visual</li>
-            <li class="chip !cursor-default"><app-icon name="brain" [size]="14" /> Perfiles con ML</li>
-            <li class="chip !cursor-default"><app-icon name="chat" [size]="14" /> Asistente con agentes</li>
-          </ul>
         </div>
       </section>
 
@@ -110,7 +105,7 @@ import { Logo } from '../../shared/logo';
             </div>
           </div>
           <p class="mt-6 text-center text-[11px] leading-relaxed text-slate-500">
-            Herramienta educativa. No pedimos datos sensibles ni estamos afiliados a ningún banco.
+            Herramienta de educación financiera. No pedimos datos sensibles ni estamos afiliados a ningún banco.
           </p>
         </div>
       </section>
@@ -143,7 +138,7 @@ export class LoginPage {
       next: () => this.router.navigateByUrl(this.next() || '/'),
       error: (e: HttpErrorResponse) => {
         this.loading.set(false);
-        this.error.set(e.status === 401 ? 'Usuario o contraseña incorrectos.' : 'No hay conexión con el servidor. ¿Está corriendo el backend?');
+        this.error.set(e.status === 401 ? 'Usuario o contraseña incorrectos.' : 'No pudimos conectar. Intenta de nuevo en unos segundos.');
       },
     });
   }

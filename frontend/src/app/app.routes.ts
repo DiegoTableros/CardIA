@@ -36,10 +36,11 @@ export const routes: Routes = [
         loadComponent: () => import('./features/compare/compare').then((m) => m.ComparePage),
       },
       {
-        path: 'para-ti',
-        title: 'Para ti · CardIA',
+        path: 'encuentra-tu-tarjeta',
+        title: 'Encuentra tu tarjeta · CardIA',
         loadComponent: () => import('./features/recommend/recommend').then((m) => m.RecommendPage),
       },
+      { path: 'para-ti', redirectTo: 'encuentra-tu-tarjeta' },
       {
         path: 'asistente',
         title: 'Asistente · CardIA',
@@ -47,7 +48,8 @@ export const routes: Routes = [
       },
       {
         path: 'perfiles',
-        title: 'BI de perfiles · CardIA',
+        canActivate: [adminGuard],
+        title: 'Perfiles · CardIA',
         loadComponent: () => import('./features/bi/bi').then((m) => m.BiPage),
       },
       {

@@ -174,6 +174,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/chat/topics": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Topics
+         * @description Temas para aprender (glosario oficial de CONDUSEF).
+         */
+        get: operations["topics_api_v1_chat_topics_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/chat/plan": {
         parameters: {
             query?: never;
@@ -255,7 +275,10 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        /** Bi */
+        /**
+         * Bi
+         * @description BI de perfiles: solo administradores.
+         */
         get: operations["bi_api_v1_bi_get"];
         put?: never;
         post?: never;
@@ -421,6 +444,7 @@ export interface components {
             /** Scatter */
             scatter: components["schemas"]["ScatterPoint"][];
             model: components["schemas"]["ModelInfo"];
+            report?: components["schemas"]["ProfileReport"] | null;
         };
         /** BenefitOut */
         BenefitOut: {
@@ -449,10 +473,16 @@ export interface components {
             credit_line_min: number | null;
             /** Monthly Income Min */
             monthly_income_min: number | null;
+            /** Image Url */
+            image_url?: string | null;
+            /** Image Orientation */
+            image_orientation?: ("portrait" | "landscape") | null;
             /** Benefit Types */
             benefit_types: string[];
             fee_counts: components["schemas"]["FeeCounts"];
             profile: components["schemas"]["ProfileTag"];
+            /** Institution Url */
+            institution_url?: string | null;
             requirements: components["schemas"]["Requirements"];
             /** Fees */
             fees: components["schemas"]["FeeOut"][];
@@ -502,6 +532,10 @@ export interface components {
             credit_line_min: number | null;
             /** Monthly Income Min */
             monthly_income_min: number | null;
+            /** Image Url */
+            image_url?: string | null;
+            /** Image Orientation */
+            image_orientation?: ("portrait" | "landscape") | null;
             /** Benefit Types */
             benefit_types: string[];
             fee_counts: components["schemas"]["FeeCounts"];
@@ -587,6 +621,24 @@ export interface components {
             duration_ms: number;
             /** Steps */
             steps: number;
+        };
+        /** ChatTopicsResponse */
+        ChatTopicsResponse: {
+            /** Featured */
+            featured: components["schemas"]["TopicOut"][];
+            /** Total Terms */
+            total_terms: number;
+            /** Source */
+            source: string;
+        };
+        /** ClusterReport */
+        ClusterReport: {
+            /** Id */
+            id: number;
+            /** Title */
+            title: string;
+            /** Blocks */
+            blocks: components["schemas"]["ReportBlock"][];
         };
         /** CompareMetric */
         CompareMetric: {
@@ -774,6 +826,11 @@ export interface components {
             key: string;
             /** Label */
             label: string;
+            /**
+             * Analytic Name
+             * @default
+             */
+            analytic_name: string;
             /** Tagline */
             tagline: string;
             /** Description */
@@ -789,6 +846,30 @@ export interface components {
              * @default 0
              */
             card_count: number;
+        };
+        /** ProfileReport */
+        ProfileReport: {
+            /** Source */
+            source: string;
+            /** Method */
+            method: string[];
+            /** Intro */
+            intro: components["schemas"]["ReportBlock"][];
+            /** Closing */
+            closing: components["schemas"]["ReportBlock"][];
+            /** Clusters */
+            clusters: components["schemas"]["ClusterReport"][];
+        };
+        /** ProfileScore */
+        ProfileScore: {
+            /** Id */
+            id: number;
+            /** Label */
+            label: string;
+            /** Color */
+            color: string;
+            /** Score */
+            score: number;
         };
         /** ProfileStats */
         ProfileStats: {
@@ -817,6 +898,16 @@ export interface components {
             label: string;
             /** Color */
             color: string;
+            /**
+             * Icon
+             * @default
+             */
+            icon: string;
+            /**
+             * Tagline
+             * @default
+             */
+            tagline: string;
         };
         /** RangeOut */
         RangeOut: {
@@ -830,6 +921,8 @@ export interface components {
             profile: components["schemas"]["ProfileOut"];
             /** Profile Reason */
             profile_reason: string;
+            /** Profile Scores */
+            profile_scores: components["schemas"]["ProfileScore"][];
             /** Recommendations */
             recommendations: components["schemas"]["Recommendation"][];
             /** Excluded Count */
@@ -854,6 +947,13 @@ export interface components {
             reasons: string[];
             /** Warnings */
             warnings: string[];
+        };
+        /** ReportBlock */
+        ReportBlock: {
+            /** Kind */
+            kind: string;
+            /** Text */
+            text: string;
         };
         /** Requirements */
         Requirements: {
@@ -898,6 +998,15 @@ export interface components {
             /** Expires In */
             expires_in: number;
             user: components["schemas"]["UserOut"];
+        };
+        /** TopicOut */
+        TopicOut: {
+            /** Term */
+            term: string;
+            /** Category */
+            category: string;
+            /** Question */
+            question: string;
         };
         /** UserOut */
         UserOut: {
@@ -956,10 +1065,26 @@ export interface components {
             avoid_annual_fee: boolean;
             /**
              * Pays In Full
-             * @description Totalero: paga el total cada mes
+             * @description Obsoleto: usar payment_habit
              * @default false
              */
             pays_in_full: boolean;
+            /**
+             * Payment Habit
+             * @description full=totalero, sometimes=a veces financia, revolving=suele financiar
+             */
+            payment_habit?: ("full" | "sometimes" | "revolving") | null;
+            /**
+             * Residence Months
+             * @description Antiguedad en el domicilio
+             */
+            residence_months?: number | null;
+            /**
+             * Avoid Fees
+             * @description Quiere evitar comisiones y penalizaciones altas
+             * @default false
+             */
+            avoid_fees: boolean;
             /** Benefits */
             benefits?: ("Meses sin intereses" | "Puntos" | "Descuentos" | "Preventas" | "Transferencia de Saldo" | "Seguros")[];
         };
@@ -1248,6 +1373,26 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    topics_api_v1_chat_topics_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ChatTopicsResponse"];
                 };
             };
         };

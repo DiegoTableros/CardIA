@@ -13,6 +13,7 @@ import type {
   ChatPlanResponse,
   ChatRunResponse,
   ChatRunSummary,
+  ChatTopicsResponse,
   CompareResponse,
   RecommendResponse,
   TokenResponse,
@@ -75,6 +76,9 @@ export class ApiService {
   }
   chatExecute(runId: string) {
     return this.http.post<ChatRunResponse>(`${API}/chat/runs/${runId}/execute`, {});
+  }
+  chatTopics() {
+    return this.http.get<ChatTopicsResponse>(`${API}/chat/topics`);
   }
   chatRuns(sessionId: string) {
     return this.http.get<ChatRunResponse[]>(`${API}/chat/runs`, { params: toParams({ session_id: sessionId }) });
