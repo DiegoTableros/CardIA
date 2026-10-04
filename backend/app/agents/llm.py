@@ -112,13 +112,17 @@ async def _call(kind: str, **kwargs: Any) -> Any:
     s = get_settings()
     if s.llm_reasoning_effort:
         kwargs["reasoning"] = {"effort": s.llm_reasoning_effort}
+    if kind == "create" and s.llm_verbosity:
+        kwargs["text"] = {"verbosity": s.llm_verbosity}
     fn = client.responses.parse if kind == "parse" else client.responses.create
     try:
         return await fn(**kwargs)
     except BadRequestError:
-        if "reasoning" not in kwargs:
+        optional = [k for k in ("reasoning", "text") if k in kwargs and k != "text_format"]
+        if not optional:
             raise
-        kwargs.pop("reasoning")  # modelos sin razonamiento rechazan el parametro
+        for k in optional:  # modelos que no soportan razonamiento/verbosidad rechazan el parametro
+            kwargs.pop(k)
         return await fn(**kwargs)
 
 

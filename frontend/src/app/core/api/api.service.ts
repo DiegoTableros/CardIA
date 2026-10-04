@@ -77,6 +77,9 @@ export class ApiService {
   chatExecute(runId: string) {
     return this.http.post<ChatRunResponse>(`${API}/chat/runs/${runId}/execute`, {});
   }
+  chatAsk(message: string, sessionId: string) {
+    return this.http.post<ChatRunResponse>(`${API}/chat/ask`, { message, session_id: sessionId });
+  }
   chatTopics() {
     return this.http.get<ChatTopicsResponse>(`${API}/chat/topics`);
   }

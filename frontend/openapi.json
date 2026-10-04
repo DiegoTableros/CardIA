@@ -597,6 +597,53 @@
     }
    }
   },
+  "/api/v1/chat/ask": {
+   "post": {
+    "tags": [
+     "chat"
+    ],
+    "summary": "Ask",
+    "description": "Plan + ejecucion en una peticion (respaldo en serverless: dos peticiones pueden caer en instancias distintas).",
+    "operationId": "ask_api_v1_chat_ask_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/ChatRequest"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ChatRunResponse"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    },
+    "security": [
+     {
+      "HTTPBearer": []
+     }
+    ]
+   }
+  },
   "/api/v1/chat/runs/{run_id}": {
    "get": {
     "tags": [

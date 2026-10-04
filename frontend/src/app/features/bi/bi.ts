@@ -128,16 +128,35 @@ const PALETTE = ['#8b5cf6', '#22d3ee', '#f472b6', '#f59e0b', '#10b981', '#6366f1
       @if (d.report; as rep) {
         <section class="surface mt-6 p-5">
           <h2 class="text-lg font-semibold">Cómo se asigna el perfil y se ordenan las tarjetas</h2>
-          <ol class="mt-4 list-decimal space-y-2 pl-5 text-sm leading-relaxed text-slate-300 marker:text-accent-400">
-            @for (m of rep.method; track $index) {
-              <li>{{ m }}</li>
+          <ol class="mt-5 grid gap-3 lg:grid-cols-5">
+            @for (s of flow; track s.title; let i = $index; let last = $last) {
+              <li class="relative flex">
+                <div class="flex w-full flex-col rounded-xl border border-white/8 bg-white/3 p-4">
+                  <span class="grid h-8 w-8 place-items-center rounded-full bg-gradient-to-br from-brand-500 to-hot-500 text-sm font-bold text-white">{{ i + 1 }}</span>
+                  <h3 class="mt-3 text-sm font-semibold text-white">{{ s.title }}</h3>
+                  <p class="mt-1 text-xs leading-relaxed text-slate-400">{{ s.text }}</p>
+                </div>
+                @if (!last) {
+                  <app-icon name="arrow" [size]="16" class="absolute top-1/2 -right-3.5 z-10 hidden -translate-y-1/2 text-accent-400 lg:block" />
+                }
+              </li>
             }
           </ol>
+          <div class="mt-4 flex gap-3 rounded-xl border border-amber-400/20 bg-amber-400/5 p-4 text-sm leading-relaxed text-amber-100/90">
+            <app-icon name="alert" [size]="18" class="mt-0.5 shrink-0 text-amber-300" />
+            <div>
+              <p class="font-semibold text-amber-200">Advertencias</p>
+              <p>
+                Son avisos que se muestran junto a una tarjeta; no la descartan. Aparecen cuando la tarjeta contradice algo que el usuario pidió (por ejemplo,
+                cobra anualidad y dijo que no la quería), cuando su tasa o CAT es alto y el usuario no paga el total, o cuando no ofrece un beneficio que
+                buscaba. Las tarjetas atípicas de su cluster solo se advierten; no se les baja el puntaje.
+              </p>
+            </div>
+          </div>
         </section>
 
         <section class="mt-6">
           <h2 class="text-lg font-semibold">Documentación de los clusters</h2>
-          <p class="text-xs text-slate-500">Fuente: {{ rep.source }}. Texto original del perfilamiento.</p>
           @for (b of rep.intro; track $index) {
             <p class="mt-3 text-sm text-slate-400">{{ b.text }}</p>
           }
@@ -161,15 +180,7 @@ const PALETTE = ['#8b5cf6', '#22d3ee', '#f472b6', '#f59e0b', '#10b981', '#6366f1
               </details>
             }
           </div>
-          <div class="surface mt-4 space-y-2 p-5 text-sm leading-relaxed text-slate-300">
-            @for (b of rep.closing; track $index) {
-              @if (b.kind === 'h') {
-                <h3 class="text-base font-semibold text-white">{{ b.text }}</h3>
-              } @else {
-                <p>{{ b.text }}</p>
-              }
-            }
-          </div>
+
         </section>
       }
 
@@ -188,6 +199,13 @@ export class BiPage {
   protected readonly pct = pct;
   protected readonly bi = rxResource({ stream: () => this.api.bi() });
   protected readonly selected = signal<number | null>(null);
+  protected readonly flow = [
+    { title: 'Cuestionario', text: 'El usuario responde sobre su edad, ingreso, historial, uso, forma de pago, preferencias e intereses (puede elegir varios).' },
+    { title: 'Elegibilidad', text: 'Se descartan las tarjetas cuyos requisitos publicados no cumple. Si falta algún dato, la tarjeta queda «por confirmar» (puntaje -8%).' },
+    { title: 'Utilidad', text: 'Cada tarjeta se mide en 9 dimensiones (0 a 1): anualidad, tasa, comisiones, puntos, viaje, promociones, MSI, transferencia de saldo y requisitos accesibles. Las respuestas definen cuánto pesa cada una.' },
+    { title: 'Puntaje y orden', text: 'Puntaje = 75% utilidad de la tarjeta + 25% afinidad de su cluster. Si pidió evitar anualidad, las tarjetas con anualidad se multiplican por 0.75. Se ordena: Top 1, Top 2…' },
+    { title: 'Perfil', text: 'El perfil del usuario es el cluster de su tarjeta Top 1.' },
+  ];
 
   private readonly colors = computed(() => new Map((this.bi.value()?.profiles ?? []).map((p) => [p.profile.id, p.profile.color])));
 

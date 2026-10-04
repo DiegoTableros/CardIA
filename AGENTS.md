@@ -213,7 +213,7 @@ Git:
 - 2026-10-03 - LLM: SDK openai 3.22, Responses API. Planner = `responses.parse(text_format=PlanOut)` con `args_json`
   (string) porque structured outputs estricto no admite dicts libres; el plan se valida contra TOOLS y el catalogo.
   Narrador = `responses.create`. `reasoning={"effort": LLM_REASONING_EFFORT}`; si el modelo lo rechaza (400) se
-  reintenta sin el. Cualquier error -> planner/narrador por reglas. Modelos: LLM_MODEL_FAST=gpt-5.1-mini, LLM_MODEL=gpt-5.1.
+  reintenta sin el. Cualquier error -> planner/narrador por reglas. Modelos: LLM_MODEL_FAST=LLM_MODEL=gpt-5.4-mini (`gpt-5.1-mini` NO existe en la cuenta: verificar con `client.models.list()`); `LLM_VERBOSITY=medium` solo en el narrador.
   Historial: ultimos LLM_HISTORY_TURNS turnos de la sesion (BD). Tests con cliente falso en `tests/test_llm.py`.
 - 2026-10-03 - Planner por reglas: `_fold` quita signos (¿?¡!) y los temas casan por palabra completa; "que es"
   ya no es keyword (hacia que todo cayera en `que_es_tdc`). Preguntas "¿Qué es X?" con termino del glosario -> glosario.
@@ -232,6 +232,14 @@ Git:
   para reiniciar hay que cerrar tambien ese hijo. Cambios en `.env` requieren reinicio (Settings usa lru_cache).
 - 2026-10-04 - PowerShell: `R` es alias de Invoke-History (no usarlo como nombre de funcion); al pasar un solo par a una
   funcion con `@(@(a,b))` PowerShell aplana el arreglo y puede corromper archivos: verificar con tsc/git diff.
+- 2026-10-04 - Vercel: `vercel.json` con Services (frontend `frontend/` Angular + backend `backend/` FastAPI, entrypoint
+  `app.main:app`) y rewrites `/api(/.*)?` -> backend, `/(.*)` -> frontend; el backend ve la ruta original `/api/v1/...`.
+  En Vercel (`VERCEL` en el entorno) SQLite va a `/tmp` y el backend NO arranca sin `JWT_SECRET` propio (32+ car.).
+  Variables a definir en el dashboard: OPENAI_API_KEY, JWT_SECRET, SEED_ADMIN_PASSWORD, SEED_DEMO_PASSWORD.
+- 2026-10-04 - Serverless: plan y execute pueden caer en instancias distintas (SQLite efimero); el front reintenta con
+  `POST /chat/ask` (plan+ejecucion en una peticion) si execute devuelve 404.
+- 2026-10-04 - Documentacion: README con arquitectura (mermaid) y `docs/CardIA_Documentacion_Proyecto.docx`
+  (`uv run python -m scripts.build_project_doc`; tiene marcadores [COMPLETAR] para el usuario).
 - 2026-09-30 - Algunos nombres del Excel vienen crudos (`Plata_Credito_Basico_531722`, `Tarjeta de Credito Basica`).
   Corregirlos en el Excel y correr `make data` (no se renombran en codigo).
 
@@ -244,7 +252,7 @@ Git:
 | `make data` | Excel -> `backend/data/cards.json` (falla si el Excel esta abierto; correr despues de `images`) |
 | `make seed` | Esquema + tarjetas + usuarios en SQLite (idempotente; tambien corre al arrancar la API) |
 | `make dev` | API :8000 + front :4200 (o por separado: `make dev-backend`, `make dev-frontend`) |
-| `make test` | pytest (30) + vitest (3) |
+| `make test` | pytest (31) + vitest (3) |
 | `make lint` / `make format` | ruff + tsc / ruff format + prettier |
 | `make contracts` | `/openapi.json` -> `frontend/src/app/core/api/schema.d.ts` |
 | `make build` | Build de produccion del front (`frontend/dist/`) |
@@ -272,4 +280,4 @@ Rutas front (orden del menu): `/` Inicio, `/encuentra-tu-tarjeta` (antes `/para-
 - [x] Modelo final integrado (2026-10-04): 6 clusters, recomendador v1, cuestionario nuevo, vista Perfiles (admin) con metodo y
   documentacion del docx (`backend/data/cluster_report.json`, `make`/`scripts.build_cluster_report`). Sin PCA (descartado).
 - [ ] Pendiente: notebook de clustering en `notebooks/` (hoy el Excel trae el resultado), tuning del recomendador
-- [ ] Fase 6: Docker compose + Vercel
+- [~] Fase 6: Vercel configurado (Services); falta Docker compose

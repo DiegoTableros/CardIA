@@ -2,7 +2,8 @@ import { ChangeDetectionStrategy, Component, ElementRef, afterNextRender, effect
 import { rxResource } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { firstValueFrom } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
+import { catchError, firstValueFrom, throwError } from 'rxjs';
 import { ApiService } from '../../core/api/api.service';
 import type { CardSummary } from '../../core/api/types';
 import { money, pct } from '../../core/format';
@@ -251,7 +252,12 @@ export class ChatPage {
       // El backend genera y guarda el plan (D8); al usuario solo se le muestran los agentes activos como puntitos.
       const plan = await firstValueFrom(this.api.chatPlan(message, this.sessionId));
       this.patch(aid, { agents: [...new Set(plan.plan.map((s) => s.agent))] });
-      const run = await firstValueFrom(this.api.chatExecute(plan.run_id));
+      // Si la ejecucion cae en otra instancia (serverless) y no halla el plan, se pide plan+respuesta en una sola llamada.
+      const run = await firstValueFrom(
+        this.api
+          .chatExecute(plan.run_id)
+          .pipe(catchError((e: unknown) => (e instanceof HttpErrorResponse && e.status === 404 ? this.api.chatAsk(message, this.sessionId) : throwError(() => e)))),
+      );
       this.patch(aid, {
         text: run.answer,
         html: renderMarkdown(run.answer),

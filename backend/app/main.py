@@ -14,6 +14,11 @@ from app.db.seed import seed
 
 @asynccontextmanager
 async def lifespan(_: FastAPI) -> AsyncIterator[None]:
+    s = get_settings()
+    if s.is_production and s.insecure_jwt_secret:
+        raise RuntimeError(
+            "Define JWT_SECRET (32+ caracteres, propio) en las variables de entorno de produccion."
+        )
     await seed()  # idempotente (D1): en Vercel re-siembra en cada cold start
     yield
 

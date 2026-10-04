@@ -1,5 +1,6 @@
 """Configuracion de la aplicacion (variables de entorno / .env)."""
 
+import os
 from functools import lru_cache
 from pathlib import Path
 from typing import Annotated
@@ -23,7 +24,12 @@ class Settings(BaseSettings):
     debug: bool = True
     cors_origins: Annotated[list[str], NoDecode] = ["http://localhost:4200"]
 
-    database_url: str = f"sqlite+aiosqlite:///{(DATA_DIR / 'cardia.db').as_posix()}"
+    # En Vercel el disco es de solo lectura salvo /tmp (D1: SQLite efimero).
+    database_url: str = (
+        "sqlite+aiosqlite:////tmp/cardia.db"
+        if os.environ.get("VERCEL")
+        else f"sqlite+aiosqlite:///{(DATA_DIR / 'cardia.db').as_posix()}"
+    )
 
     jwt_secret: str = "cardia-dev-secret-solo-local-cambia-esto-en-produccion"
     jwt_algorithm: str = "HS256"
@@ -35,9 +41,10 @@ class Settings(BaseSettings):
     seed_demo_password: str = "demo1234"
 
     openai_api_key: str = ""
-    llm_model: str = "gpt-5.1"
-    llm_model_fast: str = "gpt-5.1-mini"
+    llm_model: str = "gpt-5.4-mini"
+    llm_model_fast: str = "gpt-5.4-mini"
     llm_reasoning_effort: str = "low"  # vacio para modelos sin razonamiento
+    llm_verbosity: str = "medium"  # low | medium | high (solo narrador; vacio para desactivar)
     llm_max_plan_steps: int = 6
     llm_timeout_seconds: float = 45.0
     llm_history_turns: int = 4
@@ -48,6 +55,14 @@ class Settings(BaseSettings):
         if isinstance(v, str):
             return [o.strip() for o in v.split(",") if o.strip()]
         return v
+
+    @property
+    def is_production(self) -> bool:
+        return self.environment == "production" or bool(os.environ.get("VERCEL"))
+
+    @property
+    def insecure_jwt_secret(self) -> bool:
+        return len(self.jwt_secret) < 32 or "solo-local" in self.jwt_secret
 
     @property
     def llm_enabled(self) -> bool:

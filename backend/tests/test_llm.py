@@ -94,3 +94,9 @@ async def test_personal_data_is_masked(client: httpx.AsyncClient, user_headers) 
 async def test_topics(client: httpx.AsyncClient, user_headers) -> None:
     t = (await client.get(f"{API}/chat/topics", headers=user_headers)).json()
     assert len(t["featured"]) >= 10 and t["total_terms"] > 50
+
+
+async def test_ask_single_request(client: httpx.AsyncClient, user_headers) -> None:
+    body = {"message": "¿Qué es el pago mínimo?", "session_id": "ask1"}
+    run = (await client.post(f"{API}/chat/ask", json=body, headers=user_headers)).json()
+    assert run["status"] == "ok" and "pago mínimo" in run["answer"].lower() and run["plan"]

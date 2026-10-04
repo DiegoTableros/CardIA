@@ -49,6 +49,23 @@ async def execute(run_id: str, cards: CardsDep, user: CurrentUser, session: Sess
     return result
 
 
+@router.post("/ask", response_model=ChatRunResponse)
+async def ask(body: ChatRequest, cards: CardsDep, user: CurrentUser, session: SessionDep) -> ChatRunResponse:
+    """Plan + ejecucion en una peticion (respaldo en serverless: dos peticiones pueden caer en instancias distintas)."""
+    plan = await orchestrator.create_plan(session, cards, user.email, body.session_id, body.message)
+    run = await orchestrator.get_run(session, plan.run_id, user.email, False)
+    result = await orchestrator.execute_run(session, cards, run)
+    await audit.record(
+        session,
+        "chat",
+        user.email,
+        run.question[:200],
+        duration_ms=result.duration_ms,
+        payload={"run_id": run.id, "steps": [f"{s.agent}.{s.tool}" for s in result.plan]},
+    )
+    return result
+
+
 @router.get("/runs/{run_id}", response_model=ChatRunResponse)
 async def get_run(run_id: str, cards: CardsDep, user: CurrentUser, session: SessionDep) -> ChatRunResponse:
     run = await orchestrator.get_run(session, run_id, user.email, user.role == "admin")

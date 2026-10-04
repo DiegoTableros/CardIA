@@ -47,3 +47,5 @@ Thumbs.db
 ~$*.xlsx
 ~$*.pptx
 prompt.docx
+~WRL*.tmp
+*.tmp

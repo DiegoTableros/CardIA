@@ -28,7 +28,7 @@ const STORAGE = 'cardia.recommend.form';
     <header class="max-w-3xl">
       <p class="section-eyebrow">Encuentra tu tarjeta</p>
       <h1 class="section-title sm:text-4xl">¿Qué tarjeta va con tu perfil?</h1>
-      <p class="mt-2 text-slate-400">Responde 4 preguntas rápidas sobre ti (nunca te pediremos datos personales).</p>
+      <p class="mt-2 text-slate-400">Responde algunas preguntas rápidas sobre ti (nunca te pediremos datos personales).</p>
     </header>
 
     <div class="mt-8 grid gap-8 lg:grid-cols-[minmax(0,420px)_1fr]">
